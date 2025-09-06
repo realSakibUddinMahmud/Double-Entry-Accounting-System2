@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/workspace/phpunit.xml" tests="2" assertions="1" errors="1" failures="0" skipped="0" time="0.284259">
-    <testsuite name="Unit" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.021891">
-      <testsuite name="Tests\Unit\ExampleTest" file="/workspace/tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.021891">
-        <testcase name="test_that_true_is_true" file="/workspace/tests/Unit/ExampleTest.php" line="12" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.021891"/>
+  <testsuite name="/workspace/phpunit.xml" tests="2" assertions="1" errors="1" failures="0" skipped="0" time="0.287471">
+    <testsuite name="Unit" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.024418">
+      <testsuite name="Tests\Unit\ExampleTest" file="/workspace/tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.024418">
+        <testcase name="test_that_true_is_true" file="/workspace/tests/Unit/ExampleTest.php" line="12" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.024418"/>
       </testsuite>
     </testsuite>
-    <testsuite name="Feature" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.262368">
-      <testsuite name="Tests\Feature\ExampleTest" file="/workspace/tests/Feature/ExampleTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.262368">
-        <testcase name="test_the_application_returns_a_successful_response" file="/workspace/tests/Feature/ExampleTest.php" line="13" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="0" time="0.262368">
+    <testsuite name="Feature" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.263053">
+      <testsuite name="Tests\Feature\ExampleTest" file="/workspace/tests/Feature/ExampleTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.263053">
+        <testcase name="test_the_application_returns_a_successful_response" file="/workspace/tests/Feature/ExampleTest.php" line="13" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="0" time="0.263053">
           <error type="Illuminate\Encryption\MissingAppKeyException">Tests\Feature\ExampleTest::test_the_application_returns_a_successful_response
 Illuminate\Encryption\MissingAppKeyException: No application encryption key has been specified.
 
