@@ -1,32 +1,32 @@
 # Laravel specific
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
+# /node_modules
+# /public/hot
+# /public/storage
+# /storage/*.key
+# /vendor
+# .env
+# .env.backup
+# .phpunit.result.cache
+# Homestead.json
+# Homestead.yaml
+# npm-debug.log
+# yarn-error.log
 
 # Laravel storage and cache
-/storage/framework/cache/
-/storage/framework/sessions/
-/storage/framework/views/
-/storage/logs/
-/storage/app/public/
-/bootstrap/cache/
+# /storage/framework/cache/
+# /storage/framework/sessions/
+# /storage/framework/views/
+# /storage/logs/
+# /storage/app/public/
+# /bootstrap/cache/
 
 # Public assets (heavy files)
-/public/assets/
-/public/vendor/
-/public/product-data/
-/public/img/
-/public/uploads/
-/public/storage/
+# /public/assets/
+# /public/vendor/
+# /public/product-data/
+# /public/img/
+# /public/uploads/
+# /public/storage/
 
 # IDE and editor files
 .vscode/
@@ -70,7 +70,7 @@ Thumbs.db
 *.gz
 
 # Database files
-*.sql
+# *.sql  # Uncomment to include .sql files
 *.sqlite
 *.db
 
