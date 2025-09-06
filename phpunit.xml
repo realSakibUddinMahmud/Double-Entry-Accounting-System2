@@ -24,7 +24,7 @@
         </report>
     </coverage>
     <logging>
-        <log type="junit" target="storage/test-results/junit.xml"/>
+        <junit outputFile="storage/test-results/junit.xml"/>
     </logging>
     <php>
         <env name="APP_ENV" value="testing"/>
