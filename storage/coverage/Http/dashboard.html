@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /workspace/app/Http</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=11.0.10" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css?v=11.0.10" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=11.0.10" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/workspace/app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Http</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#13">App\Http\Controllers\Admin\ActivityLogController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#9">App\Http\Controllers\Admin\AdditionalFieldController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#10">App\Http\Controllers\Admin\BrandController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#9">App\Http\Controllers\Admin\CategoryController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#12">App\Http\Controllers\Admin\CompanyController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#10">App\Http\Controllers\Admin\CustomerController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#13">App\Http\Controllers\Admin\PermissionController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#22">App\Http\Controllers\Admin\ProductController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#9">App\Http\Controllers\Admin\PurchaseController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#14">App\Http\Controllers\Admin\PurchasePaymentController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#22">App\Http\Controllers\Admin\ReportController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#12">App\Http\Controllers\Admin\RoleController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#11">App\Http\Controllers\Admin\RolePermissionSeederController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#9">App\Http\Controllers\Admin\SaleController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#14">App\Http\Controllers\Admin\SalePaymentController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#10">App\Http\Controllers\Admin\SettingController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#10">App\Http\Controllers\Admin\StockAdjustmentController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#9">App\Http\Controllers\Admin\StoreController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#10">App\Http\Controllers\Admin\SupplierController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#9">App\Http\Controllers\Admin\TaxController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#12">App\Http\Controllers\Admin\UnitController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#12">App\Http\Controllers\Admin\UserRoleController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ConfirmPasswordController.php.html#8">App\Http\Controllers\Auth\ConfirmPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/LoginController.php.html#8">App\Http\Controllers\Auth\LoginController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#15">App\Http\Controllers\Auth\PasswordResetOtpController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#12">App\Http\Controllers\Auth\ProfileController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/RegisterController.php.html#13">App\Http\Controllers\Auth\RegisterController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/VerificationController.php.html#8">App\Http\Controllers\Auth\VerificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#13">App\Http\Controllers\HomeController</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#22">App\Http\Controllers\Admin\ReportController</a></td><td class="text-right">46010</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#13">App\Http\Controllers\Admin\ActivityLogController</a></td><td class="text-right">7310</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#22">App\Http\Controllers\Admin\ProductController</a></td><td class="text-right">1056</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#12">App\Http\Controllers\Admin\CompanyController</a></td><td class="text-right">930</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#14">App\Http\Controllers\Admin\PurchasePaymentController</a></td><td class="text-right">600</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#15">App\Http\Controllers\Auth\PasswordResetOtpController</a></td><td class="text-right">600</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#14">App\Http\Controllers\Admin\SalePaymentController</a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#12">App\Http\Controllers\Admin\UserRoleController</a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#9">App\Http\Controllers\Admin\CategoryController</a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#9">App\Http\Controllers\Admin\SaleController</a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#9">App\Http\Controllers\Admin\PurchaseController</a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#12">App\Http\Controllers\Admin\RoleController</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#13">App\Http\Controllers\Admin\PermissionController</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#13">App\Http\Controllers\HomeController</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#10">App\Http\Controllers\Admin\BrandController</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#10">App\Http\Controllers\Admin\CustomerController</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#10">App\Http\Controllers\Admin\SupplierController</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#10">App\Http\Controllers\Admin\SettingController</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#12">App\Http\Controllers\Admin\UnitController</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#9">App\Http\Controllers\Admin\AdditionalFieldController</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#9">App\Http\Controllers\Admin\StoreController</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#11">App\Http\Controllers\Admin\RolePermissionSeederController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#12">App\Http\Controllers\Auth\ProfileController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#9">App\Http\Controllers\Admin\TaxController</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/Auth/RegisterController.php.html#13">App\Http\Controllers\Auth\RegisterController</a></td><td class="text-right">30</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#15"><abbr title="App\Http\Controllers\Admin\ActivityLogController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#23"><abbr title="App\Http\Controllers\Admin\ActivityLogController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#154"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getJournalConnection">getJournalConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#209"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getSaleActivities">getSaleActivities</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#299"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getPurchaseActivities">getPurchaseActivities</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#389"><abbr title="App\Http\Controllers\Admin\ActivityLogController::generateActivityDescription">generateActivityDescription</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#496"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getChangedValues">getChangedValues</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#530"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getFieldDisplayName">getFieldDisplayName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#564"><abbr title="App\Http\Controllers\Admin\ActivityLogController::formatValue">formatValue</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#11"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#16"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#22"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#62"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#101"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#12"><abbr title="App\Http\Controllers\Admin\BrandController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#17"><abbr title="App\Http\Controllers\Admin\BrandController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#37"><abbr title="App\Http\Controllers\Admin\BrandController::index2">index2</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#44"><abbr title="App\Http\Controllers\Admin\BrandController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#80"><abbr title="App\Http\Controllers\Admin\BrandController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#113"><abbr title="App\Http\Controllers\Admin\BrandController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#11"><abbr title="App\Http\Controllers\Admin\CategoryController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#16"><abbr title="App\Http\Controllers\Admin\CategoryController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#43"><abbr title="App\Http\Controllers\Admin\CategoryController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#69"><abbr title="App\Http\Controllers\Admin\CategoryController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#95"><abbr title="App\Http\Controllers\Admin\CategoryController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#14"><abbr title="App\Http\Controllers\Admin\CompanyController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#25"><abbr title="App\Http\Controllers\Admin\CompanyController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#105"><abbr title="App\Http\Controllers\Admin\CompanyController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#116"><abbr title="App\Http\Controllers\Admin\CompanyController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#182"><abbr title="App\Http\Controllers\Admin\CompanyController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#210"><abbr title="App\Http\Controllers\Admin\CompanyController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#233"><abbr title="App\Http\Controllers\Admin\CompanyController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#294"><abbr title="App\Http\Controllers\Admin\CompanyController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#315"><abbr title="App\Http\Controllers\Admin\CompanyController::getUsers">getUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#342"><abbr title="App\Http\Controllers\Admin\CompanyController::assignUser">assignUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#386"><abbr title="App\Http\Controllers\Admin\CompanyController::companyUsers">companyUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#407"><abbr title="App\Http\Controllers\Admin\CompanyController::removeUser">removeUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#443"><abbr title="App\Http\Controllers\Admin\CompanyController::companyProfile">companyProfile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#467"><abbr title="App\Http\Controllers\Admin\CompanyController::editCompanyProfile">editCompanyProfile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#491"><abbr title="App\Http\Controllers\Admin\CompanyController::updateCompanyProfile">updateCompanyProfile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#12"><abbr title="App\Http\Controllers\Admin\CustomerController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#18"><abbr title="App\Http\Controllers\Admin\CustomerController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#31"><abbr title="App\Http\Controllers\Admin\CustomerController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#67"><abbr title="App\Http\Controllers\Admin\CustomerController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#92"><abbr title="App\Http\Controllers\Admin\CustomerController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#15"><abbr title="App\Http\Controllers\Admin\PermissionController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#21"><abbr title="App\Http\Controllers\Admin\PermissionController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#34"><abbr title="App\Http\Controllers\Admin\PermissionController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#112"><abbr title="App\Http\Controllers\Admin\PermissionController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#146"><abbr title="App\Http\Controllers\Admin\PermissionController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#26"><abbr title="App\Http\Controllers\Admin\ProductController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#31"><abbr title="App\Http\Controllers\Admin\ProductController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#74"><abbr title="App\Http\Controllers\Admin\ProductController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#87"><abbr title="App\Http\Controllers\Admin\ProductController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#184"><abbr title="App\Http\Controllers\Admin\ProductController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#214"><abbr title="App\Http\Controllers\Admin\ProductController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#329"><abbr title="App\Http\Controllers\Admin\ProductController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#11"><abbr title="App\Http\Controllers\Admin\PurchaseController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#16"><abbr title="App\Http\Controllers\Admin\PurchaseController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#59"><abbr title="App\Http\Controllers\Admin\PurchaseController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#64"><abbr title="App\Http\Controllers\Admin\PurchaseController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#69"><abbr title="App\Http\Controllers\Admin\PurchaseController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#74"><abbr title="App\Http\Controllers\Admin\PurchaseController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#79"><abbr title="App\Http\Controllers\Admin\PurchaseController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#84"><abbr title="App\Http\Controllers\Admin\PurchaseController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#16"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#23"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#36"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#59"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#156"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#24"><abbr title="App\Http\Controllers\Admin\ReportController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#29"><abbr title="App\Http\Controllers\Admin\ReportController::getSalesReportData">getSalesReportData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#103"><abbr title="App\Http\Controllers\Admin\ReportController::getPurchaseReportData">getPurchaseReportData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#176"><abbr title="App\Http\Controllers\Admin\ReportController::getStockReportData">getStockReportData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#322"><abbr title="App\Http\Controllers\Admin\ReportController::sales">sales</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#328"><abbr title="App\Http\Controllers\Admin\ReportController::salesExport">salesExport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#339"><abbr title="App\Http\Controllers\Admin\ReportController::purchase">purchase</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#345"><abbr title="App\Http\Controllers\Admin\ReportController::purchaseExport">purchaseExport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#356"><abbr title="App\Http\Controllers\Admin\ReportController::stock">stock</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#362"><abbr title="App\Http\Controllers\Admin\ReportController::stockExport">stockExport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#480"><abbr title="App\Http\Controllers\Admin\ReportController::getIncomeStatementData">getIncomeStatementData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#617"><abbr title="App\Http\Controllers\Admin\ReportController::incomeStatement">incomeStatement</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#624"><abbr title="App\Http\Controllers\Admin\ReportController::incomeStatementExport">incomeStatementExport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#654"><abbr title="App\Http\Controllers\Admin\ReportController::accountTransactions">accountTransactions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#822"><abbr title="App\Http\Controllers\Admin\ReportController::getBalanceSheetDataOld">getBalanceSheetDataOld</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#975"><abbr title="App\Http\Controllers\Admin\ReportController::getBalanceSheetData">getBalanceSheetData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1166"><abbr title="App\Http\Controllers\Admin\ReportController::getAccountBalancesBatch">getAccountBalancesBatch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1186"><abbr title="App\Http\Controllers\Admin\ReportController::balanceSheet">balanceSheet</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1199"><abbr title="App\Http\Controllers\Admin\ReportController::balanceSheetExportOld">balanceSheetExportOld</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1226"><abbr title="App\Http\Controllers\Admin\ReportController::balanceSheetExport">balanceSheetExport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1263"><abbr title="App\Http\Controllers\Admin\ReportController::getTrialBalanceData">getTrialBalanceData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1655"><abbr title="App\Http\Controllers\Admin\ReportController::trialBalance">trialBalance</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1668"><abbr title="App\Http\Controllers\Admin\ReportController::trialBalanceExport">trialBalanceExport</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1698"><abbr title="App\Http\Controllers\Admin\ReportController::getProfit">getProfit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#14"><abbr title="App\Http\Controllers\Admin\RoleController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#20"><abbr title="App\Http\Controllers\Admin\RoleController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#37"><abbr title="App\Http\Controllers\Admin\RoleController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#106"><abbr title="App\Http\Controllers\Admin\RoleController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#155"><abbr title="App\Http\Controllers\Admin\RoleController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#13"><abbr title="App\Http\Controllers\Admin\RolePermissionSeederController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#18"><abbr title="App\Http\Controllers\Admin\RolePermissionSeederController::refresh">refresh</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#46"><abbr title="App\Http\Controllers\Admin\RolePermissionSeederController::refreshRolesPermissions">refreshRolesPermissions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#11"><abbr title="App\Http\Controllers\Admin\SaleController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#16"><abbr title="App\Http\Controllers\Admin\SaleController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#59"><abbr title="App\Http\Controllers\Admin\SaleController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#64"><abbr title="App\Http\Controllers\Admin\SaleController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#69"><abbr title="App\Http\Controllers\Admin\SaleController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#74"><abbr title="App\Http\Controllers\Admin\SaleController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#79"><abbr title="App\Http\Controllers\Admin\SaleController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#84"><abbr title="App\Http\Controllers\Admin\SaleController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#16"><abbr title="App\Http\Controllers\Admin\SalePaymentController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#23"><abbr title="App\Http\Controllers\Admin\SalePaymentController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#34"><abbr title="App\Http\Controllers\Admin\SalePaymentController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#60"><abbr title="App\Http\Controllers\Admin\SalePaymentController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#139"><abbr title="App\Http\Controllers\Admin\SalePaymentController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#12"><abbr title="App\Http\Controllers\Admin\SettingController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#20"><abbr title="App\Http\Controllers\Admin\SettingController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#51"><abbr title="App\Http\Controllers\Admin\SettingController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#12"><abbr title="App\Http\Controllers\Admin\StockAdjustmentController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#17"><abbr title="App\Http\Controllers\Admin\StockAdjustmentController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#23"><abbr title="App\Http\Controllers\Admin\StockAdjustmentController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#28"><abbr title="App\Http\Controllers\Admin\StockAdjustmentController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#34"><abbr title="App\Http\Controllers\Admin\StockAdjustmentController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StockAdjustmentController.php.html#42"><abbr title="App\Http\Controllers\Admin\StockAdjustmentController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#16"><abbr title="App\Http\Controllers\Admin\StoreController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#26"><abbr title="App\Http\Controllers\Admin\StoreController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#37"><abbr title="App\Http\Controllers\Admin\StoreController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#65"><abbr title="App\Http\Controllers\Admin\StoreController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#90"><abbr title="App\Http\Controllers\Admin\StoreController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#12"><abbr title="App\Http\Controllers\Admin\SupplierController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#18"><abbr title="App\Http\Controllers\Admin\SupplierController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#31"><abbr title="App\Http\Controllers\Admin\SupplierController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#69"><abbr title="App\Http\Controllers\Admin\SupplierController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#95"><abbr title="App\Http\Controllers\Admin\SupplierController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#11"><abbr title="App\Http\Controllers\Admin\TaxController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#16"><abbr title="App\Http\Controllers\Admin\TaxController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#22"><abbr title="App\Http\Controllers\Admin\TaxController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#41"><abbr title="App\Http\Controllers\Admin\TaxController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#59"><abbr title="App\Http\Controllers\Admin\TaxController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#14"><abbr title="App\Http\Controllers\Admin\UnitController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#19"><abbr title="App\Http\Controllers\Admin\UnitController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#46"><abbr title="App\Http\Controllers\Admin\UnitController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#74"><abbr title="App\Http\Controllers\Admin\UnitController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#102"><abbr title="App\Http\Controllers\Admin\UnitController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#14"><abbr title="App\Http\Controllers\Admin\UserRoleController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#19"><abbr title="App\Http\Controllers\Admin\UserRoleController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#47"><abbr title="App\Http\Controllers\Admin\UserRoleController::index2">index2</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#61"><abbr title="App\Http\Controllers\Admin\UserRoleController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#80"><abbr title="App\Http\Controllers\Admin\UserRoleController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#115"><abbr title="App\Http\Controllers\Admin\UserRoleController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#130"><abbr title="App\Http\Controllers\Admin\UserRoleController::toggleStatus">toggleStatus</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ConfirmPasswordController.php.html#35"><abbr title="App\Http\Controllers\Auth\ConfirmPasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/LoginController.php.html#14"><abbr title="App\Http\Controllers\Auth\LoginController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/LoginController.php.html#25"><abbr title="App\Http\Controllers\Auth\LoginController::username">username</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#20"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::showResetRequestForm">showResetRequestForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#28"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::showVerifyOtpForm">showVerifyOtpForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#45"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::showUpdatePasswordForm">showUpdatePasswordForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#58"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::requestPasswordReset">requestPasswordReset</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#133"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::verifyOtp">verifyOtp</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#174"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::updatePasswordWithOtp">updatePasswordWithOtp</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#17"><abbr title="App\Http\Controllers\Auth\ProfileController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#26"><abbr title="App\Http\Controllers\Auth\ProfileController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#35"><abbr title="App\Http\Controllers\Auth\ProfileController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#62"><abbr title="App\Http\Controllers\Auth\ProfileController::updatePassword">updatePassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/RegisterController.php.html#40"><abbr title="App\Http\Controllers\Auth\RegisterController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/RegisterController.php.html#51"><abbr title="App\Http\Controllers\Auth\RegisterController::validator">validator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/RegisterController.php.html#107"><abbr title="App\Http\Controllers\Auth\RegisterController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/VerificationController.php.html#35"><abbr title="App\Http\Controllers\Auth\VerificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#20"><abbr title="App\Http\Controllers\HomeController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#30"><abbr title="App\Http\Controllers\HomeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#82"><abbr title="App\Http\Controllers\HomeController::summaryData">summaryData</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1263"><abbr title="App\Http\Controllers\Admin\ReportController::getTrialBalanceData">getTrialBalanceData</abbr></a></td><td class="text-right">1892</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#389"><abbr title="App\Http\Controllers\Admin\ActivityLogController::generateActivityDescription">generateActivityDescription</abbr></a></td><td class="text-right">1806</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#176"><abbr title="App\Http\Controllers\Admin\ReportController::getStockReportData">getStockReportData</abbr></a></td><td class="text-right">1190</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#29"><abbr title="App\Http\Controllers\Admin\ReportController::getSalesReportData">getSalesReportData</abbr></a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#103"><abbr title="App\Http\Controllers\Admin\ReportController::getPurchaseReportData">getPurchaseReportData</abbr></a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#975"><abbr title="App\Http\Controllers\Admin\ReportController::getBalanceSheetData">getBalanceSheetData</abbr></a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#654"><abbr title="App\Http\Controllers\Admin\ReportController::accountTransactions">accountTransactions</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#59"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::store">store</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#822"><abbr title="App\Http\Controllers\Admin\ReportController::getBalanceSheetDataOld">getBalanceSheetDataOld</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#624"><abbr title="App\Http\Controllers\Admin\ReportController::incomeStatementExport">incomeStatementExport</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1199"><abbr title="App\Http\Controllers\Admin\ReportController::balanceSheetExportOld">balanceSheetExportOld</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#23"><abbr title="App\Http\Controllers\Admin\ActivityLogController::index">index</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#214"><abbr title="App\Http\Controllers\Admin\ProductController::update">update</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#154"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getJournalConnection">getJournalConnection</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#564"><abbr title="App\Http\Controllers\Admin\ActivityLogController::formatValue">formatValue</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#87"><abbr title="App\Http\Controllers\Admin\ProductController::store">store</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#60"><abbr title="App\Http\Controllers\Admin\SalePaymentController::store">store</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#130"><abbr title="App\Http\Controllers\Admin\UserRoleController::toggleStatus">toggleStatus</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchasePaymentController.php.html#156"><abbr title="App\Http\Controllers\Admin\PurchasePaymentController::destroy">destroy</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1226"><abbr title="App\Http\Controllers\Admin\ReportController::balanceSheetExport">balanceSheetExport</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/Admin/SalePaymentController.php.html#139"><abbr title="App\Http\Controllers\Admin\SalePaymentController::destroy">destroy</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#174"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::updatePasswordWithOtp">updatePasswordWithOtp</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#34"><abbr title="App\Http\Controllers\Admin\PermissionController::store">store</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#16"><abbr title="App\Http\Controllers\Admin\PurchaseController::index">index</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#16"><abbr title="App\Http\Controllers\Admin\SaleController::index">index</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#51"><abbr title="App\Http\Controllers\Admin\SettingController::update">update</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#82"><abbr title="App\Http\Controllers\HomeController::summaryData">summaryData</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#496"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getChangedValues">getChangedValues</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#92"><abbr title="App\Http\Controllers\Admin\CustomerController::destroy">destroy</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#31"><abbr title="App\Http\Controllers\Admin\ProductController::index">index</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1668"><abbr title="App\Http\Controllers\Admin\ReportController::trialBalanceExport">trialBalanceExport</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#37"><abbr title="App\Http\Controllers\Admin\RoleController::store">store</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/StoreController.php.html#90"><abbr title="App\Http\Controllers\Admin\StoreController::destroy">destroy</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#95"><abbr title="App\Http\Controllers\Admin\SupplierController::destroy">destroy</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#58"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::requestPasswordReset">requestPasswordReset</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#133"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::verifyOtp">verifyOtp</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#43"><abbr title="App\Http\Controllers\Admin\CategoryController::store">store</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#69"><abbr title="App\Http\Controllers\Admin\CategoryController::update">update</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#480"><abbr title="App\Http\Controllers\Admin\ReportController::getIncomeStatementData">getIncomeStatementData</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controllers/Admin/RoleController.php.html#106"><abbr title="App\Http\Controllers\Admin\RoleController::update">update</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controllers/HomeController.php.html#30"><abbr title="App\Http\Controllers\HomeController::index">index</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#16"><abbr title="App\Http\Controllers\Admin\CategoryController::index">index</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#342"><abbr title="App\Http\Controllers\Admin\CompanyController::assignUser">assignUser</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#407"><abbr title="App\Http\Controllers\Admin\CompanyController::removeUser">removeUser</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#46"><abbr title="App\Http\Controllers\Admin\RolePermissionSeederController::refreshRolesPermissions">refreshRolesPermissions</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#19"><abbr title="App\Http\Controllers\Admin\UnitController::index">index</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#80"><abbr title="App\Http\Controllers\Admin\UserRoleController::update">update</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#62"><abbr title="App\Http\Controllers\Auth\ProfileController::updatePassword">updatePassword</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#22"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::store">store</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#62"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#17"><abbr title="App\Http\Controllers\Admin\BrandController::index">index</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#44"><abbr title="App\Http\Controllers\Admin\BrandController::store">store</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/BrandController.php.html#80"><abbr title="App\Http\Controllers\Admin\BrandController::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#233"><abbr title="App\Http\Controllers\Admin\CompanyController::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#491"><abbr title="App\Http\Controllers\Admin\CompanyController::updateCompanyProfile">updateCompanyProfile</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/PermissionController.php.html#112"><abbr title="App\Http\Controllers\Admin\PermissionController::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/RolePermissionSeederController.php.html#18"><abbr title="App\Http\Controllers\Admin\RolePermissionSeederController::refresh">refresh</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/SaleController.php.html#84"><abbr title="App\Http\Controllers\Admin\SaleController::destroy">destroy</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/SettingController.php.html#20"><abbr title="App\Http\Controllers\Admin\SettingController::index">index</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Auth/RegisterController.php.html#107"><abbr title="App\Http\Controllers\Auth\RegisterController::create">create</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#209"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getSaleActivities">getSaleActivities</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/ActivityLogController.php.html#299"><abbr title="App\Http\Controllers\Admin\ActivityLogController::getPurchaseActivities">getPurchaseActivities</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/AdditionalFieldController.php.html#101"><abbr title="App\Http\Controllers\Admin\AdditionalFieldController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CategoryController.php.html#95"><abbr title="App\Http\Controllers\Admin\CategoryController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#116"><abbr title="App\Http\Controllers\Admin\CompanyController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#182"><abbr title="App\Http\Controllers\Admin\CompanyController::show">show</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#210"><abbr title="App\Http\Controllers\Admin\CompanyController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#315"><abbr title="App\Http\Controllers\Admin\CompanyController::getUsers">getUsers</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CompanyController.php.html#386"><abbr title="App\Http\Controllers\Admin\CompanyController::companyUsers">companyUsers</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#31"><abbr title="App\Http\Controllers\Admin\CustomerController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/CustomerController.php.html#67"><abbr title="App\Http\Controllers\Admin\CustomerController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/ProductController.php.html#329"><abbr title="App\Http\Controllers\Admin\ProductController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/PurchaseController.php.html#84"><abbr title="App\Http\Controllers\Admin\PurchaseController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1166"><abbr title="App\Http\Controllers\Admin\ReportController::getAccountBalancesBatch">getAccountBalancesBatch</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1186"><abbr title="App\Http\Controllers\Admin\ReportController::balanceSheet">balanceSheet</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1655"><abbr title="App\Http\Controllers\Admin\ReportController::trialBalance">trialBalance</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/ReportController.php.html#1698"><abbr title="App\Http\Controllers\Admin\ReportController::getProfit">getProfit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#31"><abbr title="App\Http\Controllers\Admin\SupplierController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/SupplierController.php.html#69"><abbr title="App\Http\Controllers\Admin\SupplierController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#22"><abbr title="App\Http\Controllers\Admin\TaxController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/TaxController.php.html#41"><abbr title="App\Http\Controllers\Admin\TaxController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#46"><abbr title="App\Http\Controllers\Admin\UnitController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#74"><abbr title="App\Http\Controllers\Admin\UnitController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/UnitController.php.html#102"><abbr title="App\Http\Controllers\Admin\UnitController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#19"><abbr title="App\Http\Controllers\Admin\UserRoleController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Admin/UserRoleController.php.html#61"><abbr title="App\Http\Controllers\Admin\UserRoleController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordResetOtpController.php.html#28"><abbr title="App\Http\Controllers\Auth\PasswordResetOtpController::showVerifyOtpForm">showVerifyOtpForm</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/Auth/ProfileController.php.html#35"><abbr title="App\Http\Controllers\Auth\ProfileController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 11.0.10</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.5</a> and <a href="https://phpunit.de/">PHPUnit 11.5.24</a> at Sat Sep 6 23:05:44 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/jquery.min.js?v=11.0.10" type="text/javascript"></script>
+  <script src="../_js/d3.min.js?v=11.0.10" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js?v=11.0.10" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([29,0,0,0,0,0,0,0,0,0,0,3], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([171,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,85,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#13\">App\\Http\\Controllers\\Admin\\ActivityLogController<\/a>"],[0,10,"<a href=\"Controllers\/Admin\/AdditionalFieldController.php.html#9\">App\\Http\\Controllers\\Admin\\AdditionalFieldController<\/a>"],[0,12,"<a href=\"Controllers\/Admin\/BrandController.php.html#10\">App\\Http\\Controllers\\Admin\\BrandController<\/a>"],[0,17,"<a href=\"Controllers\/Admin\/CategoryController.php.html#9\">App\\Http\\Controllers\\Admin\\CategoryController<\/a>"],[0,30,"<a href=\"Controllers\/Admin\/CompanyController.php.html#12\">App\\Http\\Controllers\\Admin\\CompanyController<\/a>"],[0,12,"<a href=\"Controllers\/Admin\/CustomerController.php.html#10\">App\\Http\\Controllers\\Admin\\CustomerController<\/a>"],[0,13,"<a href=\"Controllers\/Admin\/PermissionController.php.html#13\">App\\Http\\Controllers\\Admin\\PermissionController<\/a>"],[0,32,"<a href=\"Controllers\/Admin\/ProductController.php.html#22\">App\\Http\\Controllers\\Admin\\ProductController<\/a>"],[0,15,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#9\">App\\Http\\Controllers\\Admin\\PurchaseController<\/a>"],[0,24,"<a href=\"Controllers\/Admin\/PurchasePaymentController.php.html#14\">App\\Http\\Controllers\\Admin\\PurchasePaymentController<\/a>"],[0,214,"<a href=\"Controllers\/Admin\/ReportController.php.html#22\">App\\Http\\Controllers\\Admin\\ReportController<\/a>"],[0,14,"<a href=\"Controllers\/Admin\/RoleController.php.html#12\">App\\Http\\Controllers\\Admin\\RoleController<\/a>"],[0,8,"<a href=\"Controllers\/Admin\/RolePermissionSeederController.php.html#11\">App\\Http\\Controllers\\Admin\\RolePermissionSeederController<\/a>"],[0,16,"<a href=\"Controllers\/Admin\/SaleController.php.html#9\">App\\Http\\Controllers\\Admin\\SaleController<\/a>"],[0,21,"<a href=\"Controllers\/Admin\/SalePaymentController.php.html#14\">App\\Http\\Controllers\\Admin\\SalePaymentController<\/a>"],[0,11,"<a href=\"Controllers\/Admin\/SettingController.php.html#10\">App\\Http\\Controllers\\Admin\\SettingController<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#10\">App\\Http\\Controllers\\Admin\\StockAdjustmentController<\/a>"],[0,10,"<a href=\"Controllers\/Admin\/StoreController.php.html#9\">App\\Http\\Controllers\\Admin\\StoreController<\/a>"],[0,12,"<a href=\"Controllers\/Admin\/SupplierController.php.html#10\">App\\Http\\Controllers\\Admin\\SupplierController<\/a>"],[0,7,"<a href=\"Controllers\/Admin\/TaxController.php.html#9\">App\\Http\\Controllers\\Admin\\TaxController<\/a>"],[0,11,"<a href=\"Controllers\/Admin\/UnitController.php.html#12\">App\\Http\\Controllers\\Admin\\UnitController<\/a>"],[0,20,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#12\">App\\Http\\Controllers\\Admin\\UserRoleController<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/ConfirmPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController<\/a>"],[100,0,"<a href=\"Controllers\/Auth\/ForgotPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ForgotPasswordController<\/a>"],[0,2,"<a href=\"Controllers\/Auth\/LoginController.php.html#8\">App\\Http\\Controllers\\Auth\\LoginController<\/a>"],[0,24,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#15\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController<\/a>"],[0,8,"<a href=\"Controllers\/Auth\/ProfileController.php.html#12\">App\\Http\\Controllers\\Auth\\ProfileController<\/a>"],[0,5,"<a href=\"Controllers\/Auth\/RegisterController.php.html#13\">App\\Http\\Controllers\\Auth\\RegisterController<\/a>"],[100,0,"<a href=\"Controllers\/Auth\/ResetPasswordController.php.html#8\">App\\Http\\Controllers\\Auth\\ResetPasswordController<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/VerificationController.php.html#8\">App\\Http\\Controllers\\Auth\\VerificationController<\/a>"],[100,0,"<a href=\"Controllers\/Controller.php.html#9\">App\\Http\\Controllers\\Controller<\/a>"],[0,13,"<a href=\"Controllers\/HomeController.php.html#13\">App\\Http\\Controllers\\HomeController<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#15\">App\\Http\\Controllers\\Admin\\ActivityLogController::__construct<\/a>"],[0,11,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#23\">App\\Http\\Controllers\\Admin\\ActivityLogController::index<\/a>"],[0,10,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#154\">App\\Http\\Controllers\\Admin\\ActivityLogController::getJournalConnection<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#209\">App\\Http\\Controllers\\Admin\\ActivityLogController::getSaleActivities<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#299\">App\\Http\\Controllers\\Admin\\ActivityLogController::getPurchaseActivities<\/a>"],[0,42,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#389\">App\\Http\\Controllers\\Admin\\ActivityLogController::generateActivityDescription<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#496\">App\\Http\\Controllers\\Admin\\ActivityLogController::getChangedValues<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#530\">App\\Http\\Controllers\\Admin\\ActivityLogController::getFieldDisplayName<\/a>"],[0,10,"<a href=\"Controllers\/Admin\/ActivityLogController.php.html#564\">App\\Http\\Controllers\\Admin\\ActivityLogController::formatValue<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/AdditionalFieldController.php.html#11\">App\\Http\\Controllers\\Admin\\AdditionalFieldController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/AdditionalFieldController.php.html#16\">App\\Http\\Controllers\\Admin\\AdditionalFieldController::index<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/AdditionalFieldController.php.html#22\">App\\Http\\Controllers\\Admin\\AdditionalFieldController::store<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/AdditionalFieldController.php.html#62\">App\\Http\\Controllers\\Admin\\AdditionalFieldController::update<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/AdditionalFieldController.php.html#101\">App\\Http\\Controllers\\Admin\\AdditionalFieldController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/BrandController.php.html#12\">App\\Http\\Controllers\\Admin\\BrandController::__construct<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/BrandController.php.html#17\">App\\Http\\Controllers\\Admin\\BrandController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/BrandController.php.html#37\">App\\Http\\Controllers\\Admin\\BrandController::index2<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/BrandController.php.html#44\">App\\Http\\Controllers\\Admin\\BrandController::store<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/BrandController.php.html#80\">App\\Http\\Controllers\\Admin\\BrandController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/BrandController.php.html#113\">App\\Http\\Controllers\\Admin\\BrandController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CategoryController.php.html#11\">App\\Http\\Controllers\\Admin\\CategoryController::__construct<\/a>"],[0,4,"<a href=\"Controllers\/Admin\/CategoryController.php.html#16\">App\\Http\\Controllers\\Admin\\CategoryController::index<\/a>"],[0,5,"<a href=\"Controllers\/Admin\/CategoryController.php.html#43\">App\\Http\\Controllers\\Admin\\CategoryController::store<\/a>"],[0,5,"<a href=\"Controllers\/Admin\/CategoryController.php.html#69\">App\\Http\\Controllers\\Admin\\CategoryController::update<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CategoryController.php.html#95\">App\\Http\\Controllers\\Admin\\CategoryController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CompanyController.php.html#14\">App\\Http\\Controllers\\Admin\\CompanyController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CompanyController.php.html#25\">App\\Http\\Controllers\\Admin\\CompanyController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CompanyController.php.html#105\">App\\Http\\Controllers\\Admin\\CompanyController::create<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CompanyController.php.html#116\">App\\Http\\Controllers\\Admin\\CompanyController::store<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CompanyController.php.html#182\">App\\Http\\Controllers\\Admin\\CompanyController::show<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CompanyController.php.html#210\">App\\Http\\Controllers\\Admin\\CompanyController::edit<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/CompanyController.php.html#233\">App\\Http\\Controllers\\Admin\\CompanyController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CompanyController.php.html#294\">App\\Http\\Controllers\\Admin\\CompanyController::destroy<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CompanyController.php.html#315\">App\\Http\\Controllers\\Admin\\CompanyController::getUsers<\/a>"],[0,4,"<a href=\"Controllers\/Admin\/CompanyController.php.html#342\">App\\Http\\Controllers\\Admin\\CompanyController::assignUser<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CompanyController.php.html#386\">App\\Http\\Controllers\\Admin\\CompanyController::companyUsers<\/a>"],[0,4,"<a href=\"Controllers\/Admin\/CompanyController.php.html#407\">App\\Http\\Controllers\\Admin\\CompanyController::removeUser<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CompanyController.php.html#443\">App\\Http\\Controllers\\Admin\\CompanyController::companyProfile<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CompanyController.php.html#467\">App\\Http\\Controllers\\Admin\\CompanyController::editCompanyProfile<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/CompanyController.php.html#491\">App\\Http\\Controllers\\Admin\\CompanyController::updateCompanyProfile<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CustomerController.php.html#12\">App\\Http\\Controllers\\Admin\\CustomerController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/CustomerController.php.html#18\">App\\Http\\Controllers\\Admin\\CustomerController::index<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CustomerController.php.html#31\">App\\Http\\Controllers\\Admin\\CustomerController::store<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/CustomerController.php.html#67\">App\\Http\\Controllers\\Admin\\CustomerController::update<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/CustomerController.php.html#92\">App\\Http\\Controllers\\Admin\\CustomerController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PermissionController.php.html#15\">App\\Http\\Controllers\\Admin\\PermissionController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PermissionController.php.html#21\">App\\Http\\Controllers\\Admin\\PermissionController::index<\/a>"],[0,7,"<a href=\"Controllers\/Admin\/PermissionController.php.html#34\">App\\Http\\Controllers\\Admin\\PermissionController::store<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/PermissionController.php.html#112\">App\\Http\\Controllers\\Admin\\PermissionController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PermissionController.php.html#146\">App\\Http\\Controllers\\Admin\\PermissionController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ProductController.php.html#26\">App\\Http\\Controllers\\Admin\\ProductController::__construct<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/ProductController.php.html#31\">App\\Http\\Controllers\\Admin\\ProductController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ProductController.php.html#74\">App\\Http\\Controllers\\Admin\\ProductController::create<\/a>"],[0,10,"<a href=\"Controllers\/Admin\/ProductController.php.html#87\">App\\Http\\Controllers\\Admin\\ProductController::store<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ProductController.php.html#184\">App\\Http\\Controllers\\Admin\\ProductController::edit<\/a>"],[0,11,"<a href=\"Controllers\/Admin\/ProductController.php.html#214\">App\\Http\\Controllers\\Admin\\ProductController::update<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ProductController.php.html#329\">App\\Http\\Controllers\\Admin\\ProductController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#11\">App\\Http\\Controllers\\Admin\\PurchaseController::__construct<\/a>"],[0,7,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#16\">App\\Http\\Controllers\\Admin\\PurchaseController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#59\">App\\Http\\Controllers\\Admin\\PurchaseController::create<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#64\">App\\Http\\Controllers\\Admin\\PurchaseController::store<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#69\">App\\Http\\Controllers\\Admin\\PurchaseController::show<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#74\">App\\Http\\Controllers\\Admin\\PurchaseController::edit<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#79\">App\\Http\\Controllers\\Admin\\PurchaseController::update<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/PurchaseController.php.html#84\">App\\Http\\Controllers\\Admin\\PurchaseController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchasePaymentController.php.html#16\">App\\Http\\Controllers\\Admin\\PurchasePaymentController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchasePaymentController.php.html#23\">App\\Http\\Controllers\\Admin\\PurchasePaymentController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/PurchasePaymentController.php.html#36\">App\\Http\\Controllers\\Admin\\PurchasePaymentController::create<\/a>"],[0,13,"<a href=\"Controllers\/Admin\/PurchasePaymentController.php.html#59\">App\\Http\\Controllers\\Admin\\PurchasePaymentController::store<\/a>"],[0,8,"<a href=\"Controllers\/Admin\/PurchasePaymentController.php.html#156\">App\\Http\\Controllers\\Admin\\PurchasePaymentController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#24\">App\\Http\\Controllers\\Admin\\ReportController::__construct<\/a>"],[0,17,"<a href=\"Controllers\/Admin\/ReportController.php.html#29\">App\\Http\\Controllers\\Admin\\ReportController::getSalesReportData<\/a>"],[0,17,"<a href=\"Controllers\/Admin\/ReportController.php.html#103\">App\\Http\\Controllers\\Admin\\ReportController::getPurchaseReportData<\/a>"],[0,34,"<a href=\"Controllers\/Admin\/ReportController.php.html#176\">App\\Http\\Controllers\\Admin\\ReportController::getStockReportData<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#322\">App\\Http\\Controllers\\Admin\\ReportController::sales<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#328\">App\\Http\\Controllers\\Admin\\ReportController::salesExport<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#339\">App\\Http\\Controllers\\Admin\\ReportController::purchase<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#345\">App\\Http\\Controllers\\Admin\\ReportController::purchaseExport<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#356\">App\\Http\\Controllers\\Admin\\ReportController::stock<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#362\">App\\Http\\Controllers\\Admin\\ReportController::stockExport<\/a>"],[0,5,"<a href=\"Controllers\/Admin\/ReportController.php.html#480\">App\\Http\\Controllers\\Admin\\ReportController::getIncomeStatementData<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/ReportController.php.html#617\">App\\Http\\Controllers\\Admin\\ReportController::incomeStatement<\/a>"],[0,12,"<a href=\"Controllers\/Admin\/ReportController.php.html#624\">App\\Http\\Controllers\\Admin\\ReportController::incomeStatementExport<\/a>"],[0,14,"<a href=\"Controllers\/Admin\/ReportController.php.html#654\">App\\Http\\Controllers\\Admin\\ReportController::accountTransactions<\/a>"],[0,13,"<a href=\"Controllers\/Admin\/ReportController.php.html#822\">App\\Http\\Controllers\\Admin\\ReportController::getBalanceSheetDataOld<\/a>"],[0,17,"<a href=\"Controllers\/Admin\/ReportController.php.html#975\">App\\Http\\Controllers\\Admin\\ReportController::getBalanceSheetData<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ReportController.php.html#1166\">App\\Http\\Controllers\\Admin\\ReportController::getAccountBalancesBatch<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ReportController.php.html#1186\">App\\Http\\Controllers\\Admin\\ReportController::balanceSheet<\/a>"],[0,12,"<a href=\"Controllers\/Admin\/ReportController.php.html#1199\">App\\Http\\Controllers\\Admin\\ReportController::balanceSheetExportOld<\/a>"],[0,8,"<a href=\"Controllers\/Admin\/ReportController.php.html#1226\">App\\Http\\Controllers\\Admin\\ReportController::balanceSheetExport<\/a>"],[0,43,"<a href=\"Controllers\/Admin\/ReportController.php.html#1263\">App\\Http\\Controllers\\Admin\\ReportController::getTrialBalanceData<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ReportController.php.html#1655\">App\\Http\\Controllers\\Admin\\ReportController::trialBalance<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/ReportController.php.html#1668\">App\\Http\\Controllers\\Admin\\ReportController::trialBalanceExport<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/ReportController.php.html#1698\">App\\Http\\Controllers\\Admin\\ReportController::getProfit<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/RoleController.php.html#14\">App\\Http\\Controllers\\Admin\\RoleController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/RoleController.php.html#20\">App\\Http\\Controllers\\Admin\\RoleController::index<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/RoleController.php.html#37\">App\\Http\\Controllers\\Admin\\RoleController::store<\/a>"],[0,5,"<a href=\"Controllers\/Admin\/RoleController.php.html#106\">App\\Http\\Controllers\\Admin\\RoleController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/RoleController.php.html#155\">App\\Http\\Controllers\\Admin\\RoleController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/RolePermissionSeederController.php.html#13\">App\\Http\\Controllers\\Admin\\RolePermissionSeederController::__construct<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/RolePermissionSeederController.php.html#18\">App\\Http\\Controllers\\Admin\\RolePermissionSeederController::refresh<\/a>"],[0,4,"<a href=\"Controllers\/Admin\/RolePermissionSeederController.php.html#46\">App\\Http\\Controllers\\Admin\\RolePermissionSeederController::refreshRolesPermissions<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SaleController.php.html#11\">App\\Http\\Controllers\\Admin\\SaleController::__construct<\/a>"],[0,7,"<a href=\"Controllers\/Admin\/SaleController.php.html#16\">App\\Http\\Controllers\\Admin\\SaleController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SaleController.php.html#59\">App\\Http\\Controllers\\Admin\\SaleController::create<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SaleController.php.html#64\">App\\Http\\Controllers\\Admin\\SaleController::store<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SaleController.php.html#69\">App\\Http\\Controllers\\Admin\\SaleController::show<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SaleController.php.html#74\">App\\Http\\Controllers\\Admin\\SaleController::edit<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SaleController.php.html#79\">App\\Http\\Controllers\\Admin\\SaleController::update<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/SaleController.php.html#84\">App\\Http\\Controllers\\Admin\\SaleController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SalePaymentController.php.html#16\">App\\Http\\Controllers\\Admin\\SalePaymentController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SalePaymentController.php.html#23\">App\\Http\\Controllers\\Admin\\SalePaymentController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SalePaymentController.php.html#34\">App\\Http\\Controllers\\Admin\\SalePaymentController::create<\/a>"],[0,10,"<a href=\"Controllers\/Admin\/SalePaymentController.php.html#60\">App\\Http\\Controllers\\Admin\\SalePaymentController::store<\/a>"],[0,8,"<a href=\"Controllers\/Admin\/SalePaymentController.php.html#139\">App\\Http\\Controllers\\Admin\\SalePaymentController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SettingController.php.html#12\">App\\Http\\Controllers\\Admin\\SettingController::__construct<\/a>"],[0,3,"<a href=\"Controllers\/Admin\/SettingController.php.html#20\">App\\Http\\Controllers\\Admin\\SettingController::index<\/a>"],[0,7,"<a href=\"Controllers\/Admin\/SettingController.php.html#51\">App\\Http\\Controllers\\Admin\\SettingController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#12\">App\\Http\\Controllers\\Admin\\StockAdjustmentController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#17\">App\\Http\\Controllers\\Admin\\StockAdjustmentController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#23\">App\\Http\\Controllers\\Admin\\StockAdjustmentController::create<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#28\">App\\Http\\Controllers\\Admin\\StockAdjustmentController::show<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#34\">App\\Http\\Controllers\\Admin\\StockAdjustmentController::edit<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StockAdjustmentController.php.html#42\">App\\Http\\Controllers\\Admin\\StockAdjustmentController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StoreController.php.html#16\">App\\Http\\Controllers\\Admin\\StoreController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StoreController.php.html#26\">App\\Http\\Controllers\\Admin\\StoreController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StoreController.php.html#37\">App\\Http\\Controllers\\Admin\\StoreController::store<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/StoreController.php.html#65\">App\\Http\\Controllers\\Admin\\StoreController::update<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/StoreController.php.html#90\">App\\Http\\Controllers\\Admin\\StoreController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SupplierController.php.html#12\">App\\Http\\Controllers\\Admin\\SupplierController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/SupplierController.php.html#18\">App\\Http\\Controllers\\Admin\\SupplierController::index<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/SupplierController.php.html#31\">App\\Http\\Controllers\\Admin\\SupplierController::store<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/SupplierController.php.html#69\">App\\Http\\Controllers\\Admin\\SupplierController::update<\/a>"],[0,6,"<a href=\"Controllers\/Admin\/SupplierController.php.html#95\">App\\Http\\Controllers\\Admin\\SupplierController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/TaxController.php.html#11\">App\\Http\\Controllers\\Admin\\TaxController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/TaxController.php.html#16\">App\\Http\\Controllers\\Admin\\TaxController::index<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/TaxController.php.html#22\">App\\Http\\Controllers\\Admin\\TaxController::store<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/TaxController.php.html#41\">App\\Http\\Controllers\\Admin\\TaxController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/TaxController.php.html#59\">App\\Http\\Controllers\\Admin\\TaxController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/UnitController.php.html#14\">App\\Http\\Controllers\\Admin\\UnitController::__construct<\/a>"],[0,4,"<a href=\"Controllers\/Admin\/UnitController.php.html#19\">App\\Http\\Controllers\\Admin\\UnitController::index<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/UnitController.php.html#46\">App\\Http\\Controllers\\Admin\\UnitController::store<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/UnitController.php.html#74\">App\\Http\\Controllers\\Admin\\UnitController::update<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/UnitController.php.html#102\">App\\Http\\Controllers\\Admin\\UnitController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#14\">App\\Http\\Controllers\\Admin\\UserRoleController::__construct<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#19\">App\\Http\\Controllers\\Admin\\UserRoleController::index<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#47\">App\\Http\\Controllers\\Admin\\UserRoleController::index2<\/a>"],[0,2,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#61\">App\\Http\\Controllers\\Admin\\UserRoleController::edit<\/a>"],[0,4,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#80\">App\\Http\\Controllers\\Admin\\UserRoleController::update<\/a>"],[0,1,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#115\">App\\Http\\Controllers\\Admin\\UserRoleController::destroy<\/a>"],[0,9,"<a href=\"Controllers\/Admin\/UserRoleController.php.html#130\">App\\Http\\Controllers\\Admin\\UserRoleController::toggleStatus<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/ConfirmPasswordController.php.html#35\">App\\Http\\Controllers\\Auth\\ConfirmPasswordController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/LoginController.php.html#14\">App\\Http\\Controllers\\Auth\\LoginController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/LoginController.php.html#25\">App\\Http\\Controllers\\Auth\\LoginController::username<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#20\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController::showResetRequestForm<\/a>"],[0,2,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#28\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController::showVerifyOtpForm<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#45\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController::showUpdatePasswordForm<\/a>"],[0,6,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#58\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController::requestPasswordReset<\/a>"],[0,6,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#133\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController::verifyOtp<\/a>"],[0,8,"<a href=\"Controllers\/Auth\/PasswordResetOtpController.php.html#174\">App\\Http\\Controllers\\Auth\\PasswordResetOtpController::updatePasswordWithOtp<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/ProfileController.php.html#17\">App\\Http\\Controllers\\Auth\\ProfileController::show<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/ProfileController.php.html#26\">App\\Http\\Controllers\\Auth\\ProfileController::edit<\/a>"],[0,2,"<a href=\"Controllers\/Auth\/ProfileController.php.html#35\">App\\Http\\Controllers\\Auth\\ProfileController::update<\/a>"],[0,4,"<a href=\"Controllers\/Auth\/ProfileController.php.html#62\">App\\Http\\Controllers\\Auth\\ProfileController::updatePassword<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/RegisterController.php.html#40\">App\\Http\\Controllers\\Auth\\RegisterController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/RegisterController.php.html#51\">App\\Http\\Controllers\\Auth\\RegisterController::validator<\/a>"],[0,3,"<a href=\"Controllers\/Auth\/RegisterController.php.html#107\">App\\Http\\Controllers\\Auth\\RegisterController::create<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/VerificationController.php.html#35\">App\\Http\\Controllers\\Auth\\VerificationController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/HomeController.php.html#20\">App\\Http\\Controllers\\HomeController::__construct<\/a>"],[0,5,"<a href=\"Controllers\/HomeController.php.html#30\">App\\Http\\Controllers\\HomeController::index<\/a>"],[0,7,"<a href=\"Controllers\/HomeController.php.html#82\">App\\Http\\Controllers\\HomeController::summaryData<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
