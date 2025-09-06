@@ -23,6 +23,9 @@ mysql -h 127.0.0.1 -uroot -psecret tenant_demo_test < db/dumps/tenant_demo_test.
 # Unit + Feature with coverage + junit
 XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-results/junit.xml
 
+# Or via composer script
+composer run test:cov
+
 # Artifacts
 # - JUnit: storage/test-results/junit.xml
 # - HTML coverage: storage/coverage/index.html
@@ -46,5 +49,15 @@ npm run test:e2e:report
 Factories live in `database/factories/` and cover:
 
 - `User`, `Company`, `Store`, `Category`, `Brand`, `Unit`, `Product`, `Supplier`, `Customer`, `Tax`
-- Add more as needed for pivots: `ProductStore`, `PurchaseItem`, `SaleItem`
+- Pivots/line-items included: `ProductStore`, `PurchaseItem`, `SaleItem`, `ProductStockAdjustment`, `CustomFieldValue`
+
+## Test builders
+
+Reusable builders for common flows:
+
+- `Tests/Support/Builders/ProductStoreBuilder::make()`
+- `Tests/Support/Builders/PurchaseBuilder::makeWithItems($n)`
+- `Tests/Support/Builders/SaleBuilder::makeWithItems($n)`
+
+RBAC helper trait: `Tests/Support/WithRoles` to `assignRole($user, $role)` and `givePermission($user, $permission)`.
 

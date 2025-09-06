@@ -70,7 +70,8 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
-        ]
+        ],
+        "test:cov": "XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-results/junit.xml"
     },
     "extra": {
         "laravel": {
