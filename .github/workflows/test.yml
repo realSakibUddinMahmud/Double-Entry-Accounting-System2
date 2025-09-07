@@ -1,0 +1,115 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -psecret"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, curl, json, pdo_mysql, zip, xml, gd, xdebug
+          coverage: xdebug
+
+      - name: Cache Composer
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache/files
+          key: composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Prepare environment files
+        run: |
+          cp -n .env.example .env || true
+          cp -n .env.testing .env.testing || true
+          echo "DB_HOST=127.0.0.1" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env.testing
+          echo "DB_USERNAME=root" >> .env
+          echo "DB_USERNAME=root" >> .env.testing
+          echo "DB_PASSWORD=secret" >> .env
+          echo "DB_PASSWORD=secret" >> .env.testing
+          echo "DATABASE_URL_TENANT=mysql://root:secret@127.0.0.1:3306/tenant_demo_test?charset=utf8mb4" >> .env.testing
+          echo "APP_KEY=$(php -r "echo 'base64:'.base64_encode(random_bytes(32));")" >> .env
+          echo "APP_KEY=$(php -r "echo 'base64:'.base64_encode(random_bytes(32));")" >> .env.testing
+
+      - name: Wait for MySQL & create databases
+        run: |
+          for i in {1..30}; do mysql -h127.0.0.1 -uroot -psecret -e "SELECT 1" && break || sleep 2; done
+          mysql -h127.0.0.1 -uroot -psecret -e "CREATE DATABASE IF NOT EXISTS landlord_master_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE DATABASE IF NOT EXISTS tenant_demo_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+          if [ -f db/dumps/landlord_master_test.sql ]; then mysql -h127.0.0.1 -uroot -psecret landlord_master_test < db/dumps/landlord_master_test.sql; fi
+          if [ -f db/dumps/tenant_demo_test.sql ]; then mysql -h127.0.0.1 -uroot -psecret tenant_demo_test < db/dumps/tenant_demo_test.sql; fi
+
+      - name: Run PHPUnit with coverage
+        run: XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-artifacts/junit.xml
+
+      - name: Upload PHP test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-artifacts
+          path: |
+            storage/test-artifacts/junit.xml
+            storage/coverage
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Start Laravel server & run Playwright
+        env:
+          BASE_URL: http://127.0.0.1:8081
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8081 >/dev/null 2>&1 & echo $! > .server_pid
+          npx playwright test --reporter=list
+
+      - name: Upload Playwright artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report
+            test-results
+
+      - name: PHPStan (best-effort)
+        run: |
+          if [ -x vendor/bin/phpstan ]; then vendor/bin/phpstan analyse -c phpstan.neon || true; else echo "phpstan not installed"; fi
+
+      - name: PHP CS Fixer check (best-effort)
+        run: |
+          if [ -x vendor/bin/php-cs-fixer ]; then vendor/bin/php-cs-fixer fix --dry-run --diff || true; else echo "php-cs-fixer not installed"; fi
+
+      - name: Composer audit (best-effort)
+        run: composer audit || true
+
+      - name: Stop server
+        if: always()
+        run: |
+          if [ -f .server_pid ]; then kill $(cat .server_pid) || true; fi
+

@@ -1,0 +1,11 @@
+parameters:
+  paths:
+    - app
+  level: 5
+  checkGenericClassInNonGenericObjectType: false
+  checkMissingIterableValueType: false
+  ignoreErrors:
+    - '#Unsafe usage of new static#'
+  inferPrivatePropertyTypeFromConstructor: true
+  memoryLimit: 512M
+
