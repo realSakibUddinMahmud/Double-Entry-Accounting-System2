@@ -1,0 +1,70 @@
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="_token"
+
+PVFDOC4nyrZBEo4AJEo5AY8VX2MHIR80ghDjXFp6
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="store_id"
+
+1
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="name"
+
+E2E Product 1757267901239
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="sku"
+
+e2e-product-1757267901239
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="brand_id"
+
+
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="category_id"
+
+2
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="barcode"
+
+
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="base_unit_id"
+
+6
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="purchase_unit_id"
+
+6
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="sales_unit_id"
+
+6
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="purchase_cost"
+
+10.50
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="cogs"
+
+10.50
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="sales_price"
+
+15.25
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="tax_id"
+
+
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="tax_method"
+
+exclusive
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="description"
+
+
+------WebKitFormBoundarypxSMaA4URVHzoA7p
+Content-Disposition: form-data; name="images[]"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundarypxSMaA4URVHzoA7p--

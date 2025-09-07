@@ -50,6 +50,7 @@ test.describe('Catalog E2E', () => {
 
     // Product: open create page and submit
     await page.goto('/products/create');
+    await page.locator('select#store_id').selectOption({ index: 1 });
     await page.locator('input#product_name').fill(`E2E Product ${Date.now()}`);
     await page.locator('select#base_unit_id').selectOption({ index: 1 });
     await page.locator('select#purchase_unit_id').selectOption({ index: 1 });

@@ -1,7 +1,7 @@
 # Page snapshot
 
 ```yaml
-- generic [ref=e1]:
+- generic [active] [ref=e1]:
   - generic [ref=e2]:
     - generic [ref=e4]:
       - list [ref=e5]:
@@ -249,87 +249,77 @@
                 - generic [ref=e211] [cursor=pointer]: Settings
     - generic [ref=e213]:
       - generic [ref=e214]:
-        - generic [ref=e215]:
+        - alert [ref=e215]:
           - generic [ref=e216]:
-            - heading "Add Product" [level=4] [ref=e217]
-            - heading "Create a new product" [level=6] [ref=e218]
-          - link "Product List" [ref=e220] [cursor=pointer]:
+            - generic [ref=e217]: Product created successfully.
+            - button "Close" [ref=e218] [cursor=pointer]
+        - generic [ref=e219]:
+          - generic [ref=e220]:
+            - heading "Add Product" [level=4] [ref=e221]
+            - heading "Create a new product" [level=6] [ref=e222]
+          - link "Product List" [ref=e224] [cursor=pointer]:
             - /url: http://127.0.0.1:8081/products
-            - generic [ref=e221] [cursor=pointer]: 
+            - generic [ref=e225] [cursor=pointer]: 
             - text: Product List
-        - generic [ref=e224]:
-          - generic [ref=e225]:
-            - generic [ref=e226]:
-              - generic [ref=e227]:
-                - text: Store
-                - generic [ref=e228]: "*"
-              - combobox [active] [ref=e229]:
-                - option "Select Store" [selected]
-                - option "Main Store"
+        - generic [ref=e228]:
+          - generic [ref=e229]:
             - generic [ref=e230]:
               - generic [ref=e231]:
-                - text: Product Name
+                - text: Store
                 - generic [ref=e232]: "*"
-              - generic [ref=e233]:
-                - combobox [ref=e234]: E2E Product 1757267671323
-                - button "" [ref=e235] [cursor=pointer]:
-                  - generic [ref=e236] [cursor=pointer]: 
-            - generic [ref=e237]:
-              - generic [ref=e238]: SKU
-              - textbox [ref=e239]: e2e-product-1757267671323
-          - generic [ref=e240]:
+              - combobox [ref=e233]:
+                - option "Select Store" [selected]
+                - option "Main Store"
+            - generic [ref=e234]:
+              - generic [ref=e235]:
+                - text: Product Name
+                - generic [ref=e236]: "*"
+              - generic [ref=e237]:
+                - combobox [ref=e238]
+                - button "" [ref=e239] [cursor=pointer]:
+                  - generic [ref=e240] [cursor=pointer]: 
             - generic [ref=e241]:
-              - generic [ref=e242]: Brand
-              - combobox [ref=e243]:
+              - generic [ref=e242]: SKU
+              - textbox [ref=e243]
+          - generic [ref=e244]:
+            - generic [ref=e245]:
+              - generic [ref=e246]: Brand
+              - combobox [ref=e247]:
                 - option "Select Brand" [selected]
                 - option "Fresh"
                 - option "Pran"
                 - option "Square"
-            - generic [ref=e244]:
-              - generic [ref=e245]:
+            - generic [ref=e248]:
+              - generic [ref=e249]:
                 - text: Category
-                - generic [ref=e246]: "*"
-              - combobox [ref=e247]:
-                - option "Select Category"
-                - option "Beverages" [selected]
+                - generic [ref=e250]: "*"
+              - combobox [ref=e251]:
+                - option "Select Category" [selected]
+                - option "Beverages"
                 - option "E2E Cat 1757267593288"
                 - option "E2E Cat 1757267597299"
                 - option "E2E Cat 1757267629785"
                 - option "E2E Cat 1757267635417"
                 - option "E2E Cat 1757267668570"
+                - option "E2E Cat 1757267703987"
+                - option "E2E Cat 1757267757352"
+                - option "E2E Cat 1757267792835"
+                - option "E2E Cat 1757267862159"
                 - option "Grocery"
                 - option "Snacks"
-            - generic [ref=e248]:
-              - generic [ref=e249]: Barcode
-              - generic [ref=e250]:
-                - textbox [ref=e251]
-                - button "Generate" [ref=e252] [cursor=pointer]
-          - generic [ref=e253]:
-            - generic [ref=e254]:
-              - generic [ref=e255]:
-                - text: Base Unit
-                - generic [ref=e256]: "*"
-              - combobox [ref=e257]:
-                - option "Select Base Unit"
-                - option "Box" [selected]
-                - option "Centimeter"
-                - option "Dozen"
-                - option "Gram"
-                - option "Kilogram"
-                - option "Litre"
-                - option "Meter"
-                - option "Millilitre"
-                - option "Piece"
-                - option "Unit 1757267631252"
-                - option "Unit 1757267636781"
-                - option "Unit 1757267670079"
+            - generic [ref=e252]:
+              - generic [ref=e253]: Barcode
+              - generic [ref=e254]:
+                - textbox [ref=e255]
+                - button "Generate" [ref=e256] [cursor=pointer]
+          - generic [ref=e257]:
             - generic [ref=e258]:
               - generic [ref=e259]:
-                - text: Purchase Unit
+                - text: Base Unit
                 - generic [ref=e260]: "*"
               - combobox [ref=e261]:
-                - option "Select Purchase Unit"
-                - option "Box" [selected]
+                - option "Select Base Unit" [selected]
+                - option "Box"
                 - option "Centimeter"
                 - option "Dozen"
                 - option "Gram"
@@ -341,13 +331,17 @@
                 - option "Unit 1757267631252"
                 - option "Unit 1757267636781"
                 - option "Unit 1757267670079"
+                - option "Unit 1757267705382"
+                - option "Unit 1757267758826"
+                - option "Unit 1757267794261"
+                - option "Unit 1757267863691"
             - generic [ref=e262]:
               - generic [ref=e263]:
-                - text: Sales Unit
+                - text: Purchase Unit
                 - generic [ref=e264]: "*"
               - combobox [ref=e265]:
-                - option "Select Sales Unit"
-                - option "Box" [selected]
+                - option "Select Purchase Unit" [selected]
+                - option "Box"
                 - option "Centimeter"
                 - option "Dozen"
                 - option "Gram"
@@ -359,96 +353,126 @@
                 - option "Unit 1757267631252"
                 - option "Unit 1757267636781"
                 - option "Unit 1757267670079"
-          - generic [ref=e266]:
-            - generic [ref=e267]:
-              - generic [ref=e268]:
-                - text: Purchase Cost
-                - generic [ref=e269]: "*"
-              - spinbutton [ref=e270]: "10.50"
+                - option "Unit 1757267705382"
+                - option "Unit 1757267758826"
+                - option "Unit 1757267794261"
+                - option "Unit 1757267863691"
+            - generic [ref=e266]:
+              - generic [ref=e267]:
+                - text: Sales Unit
+                - generic [ref=e268]: "*"
+              - combobox [ref=e269]:
+                - option "Select Sales Unit" [selected]
+                - option "Box"
+                - option "Centimeter"
+                - option "Dozen"
+                - option "Gram"
+                - option "Kilogram"
+                - option "Litre"
+                - option "Meter"
+                - option "Millilitre"
+                - option "Piece"
+                - option "Unit 1757267631252"
+                - option "Unit 1757267636781"
+                - option "Unit 1757267670079"
+                - option "Unit 1757267705382"
+                - option "Unit 1757267758826"
+                - option "Unit 1757267794261"
+                - option "Unit 1757267863691"
+          - generic [ref=e270]:
             - generic [ref=e271]:
               - generic [ref=e272]:
-                - text: Cost of Goods Sold (COGS)
+                - text: Purchase Cost
                 - generic [ref=e273]: "*"
-                - generic "Enter the total cost including purchase, shipping, handling, and any other direct costs." [ref=e275] [cursor=pointer]: 
-              - spinbutton [ref=e276]: "10.50"
-            - generic [ref=e277]:
-              - generic [ref=e278]:
+              - spinbutton [ref=e274]
+            - generic [ref=e275]:
+              - generic [ref=e276]:
+                - text: Cost of Goods Sold (COGS)
+                - generic [ref=e277]: "*"
+                - generic "Enter the total cost including purchase, shipping, handling, and any other direct costs." [ref=e279] [cursor=pointer]: 
+              - spinbutton [ref=e280]
+            - generic [ref=e281]:
+              - generic [ref=e282]:
                 - text: Sales Price
-                - generic [ref=e279]: "*"
-              - spinbutton [ref=e280]: "15.25"
-          - generic [ref=e281]:
-            - generic [ref=e282]:
-              - generic [ref=e283]: Tax
-              - combobox [ref=e284]:
+                - generic [ref=e283]: "*"
+              - spinbutton [ref=e284]
+          - generic [ref=e285]:
+            - generic [ref=e286]:
+              - generic [ref=e287]: Tax
+              - combobox [ref=e288]:
                 - option "Select Tax" [selected]
                 - option "VAT 15% (15.00%)"
-            - generic [ref=e285]:
-              - generic [ref=e286]: Tax Method
-              - combobox [ref=e287]:
+            - generic [ref=e289]:
+              - generic [ref=e290]: Tax Method
+              - combobox [ref=e291]:
                 - option "Exclusive" [selected]
                 - option "Inclusive"
-          - generic [ref=e288]:
-            - generic [ref=e289]: Description
-            - textbox [ref=e290]
-          - generic [ref=e291]:
-            - generic [ref=e292]: Product Images
-            - button "Choose File" [ref=e293] [cursor=pointer]
-            - generic [ref=e294]: You can select multiple images.
+          - generic [ref=e292]:
+            - generic [ref=e293]: Description
+            - textbox [ref=e294]
           - generic [ref=e295]:
-            - link "Cancel" [ref=e296] [cursor=pointer]:
+            - generic [ref=e296]: Product Images
+            - button "Choose File" [ref=e297] [cursor=pointer]
+            - generic [ref=e298]: You can select multiple images.
+          - generic [ref=e299]:
+            - link "Cancel" [ref=e300] [cursor=pointer]:
               - /url: http://127.0.0.1:8081/products
-            - button "Add Product" [ref=e297] [cursor=pointer]
-      - generic [ref=e298]:
-        - paragraph [ref=e299]: 2025 © RyoFin. All Rights Reserved
-        - paragraph [ref=e300]:
+            - button "Add Product" [ref=e301] [cursor=pointer]
+      - generic [ref=e302]:
+        - paragraph [ref=e303]: 2025 © RyoFin. All Rights Reserved
+        - paragraph [ref=e304]:
           - text: Designed & Developed By
-          - link "HiLinkz Ltd." [ref=e301] [cursor=pointer]:
+          - link "HiLinkz Ltd." [ref=e305] [cursor=pointer]:
             - /url: https://www.hilinkz.com
-  - generic [ref=e302]:
-    - generic [ref=e304]:
-      - generic [ref=e306]:
+  - generic [ref=e306]:
+    - generic [ref=e308]:
+      - generic [ref=e310]:
         - text: 
-        - generic [ref=e307] [cursor=pointer]:
+        - generic [ref=e311] [cursor=pointer]:
           - text: 
           - generic: Request
-        - generic [ref=e308] [cursor=pointer]:
+        - generic [ref=e312] [cursor=pointer]:
           - text: 
           - generic: Timeline
         - text: 
-        - generic [ref=e309] [cursor=pointer]:
+        - generic [ref=e313] [cursor=pointer]:
           - text: 
           - generic: Views
-          - generic [ref=e310] [cursor=pointer]: "8"
-        - generic [ref=e311] [cursor=pointer]:
+          - generic [ref=e314] [cursor=pointer]: "8"
+        - generic [ref=e315] [cursor=pointer]:
           - text: 
           - generic: Queries
-          - generic [ref=e312] [cursor=pointer]: "18"
-        - generic [ref=e313] [cursor=pointer]:
+          - generic [ref=e316] [cursor=pointer]: "22"
+        - generic [ref=e317] [cursor=pointer]:
           - text: 
           - generic: Models
-          - generic [ref=e314] [cursor=pointer]: "27"
+          - generic [ref=e318] [cursor=pointer]: "35"
         - text:  
-        - generic [ref=e315] [cursor=pointer]:
+        - generic [ref=e319] [cursor=pointer]:
           - text: 
           - generic: Gate
-          - generic [ref=e316] [cursor=pointer]: "63"
-      - generic [ref=e317]:
-        - generic [ref=e319] [cursor=pointer]:
-          - generic: 
-        - generic [ref=e322] [cursor=pointer]:
-          - generic: 
+          - generic [ref=e320] [cursor=pointer]: "63"
+      - generic [ref=e321]:
         - generic [ref=e323] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e326] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e327] [cursor=pointer]: "2"
+        - combobox [ref=e328] [cursor=pointer]:
+          - option "#1 products (stacked) (17:57:45)"
+          - option "#2 create (17:57:45)" [selected]
+        - generic [ref=e329] [cursor=pointer]:
           - generic: 
-          - generic: 99.12ms
-        - generic [ref=e324]:
+          - generic: 87.75ms
+        - generic [ref=e330]:
           - generic: 
-          - generic: 4MB
-        - generic [ref=e325]:
+          - generic: 3MB
+        - generic [ref=e331]:
           - generic: 
           - generic: 12.x
-        - generic [ref=e326] [cursor=pointer]:
+        - generic [ref=e332] [cursor=pointer]:
           - generic: 
           - generic: GET products/create
-    - text:                                                                                                                                                                                                                   
+    - text:                                                                                                                                                                                                                                             
   - text: 
 ```
