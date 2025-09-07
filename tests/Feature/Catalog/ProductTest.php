@@ -8,6 +8,7 @@ use App\Models\Store;
 use App\Models\Tax;
 use App\Models\Unit;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
@@ -26,28 +27,66 @@ class ProductTest extends TestCase
     {
         $this->authenticate();
 
-        $category = Category::factory()->create();
-        $brand = Brand::factory()->create();
-        $store = Store::factory()->create();
-        $baseUnit = Unit::factory()->create(['conversion_factor' => 1]);
-        $purchaseUnit = Unit::factory()->create();
-        $salesUnit = Unit::factory()->create();
-        $tax = Tax::factory()->create();
+        // Seed minimal required records via DB (no factories)
+        $categoryId = DB::table('categories')->insertGetId([
+            'name' => 'Test Category',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $brandId = DB::table('brands')->insertGetId([
+            'name' => 'Test Brand',
+            'slug' => 'test-brand-'.uniqid(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $storeId = DB::table('stores')->insertGetId([
+            'name' => 'Test Store',
+            'address' => 'Dhaka',
+            'status' => 1,
+            'contact_no' => '01900000001',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Use existing units if present; otherwise create a simple unit row
+        $firstUnitId = (int) (DB::table('units')->min('id') ?? 0);
+        if ($firstUnitId <= 0) {
+            $firstUnitId = DB::table('units')->insertGetId([
+                'name' => 'Unit',
+                'symbol' => 'U',
+                'conversion_factor' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        $baseUnitId = $firstUnitId;
+        $purchaseUnitId = $firstUnitId;
+        $salesUnitId = $firstUnitId;
+
+        $taxId = DB::table('taxes')->insertGetId([
+            'name' => 'VAT',
+            'rate' => 5.00,
+            'status' => 'active',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
         $payload = [
-            'store_id' => $store->id,
+            'store_id' => $storeId,
             'name' => 'Test Product',
             'sku' => 'SKU-TEST-001',
-            'brand_id' => $brand->id,
-            'category_id' => $category->id,
+            'brand_id' => $brandId,
+            'category_id' => $categoryId,
             'barcode' => '1234567890123',
-            'base_unit_id' => $baseUnit->id,
-            'purchase_unit_id' => $purchaseUnit->id,
-            'sales_unit_id' => $salesUnit->id,
+            'base_unit_id' => $baseUnitId,
+            'purchase_unit_id' => $purchaseUnitId,
+            'sales_unit_id' => $salesUnitId,
             'purchase_cost' => 10.50,
             'cogs' => 10.50,
             'sales_price' => 15.25,
-            'tax_id' => $tax->id,
+            'tax_id' => $taxId,
             'tax_method' => 'exclusive',
             'description' => 'Test description',
         ];
@@ -58,16 +97,16 @@ class ProductTest extends TestCase
 
         $this->assertDatabaseHas('products', [
             'name' => 'Test Product',
-            'category_id' => $category->id,
-            'brand_id' => $brand->id,
+            'category_id' => $categoryId,
+            'brand_id' => $brandId,
             'sku' => 'SKU-TEST-001',
         ]);
 
         $this->assertDatabaseHas('product_store', [
-            'store_id' => $store->id,
+            'store_id' => $storeId,
             'purchase_cost' => 10.50,
             'sales_price' => 15.25,
-            'tax_id' => $tax->id,
+            'tax_id' => $taxId,
             'tax_method' => 'exclusive',
         ]);
     }
@@ -76,13 +115,25 @@ class ProductTest extends TestCase
     {
         $this->authenticate();
 
-        $category = Category::factory()->create();
-        $store = Store::factory()->create();
+        // Seed minimal required category and store
+        $categoryId = DB::table('categories')->insertGetId([
+            'name' => 'Invalid Test Category',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        $storeId = DB::table('stores')->insertGetId([
+            'name' => 'Invalid Test Store',
+            'address' => 'Dhaka',
+            'status' => 1,
+            'contact_no' => '01900000002',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
         $payload = [
-            'store_id' => $store->id,
+            'store_id' => $storeId,
             'name' => 'Invalid Units Product',
-            'category_id' => $category->id,
+            'category_id' => $categoryId,
             'base_unit_id' => 999999,
             'purchase_unit_id' => 999998,
             'sales_unit_id' => 999997,

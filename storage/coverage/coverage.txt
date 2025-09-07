@@ -1,23 +1,27 @@
 
 
 Code Coverage Report:
-  2025-09-07 00:39:51
+  2025-09-07 16:17:16
 
  Summary:
   Classes:  5.45% (3/55)
-  Methods:  2.78% (10/360)
-  Lines:    0.65% (41/6298)
+  Methods:  3.61% (13/360)
+  Lines:    1.06% (67/6298)
 
 App\Http\Controllers\Admin\ReportController
-  Methods:   4.17% ( 1/24)   Lines:   2.25% ( 26/1156)
+  Methods:   4.17% ( 1/24)   Lines:   4.07% ( 47/1156)
 App\Http\Controllers\Auth\LoginController
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  3/  3)
 App\Http\Controllers\HomeController
   Methods:  33.33% ( 1/ 3)   Lines:   1.52% (  1/ 66)
+App\Models\Company
+  Methods:   0.00% ( 0/ 5)   Lines:   1.31% (  2/153)
+App\Models\ProductStore
+  Methods:  40.00% ( 2/ 5)   Lines:  40.00% (  2/  5)
 App\Models\Sale
   Methods:  28.57% ( 2/ 7)   Lines:  28.57% (  2/  7)
 App\Models\SaleItem
-  Methods:  20.00% ( 1/ 5)   Lines:  16.67% (  1/  6)
+  Methods:  40.00% ( 2/ 5)   Lines:  33.33% (  2/  6)
 App\Models\Store
   Methods:   0.00% ( 0/ 5)   Lines:   1.61% (  2/124)
 App\Models\User
