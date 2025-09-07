@@ -55,9 +55,55 @@
   </div>
 
   <h2>Proof: Test Suites Present</h2>
+  <p>
+    PHP tests: <strong>23</strong> files under <code>/workspace/tests</code><br/>
+    Playwright tests: <strong>7</strong> files under <code>/workspace/tests/e2e</code>
+  </p>
+  <details>
+    <summary>Show PHP test file list</summary>
+    <ul>
+      <li>tests/Performance/QueryTimingTest.php</li>
+      <li>tests/Feature/Export/TrialBalanceExportTest.php</li>
+      <li>tests/Feature/Export/BalanceSheetExportTest.php</li>
+      <li>tests/Feature/Export/IncomeStatementExportTest.php</li>
+      <li>tests/Feature/Export/StockExportTest.php</li>
+      <li>tests/Feature/Export/PurchaseExportTest.php</li>
+      <li>tests/Feature/Export/SalesExportTest.php</li>
+      <li>tests/Feature/DA/PostingTest.php</li>
+      <li>tests/Support/DataProviders/AccountingDataProviders.php</li>
+      <li>tests/Feature/Tenancy/TenantIsolationTest.php</li>
+      <li>tests/Feature/DA/ReversalTest.php</li>
+      <li>tests/Feature/DA/StatementsTest.php</li>
+      <li>tests/Feature/DA/JournalTest.php</li>
+      <li>tests/Feature/Reports/ExportTest.php</li>
+      <li>tests/Feature/Catalog/ProductTest.php</li>
+      <li>tests/Feature/Auth/LoginTest.php</li>
+      <li>tests/TestCase.php</li>
+      <li>tests/Support/WithRoles.php</li>
+      <li>tests/Support/Builders/ProductStoreBuilder.php</li>
+      <li>tests/Support/Builders/SaleBuilder.php</li>
+      <li>tests/Support/Builders/PurchaseBuilder.php</li>
+      <li>tests/Feature/ExampleTest.php</li>
+      <li>tests/Unit/ExampleTest.php</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Show Playwright test file list</summary>
+    <ul>
+      <li>tests/e2e/exports.spec.ts</li>
+      <li>tests/e2e/rbac.spec.ts</li>
+      <li>tests/e2e/reports.spec.ts</li>
+      <li>tests/e2e/sale.spec.ts</li>
+      <li>tests/e2e/purchase.spec.ts</li>
+      <li>tests/e2e/catalog.spec.ts</li>
+      <li>tests/e2e/auth.spec.ts</li>
+    </ul>
+  </details>
+
+  <h2>Proof: JUnit & E2E Artifacts</h2>
   <ul>
-    <li>PHP tests: 23 files under <code>/workspace/tests</code></li>
-    <li>Playwright tests: 7 files under <code>/workspace/tests/e2e</code></li>
+    <li>JUnit XML (local/CI): <code>storage/test-results/junit-local.xml</code> / <code>storage/test-results/junit.xml</code></li>
+    <li>E2E reports: <code>playwright-report/</code>, <code>test-results/</code> (includes <code>video.webm</code> and <code>trace.zip</code> per test)</li>
   </ul>
 
   <h2>Appendix</h2>
