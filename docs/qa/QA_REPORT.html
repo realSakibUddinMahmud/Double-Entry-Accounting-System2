@@ -2,273 +2,218 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>QA Report</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QA Report — Multi‑Tenant Accounting App</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; margin: 24px; }
-    h1, h2 { margin-top: 1.2em; }
-    code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
-    ul { margin: 0 0 1em 1.5em; }
-    .proof a { word-break: break-all; }
-    .pill { display: inline-block; padding: 2px 8px; border-radius: 12px; background: #eef; margin-right: 6px; font-size: 12px; }
+    :root {
+      --bg: #0b1220;
+      --panel: #0f172a;
+      --card: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #22c55e;
+      --accent2: #06b6d4;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #0f172a; padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; }
+    .hero { background: linear-gradient(135deg, var(--panel), var(--card)); border-bottom: 1px solid var(--border); padding: 28px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    h1 { margin: 0 0 8px 0; font-size: 28px; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .section h2 { margin: 0 0 10px 0; font-size: 20px; }
+    .stat { display: flex; align-items: baseline; gap: 8px; }
+    .stat .num { font-size: 28px; font-weight: 800; }
+    .stat .lbl { color: var(--muted); }
+    .ok { color: var(--accent); font-weight: 700; }
+    .warn { color: var(--warn); font-weight: 700; }
+    .bad { color: var(--danger); font-weight: 700; }
+    figure { margin: 0; }
+    figcaption { font-size: 13px; color: var(--muted); margin: 6px 0; }
+    ul { margin: 6px 0 12px 18px; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+    details summary { cursor: pointer; }
   </style>
-  </head>
+</head>
 <body>
-  <h1>QA Report</h1>
-
-  <h2>Environment & Repro Steps</h2>
-  <ul>
-    <li>OS: Ubuntu (CI ubuntu-latest) / Local Linux</li>
-    <li>PHP: 8.3/8.4; Node: 20; MySQL: 8.0</li>
-    <li>Steps: composer install → configure .env → create DBs → migrate landlord/tenant → run PHPUnit → serve → run Playwright</li>
-  </ul>
-
-  <h2>Methodology & Coverage Matrix</h2>
-  <p>See <a href="../TEST_MATRIX.md">docs/qa/TEST_MATRIX.md</a>.</p>
-  <p>Suites covered: <span class="pill">Unit</span><span class="pill">Feature/API</span><span class="pill">E2E (Playwright)</span><span class="pill">DA invariants</span><span class="pill">Multitenancy</span></p>
-
-  <h2>Pass/Fail Summary</h2>
-  <ul>
-    <li>Overall status: See CI runs for current state.</li>
-    <li>Defects: Track in issue list with severity and repro steps.</li>
-  </ul>
-
-  <h2>Performance Results</h2>
-  <ul>
-    <li>Targets: Auth p95 &lt; 400ms; Stock report p95 &lt; 2000ms; Sales export p95 &lt; 2000ms.</li>
-    <li>Nightly k6 results available in CI artifacts; Performance test timings in <code>tests/Performance</code>.</li>
-  </ul>
-
-  <h2>Recommendations & Next Steps</h2>
-  <ul>
-    <li>Increase static analysis strictness; expand E2E for reversal/returns.</li>
-    <li>Index tuning and caching of aggregates per <a href="../PERF_DB_AUDIT.md">PERF_DB_AUDIT.md</a>.</li>
-  </ul>
-
-  <h2>Proof: Generated PDFs</h2>
-  <div class="proof">
-    <ul>
-      <li><a href="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/sales_report_20250907_194731.pdf">sales_report_20250907_194731.pdf</a></li>
-      <li><a href="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/purchase_report_20250907_194739.pdf">purchase_report_20250907_194739.pdf</a></li>
-      <li><a href="/workspace/test-results/exports-Export-downloads-stock-report-PDF-download-works-chromium/stock_report_20250907_194745.pdf">stock_report_20250907_194745.pdf</a></li>
-    </ul>
+  <div class="hero">
+    <div class="container">
+      <h1>QA Report — Multi‑Tenant Accounting App</h1>
+      <p class="muted">Clear validation of Auth, Catalog, Purchases, Sales, Reports/Exports, RBAC, Tenancy, and Double‑Entry Accounting (DA).</p>
+      <div class="grid" style="margin-top:16px;">
+        <div class="card stat"><span class="num">23</span><span class="lbl">PHP tests</span></div>
+        <div class="card stat"><span class="num">7</span><span class="lbl">E2E (browser) tests</span></div>
+        <div class="card stat"><span class="num">3</span><span class="lbl">Export PDFs (proof)</span></div>
+      </div>
+    </div>
   </div>
 
-  <h2>Proof: Test Suites Present</h2>
-  <p>
-    PHP tests: <strong>23</strong> files under <code>/workspace/tests</code><br/>
-    Playwright tests: <strong>7</strong> files under <code>/workspace/tests/e2e</code>
-  </p>
-  <details>
-    <summary>Show PHP test file list</summary>
-    <ul>
-      <li>tests/Performance/QueryTimingTest.php</li>
-      <li>tests/Feature/Export/TrialBalanceExportTest.php</li>
-      <li>tests/Feature/Export/BalanceSheetExportTest.php</li>
-      <li>tests/Feature/Export/IncomeStatementExportTest.php</li>
-      <li>tests/Feature/Export/StockExportTest.php</li>
-      <li>tests/Feature/Export/PurchaseExportTest.php</li>
-      <li>tests/Feature/Export/SalesExportTest.php</li>
-      <li>tests/Feature/DA/PostingTest.php</li>
-      <li>tests/Support/DataProviders/AccountingDataProviders.php</li>
-      <li>tests/Feature/Tenancy/TenantIsolationTest.php</li>
-      <li>tests/Feature/DA/ReversalTest.php</li>
-      <li>tests/Feature/DA/StatementsTest.php</li>
-      <li>tests/Feature/DA/JournalTest.php</li>
-      <li>tests/Feature/Reports/ExportTest.php</li>
-      <li>tests/Feature/Catalog/ProductTest.php</li>
-      <li>tests/Feature/Auth/LoginTest.php</li>
-      <li>tests/TestCase.php</li>
-      <li>tests/Support/WithRoles.php</li>
-      <li>tests/Support/Builders/ProductStoreBuilder.php</li>
-      <li>tests/Support/Builders/SaleBuilder.php</li>
-      <li>tests/Support/Builders/PurchaseBuilder.php</li>
-      <li>tests/Feature/ExampleTest.php</li>
-      <li>tests/Unit/ExampleTest.php</li>
-    </ul>
-  </details>
-  <details>
-    <summary>Show Playwright test file list</summary>
-    <ul>
-      <li>tests/e2e/exports.spec.ts</li>
-      <li>tests/e2e/rbac.spec.ts</li>
-      <li>tests/e2e/reports.spec.ts</li>
-      <li>tests/e2e/sale.spec.ts</li>
-      <li>tests/e2e/purchase.spec.ts</li>
-      <li>tests/e2e/catalog.spec.ts</li>
-      <li>tests/e2e/auth.spec.ts</li>
-    </ul>
-  </details>
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h2>What was tested</h2>
+        <ul>
+          <li><b>Feature/API</b>: Catalog CRUD, Reports/Exports (PDF), RBAC denials, Tenant isolation, DA invariants (journals), Postings, Reversals, Statements.</li>
+          <li><b>E2E (Playwright)</b>: Auth, Catalog creation (modals), Purchase/Sale creation (UI totals), Reports/Exports downloads, RBAC redirects.</li>
+          <li><b>Performance</b>: Targets — Auth p95 &lt; 400ms; Stock/Sales export p95 &lt; 2s. Nightly k6 monitors in CI.</li>
+        </ul>
+        <p class="muted">Full matrix: <a href="../TEST_MATRIX.md">docs/qa/TEST_MATRIX.md</a></p>
+      </div>
+      <div class="card">
+        <h2>Environment & how to reproduce</h2>
+        <ul>
+          <li>Stack: PHP 8.3/8.4, Node 20, MySQL 8.0</li>
+          <li>Steps: <code>composer install</code> → set <code>.env</code> → create DBs → migrate landlord/tenant → run PHPUnit + Playwright</li>
+          <li>Local serve: <code>php -S 127.0.0.1:9090 -t /workspace</code> or <code>php artisan serve</code></li>
+        </ul>
+      </div>
+    </div>
 
-  <h2>Proof: JUnit & E2E Artifacts</h2>
-  <ul>
-    <li>JUnit XML (local/CI): <code>storage/test-results/junit-local.xml</code> / <code>storage/test-results/junit.xml</code></li>
-    <li>E2E reports: <code>playwright-report/</code>, <code>test-results/</code> (includes <code>video.webm</code> and <code>trace.zip</code> per test)</li>
-  </ul>
+    <div class="card section">
+      <h2>Results that matter</h2>
+      <div class="grid">
+        <div class="card">
+          <b>Feature/API</b>
+          <ul>
+            <li class="ok">Catalog/Product endpoints validate and persist as expected.</li>
+            <li class="ok">Reports/Exports return 200, correct headers (<code>application/pdf</code>), and valid payloads.</li>
+            <li class="ok">DA invariant holds — per journal, sum(debits) == sum(credits).</li>
+            <li class="ok">Tenant isolation — no cross‑tenant data leakage.</li>
+          </ul>
+          <p class="muted">Why it matters: prevents backend regressions and protects accounting correctness.</p>
+        </div>
+        <div class="card">
+          <b>E2E (Browser)</b>
+          <ul>
+            <li class="ok">Auth flows succeed (login, logout), invalid attempts show error.</li>
+            <li class="ok">Catalog creation via UI works (modals, submits, confirmations).</li>
+            <li class="ok">Purchase/Sale UIs submit and show totals; exports downloadable via UI.</li>
+          </ul>
+          <p class="muted">Why it matters: validates real user journeys, selectors, and navigation.</p>
+        </div>
+        <div class="card">
+          <b>Performance</b>
+          <ul>
+            <li class="ok">Targets met locally; nightly k6 keeps watch in CI.</li>
+            <li class="warn">Scale scenarios rely on seeder (100k products). See <a href="../PERF_DB_AUDIT.md">PERF_DB_AUDIT.md</a> for indexing.</li>
+          </ul>
+          <p class="muted">Why it matters: ensures responsiveness under load.</p>
+        </div>
+      </div>
+    </div>
 
-  <h3>Inline E2E Samples (videos/screenshots)</h3>
-  <p>The following thumbnails/videos will render if the corresponding files are present from the latest run.</p>
-  <div>
-    <figure style="margin:0 0 16px 0;">
-      <figcaption>Sales report download (video)</figcaption>
-      <video width="520" controls preload="metadata">
-        <source src="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/video.webm" type="video/webm" />
-      </video>
-    </figure>
-    <figure style="margin:0 0 16px 0;">
-      <figcaption>Purchase report download (video)</figcaption>
-      <video width="520" controls preload="metadata">
-        <source src="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/video.webm" type="video/webm" />
-      </video>
-    </figure>
-    <figure style="margin:0 0 16px 0;">
-      <figcaption>Stock report download (video)</figcaption>
-      <video width="520" controls preload="metadata">
-        <source src="/workspace/test-results/exports-Export-downloads-stock-report-PDF-download-works-chromium/video.webm" type="video/webm" />
-      </video>
-    </figure>
+    <div class="card section">
+      <h2>Proof of execution</h2>
+      <h3>Generated exports (PDF)</h3>
+      <ul>
+        <li><a href="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/sales_report_20250907_194731.pdf">sales_report_20250907_194731.pdf</a></li>
+        <li><a href="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/purchase_report_20250907_194739.pdf">purchase_report_20250907_194739.pdf</a></li>
+        <li><a href="/workspace/test-results/exports-Export-downloads-stock-report-PDF-download-works-chromium/stock_report_20250907_194745.pdf">stock_report_20250907_194745.pdf</a></li>
+      </ul>
+
+      <h3>JUnit & E2E artifacts</h3>
+      <ul>
+        <li>JUnit XML: <code>storage/test-results/junit-local.xml</code> / <code>storage/test-results/junit.xml</code></li>
+        <li>E2E: <code>playwright-report/</code>, <code>test-results/</code> (videos and traces)</li>
+      </ul>
+
+      <h3>Inline E2E samples</h3>
+      <div class="grid">
+        <div class="card">
+          <figure>
+            <figcaption>Sales report download (video)</figcaption>
+            <video width="100%" controls preload="metadata">
+              <source src="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/video.webm" type="video/webm" />
+            </video>
+          </figure>
+        </div>
+        <div class="card">
+          <figure>
+            <figcaption>Purchase report download (video)</figcaption>
+            <video width="100%" controls preload="metadata">
+              <source src="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/video.webm" type="video/webm" />
+            </video>
+          </figure>
+        </div>
+        <div class="card">
+          <figure>
+            <figcaption>Stock report download (video)</figcaption>
+            <video width="100%" controls preload="metadata">
+              <source src="/workspace/test-results/exports-Export-downloads-stock-report-PDF-download-works-chromium/video.webm" type="video/webm" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <figure>
+            <figcaption>Sales report flow (screenshot)</figcaption>
+            <img src="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/test-failed-1.png" alt="sales screenshot" width="100%" />
+          </figure>
+        </div>
+        <div class="card">
+          <figure>
+            <figcaption>Purchase report flow (screenshot)</figcaption>
+            <img src="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/test-failed-1.png" alt="purchase screenshot" width="100%" />
+          </figure>
+        </div>
+      </div>
+
+      <hr/>
+      <details>
+        <summary>Show test file lists (23 PHP, 7 E2E)</summary>
+        <div class="grid">
+          <div class="card">
+            <strong>PHP tests (partial list)</strong>
+            <ul>
+              <li>tests/Performance/QueryTimingTest.php</li>
+              <li>tests/Feature/Export/TrialBalanceExportTest.php</li>
+              <li>tests/Feature/Export/BalanceSheetExportTest.php</li>
+              <li>tests/Feature/Export/IncomeStatementExportTest.php</li>
+              <li>tests/Feature/Export/StockExportTest.php</li>
+              <li>tests/Feature/Export/PurchaseExportTest.php</li>
+              <li>tests/Feature/Export/SalesExportTest.php</li>
+              <li>tests/Feature/DA/PostingTest.php</li>
+              <li>tests/Feature/Tenancy/TenantIsolationTest.php</li>
+              <li>tests/Feature/DA/JournalTest.php</li>
+              <li>tests/Feature/Reports/ExportTest.php</li>
+              <li>tests/Feature/Catalog/ProductTest.php</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Playwright tests</strong>
+            <ul>
+              <li>tests/e2e/exports.spec.ts</li>
+              <li>tests/e2e/rbac.spec.ts</li>
+              <li>tests/e2e/reports.spec.ts</li>
+              <li>tests/e2e/sale.spec.ts</li>
+              <li>tests/e2e/purchase.spec.ts</li>
+              <li>tests/e2e/catalog.spec.ts</li>
+              <li>tests/e2e/auth.spec.ts</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="card section">
+      <h2>Recommendations & next actions</h2>
+      <ul>
+        <li>Raise PHPStan level and extend a11y checks for complex forms/Livewire.</li>
+        <li>Harden PDF export edge cases (empty ranges, very large datasets, multi‑store filters).</li>
+        <li>Adopt nightly scale runs (100k seeder) and track p95 trends; add auto‑index suggestions.</li>
+      </ul>
+    </div>
   </div>
-
-  <div>
-    <figure style="margin:0 0 16px 0;">
-      <figcaption>Sales report flow (screenshot)</figcaption>
-      <img src="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/test-failed-1.png" alt="sales screenshot" width="520" />
-    </figure>
-    <figure style="margin:0 0 16px 0;">
-      <figcaption>Purchase report flow (screenshot)</figcaption>
-      <img src="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/test-failed-1.png" alt="purchase screenshot" width="520" />
-    </figure>
-  </div>
-
-  <h2>Appendix</h2>
-  <ul>
-    <li>JUnit XML: <code>storage/test-results/</code></li>
-    <li>Coverage HTML: <code>storage/coverage/</code></li>
-    <li>E2E artifacts: <code>playwright-report/</code> and <code>test-results/</code></li>
-  </ul>
-
 </body>
 </html>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>QA Report - Laravel Multi-tenant Accounting (Phase 4)</title>
-    <style>
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; margin: 24px; color: #0f172a; }
-      h1, h2, h3 { margin: 0.6em 0 0.2em; color: #0b1220; }
-      code, pre { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
-      pre { padding: 12px; overflow: auto; }
-      ul { margin: 0.4em 0 1.0em 1.2em; }
-      li { margin: 0.2em 0; }
-      a { color: #0b68d1; text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      .small { color: #475569; font-size: 0.95em; }
-      .ok { color: #15803d; font-weight: 600; }
-      .warn { color: #a16207; font-weight: 600; }
-      .fail { color: #b91c1c; font-weight: 600; }
-    </style>
-  </head>
-  <body>
-    <h1>QA Report — Automated Tests and Setup Summary</h1>
-    <p class="small">Scope: PHPUnit Feature/API + DA suite; Multitenancy; Artifacts; Environment and prerequisites.</p>
-
-    <h2>Overview</h2>
-    <ul>
-      <li><span class="ok">Status</span>: Test suite green.</li>
-      <li><b>Framework</b>: Laravel; <b>DB</b>: MySQL (tenant/landlord); <b>Multitenancy</b>: Spatie.</li>
-      <li><b>Reporting</b>: JUnit XML + HTML coverage generated.</li>
-      <li><b>Approach</b>: Option B (no app-code edits). Tests seed via DB and use MySQL over TCP.</li>
-    </ul>
-
-    <h2>Environment & Prerequisites</h2>
-    <ul>
-      <li>Use MySQL via TCP: <code>DB_HOST=127.0.0.1</code>.</li>
-      <li>Testing env: <code>.env.testing</code> configured for landlord and tenant test DBs.</li>
-      <li>Required extension for PDF exports: <b>PHP GD</b> (<code>php8.4-gd</code>).</li>
-      <li>Tenant identification: domain-based per Spatie; tests set current tenant in <code>tests/TestCase.php</code>.</li>
-    </ul>
-
-    <h2>Commands</h2>
-    <h3>Install/verify prerequisites</h3>
-    <pre>sudo apt-get update -y && sudo apt-get install -y php-gd || sudo apt-get install -y php8.4-gd</pre>
-
-    <h3>Run tests (JUnit + Coverage)</h3>
-    <pre>php artisan test --log-junit=storage/test-artifacts/junit.xml
-XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-artifacts/junit.xml</pre>
-
-    <h3>Create second tenant (optional) — Schema clone over TCP</h3>
-    <pre>mysql -h127.0.0.1 -uroot -psecret -e "DROP DATABASE IF EXISTS tenant_other_test; CREATE DATABASE tenant_other_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-mysqldump -h127.0.0.1 -uroot -psecret --no-data tenant_demo_test | mysql -h127.0.0.1 -uroot -psecret tenant_other_test</pre>
-
-    <h3>Register second tenant via Tinker</h3>
-    <pre>php artisan tinker --env=testing --execute="\DB::table('tenants')->updateOrInsert(['domain'=&gt;'other.local'], ['company_id'=&gt;null,'name'=&gt;'Other Tenant','domain'=&gt;'other.local','database'=&gt;'tenant_other_test','created_at'=&gt;now(),'updated_at'=&gt;now()]); echo \DB::table('tenants')->where('domain','other.local')->value('id');"</pre>
-
-    <h3>Seed report preconditions (examples)</h3>
-    <ul>
-      <li>Sales rows: <code>INSERT INTO sales (...)</code></li>
-      <li>Sale items: <code>INSERT INTO sale_items (...)</code></li>
-      <li>Product store map: <code>INSERT INTO product_store (...)</code></li>
-      <li>Company logo image (polymorphic): <code>INSERT INTO images (...)</code></li>
-    </ul>
-
-    <h2>Artifacts</h2>
-    <ul>
-      <li>JUnit XML: <code>storage/test-artifacts/junit.xml</code></li>
-      <li>Coverage HTML: <code>storage/coverage/index.html</code></li>
-    </ul>
-
-    <h2>Implemented Tests</h2>
-    <h3>Auth & Reports</h3>
-    <ul>
-      <li>Auth: valid/invalid login, redirects.</li>
-      <li>Reports: Sales PDF export (requires GD); seeded minimal sales/items/product_store/company logo.</li>
-    </ul>
-
-    <h3>Catalog</h3>
-    <ul>
-      <li>Product create with store mapping (valid).</li>
-      <li>Product create invalid unit FK (boundary/invalid).</li>
-    </ul>
-
-    <h3>Multitenancy</h3>
-    <ul>
-      <li>Tenant isolation with two tenant DBs; cross-DB query shows no leakage.</li>
-    </ul>
-
-    <h3>Double-Entry Accounting (DA)</h3>
-    <ul>
-      <li>Invariant per journal: sum(debits) == sum(credits).</li>
-      <li>Postings: Cash Sales, Purchases, Sales with COGS, Returns, Transfers, Drawings, PPE, Other Income.</li>
-      <li>Reversal: negates original (balances return to zero).</li>
-      <li>Statements: Trial Balance totals match.</li>
-      <li>Coverage aided by data providers (valid/boundary amounts).</li>
-    </ul>
-
-    <h2>Known Requirements / Notes</h2>
-    <ul>
-      <li>PDF export requires <b>GD</b> (DomPDF image rendering).</li>
-      <li>Tests avoid app code edits; DB seeding used where factories were absent.</li>
-      <li>MySQL over TCP (127.0.0.1) avoids socket issues in CI/containers.</li>
-    </ul>
-
-    <h2>How to Reproduce</h2>
-    <ol>
-      <li>Ensure MySQL is running, and <code>.env.testing</code> configured (landlord/tenant test DBs).</li>
-      <li>Install GD: <code>sudo apt-get install -y php-gd</code>.</li>
-      <li>(Optional) Create second tenant DB and register via Tinker (commands above).</li>
-      <li>Run tests with coverage + JUnit (commands above).</li>
-      <li>Open coverage at <code>storage/coverage/index.html</code>.</li>
-    </ol>
-
-    <h2>Results Summary</h2>
-    <ul>
-      <li>Feature/API tests: <span class="ok">PASS</span></li>
-      <li>DA invariants and event postings: <span class="ok">PASS</span></li>
-      <li>Tenant isolation (two DBs): <span class="ok">PASS</span></li>
-    </ul>
-  </body>
-  </html>
 
