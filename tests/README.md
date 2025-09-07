@@ -9,7 +9,7 @@
 
 ```bash
 # PHP deps
-php /workspace/composer.phar install --no-interaction --prefer-dist
+composer install --no-interaction --prefer-dist
 
 # MySQL testing DBs (already provisioned by dumps)
 mysql -h 127.0.0.1 -uroot -psecret -e "CREATE DATABASE IF NOT EXISTS landlord_master_test; CREATE DATABASE IF NOT EXISTS tenant_demo_test;"
@@ -21,13 +21,13 @@ mysql -h 127.0.0.1 -uroot -psecret tenant_demo_test < db/dumps/tenant_demo_test.
 
 ```bash
 # Unit + Feature with coverage + junit
-XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-results/junit.xml
+XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-artifacts/junit.xml
 
 # Or via composer script
 composer run test:cov
 
 # Artifacts
-# - JUnit: storage/test-results/junit.xml
+# - JUnit: storage/test-artifacts/junit.xml
 # - HTML coverage: storage/coverage/index.html
 ```
 
@@ -35,14 +35,24 @@ composer run test:cov
 
 ```bash
 npm ci
-npx playwright install --with-deps chromium
-BASE_URL=http://127.0.0.1:8080 npm run test:e2e
-npm run test:e2e:report
+npx playwright install --with-deps
+
+# Start app for E2E
+php artisan serve --host=127.0.0.1 --port=8081 &
+
+# Run tests (baseURL set in playwright.config.ts)
+npx playwright test --reporter=list
+npx playwright show-report
 
 # Artifacts
 # - playwright-report/index.html
 # - test-results/ (screenshots/videos/traces)
 ```
+
+## CI (GitHub Actions)
+
+- Workflow: `.github/workflows/test.yml`
+- Steps: Composer install, MySQL service, DB prep, PHPUnit (coverage+junit), Playwright headless, artifact uploads, PHPStan + CS Fixer (best-effort), composer audit (best-effort).
 
 ## Factories
 
