@@ -1,0 +1,43 @@
+name: Migration Safety
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -psecret"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql
+      - name: Prepare env
+        run: |
+          cp -n .env.example .env || true
+          echo "DB_HOST=127.0.0.1" >> .env
+          echo "DB_USERNAME=root" >> .env
+          echo "DB_PASSWORD=secret" >> .env
+          echo "APP_KEY=$(php -r "echo 'base64:'.base64_encode(random_bytes(32));")" >> .env
+      - name: Wait for MySQL
+        run: for i in {1..30}; do mysql -h127.0.0.1 -uroot -psecret -e "SELECT 1" && break || sleep 2; done
+      - name: Fresh migrate
+        run: |
+          php artisan migrate:fresh --force || exit 1
+      - name: Migrate down (no-op safety)
+        run: |
+          php artisan migrate:rollback --step=1 || true
+
