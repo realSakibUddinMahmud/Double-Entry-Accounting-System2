@@ -18,3 +18,8 @@
 1. Deploy previous image tag
 2. If necessary, roll-forward migrations or restore from backup
 
+### Canary & Blue/Green
+- Canary: run new image on alternate port, probe `/health`, limited traffic via proxy
+- Promote: swap service to new container (blue→green), keep previous as hot standby
+- Rollback: switch traffic back; remove failed canary; investigate via Sentry/logs
+

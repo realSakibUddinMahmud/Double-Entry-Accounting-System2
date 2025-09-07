@@ -86,3 +86,27 @@ jobs:
           for i in {1..15}; do curl -sf http://127.0.0.1:80/health && ok=1 && break || sleep 2; done; [ "$ok" = "1" ]
           docker rm -f "$cid" || true
 
+  canary:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    environment: production-canary
+    steps:
+      - name: Canary run image on alternate port
+        run: |
+          docker run -d --name app-canary -p 8082:80 \
+            -e APP_ENV=production ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          for i in {1..15}; do curl -sf http://127.0.0.1:8082/health && ok=1 && break || sleep 2; done; [ "$ok" = "1" ]
+      - name: Stop canary
+        if: always()
+        run: docker rm -f app-canary || true
+
+  promote:
+    needs: [canary]
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Promote instructions
+        run: |
+          echo "Canary passed. Promote image ${{ env.IMAGE_NAME }}:${{ github.sha }} to production by pulling on hosts and swapping traffic."
+          echo "Example (blue/green): docker compose pull && docker compose up -d"
+
