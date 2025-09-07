@@ -1,7 +1,14 @@
 import { test, expect } from '@playwright/test';
+import * as fs from 'fs';
+import * as path from 'path';
 
 test.describe('Export downloads', () => {
+  const shotsDir = path.resolve('test-results', 'screenshots');
+
   test.beforeEach(async ({ page }) => {
+    if (!fs.existsSync(shotsDir)) {
+      fs.mkdirSync(shotsDir, { recursive: true });
+    }
     await page.goto('/login');
     await page.locator('input[name="phone"]').fill('01900000000');
     await page.locator('input[name="password"]').fill('secret123');
@@ -23,6 +30,7 @@ test.describe('Export downloads', () => {
     const suggested = download.suggestedFilename();
     expect(suggested).toMatch(/sales_report_.*\.pdf$/);
     await download.saveAs(`${testInfo.outputDir}/${suggested}`);
+    await page.screenshot({ path: path.join(shotsDir, 'exports-sales.png'), fullPage: true });
   });
 
   test('stock report PDF download works', async ({ page }, testInfo) => {
@@ -47,6 +55,7 @@ test.describe('Export downloads', () => {
     } else {
       expect(await response.headerValue('content-type')).toContain('application/pdf');
     }
+    await page.screenshot({ path: path.join(shotsDir, 'exports-stock.png'), fullPage: true });
   });
 
   test('purchase report PDF download works', async ({ page }, testInfo) => {
@@ -60,6 +69,7 @@ test.describe('Export downloads', () => {
     const suggested = download.suggestedFilename();
     expect(suggested).toMatch(/purchase_report_.*\.pdf$/);
     await download.saveAs(`${testInfo.outputDir}/${suggested}`);
+    await page.screenshot({ path: path.join(shotsDir, 'exports-purchase.png'), fullPage: true });
   });
 });
 

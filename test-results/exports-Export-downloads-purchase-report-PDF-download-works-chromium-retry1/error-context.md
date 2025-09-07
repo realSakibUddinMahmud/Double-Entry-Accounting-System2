@@ -1,0 +1,340 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - list [ref=e5]:
+        - listitem:
+          - generic: 
+        - listitem [ref=e6]:
+          - link " Add New" [ref=e7] [cursor=pointer]:
+            - /url: javascript:void(0);
+            - generic [ref=e8] [cursor=pointer]: 
+            - text: Add New
+          - text:            
+        - listitem [ref=e9]:
+          - link "" [ref=e10] [cursor=pointer]:
+            - /url: javascript:void(0);
+            - generic [ref=e11] [cursor=pointer]: 
+        - listitem [ref=e12]:
+          - link "Img" [ref=e13] [cursor=pointer]:
+            - /url: javascript:void(0);
+            - img "Img" [ref=e16] [cursor=pointer]
+          - text:     
+      - text: 
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - link "Img" [ref=e19] [cursor=pointer]:
+          - /url: http://127.0.0.1:8081/home
+          - img "Img" [ref=e20] [cursor=pointer]
+        - link [ref=e21] [cursor=pointer]:
+          - /url: javascript:void(0);
+          - img [ref=e22] [cursor=pointer]: 
+      - list [ref=e28]:
+        - listitem [ref=e29]:
+          - heading "Home" [level=6] [ref=e30]
+          - list [ref=e31]:
+            - listitem [ref=e32]:
+              - link " Dashboard" [ref=e33] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/home
+                - generic [ref=e34] [cursor=pointer]: 
+                - generic [ref=e35] [cursor=pointer]: Dashboard
+            - listitem [ref=e36]:
+              - link " Super Admin" [ref=e37] [cursor=pointer]:
+                - /url: javascript:void(0);
+                - generic [ref=e38] [cursor=pointer]: 
+                - generic [ref=e39] [cursor=pointer]: Super Admin
+        - listitem [ref=e41]:
+          - heading "Inventory" [level=6] [ref=e42]
+          - list [ref=e43]:
+            - listitem [ref=e44]:
+              - link "Products" [ref=e45] [cursor=pointer]:
+                - /url: javascript:void(0);
+                - img [ref=e46] [cursor=pointer]: 
+                - generic [ref=e49] [cursor=pointer]: Products
+            - listitem [ref=e51]:
+              - link " Category" [ref=e52] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/categories
+                - generic [ref=e53] [cursor=pointer]: 
+                - generic [ref=e54] [cursor=pointer]: Category
+            - listitem [ref=e55]:
+              - link " Brands" [ref=e56] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/brands
+                - generic [ref=e57] [cursor=pointer]: 
+                - generic [ref=e58] [cursor=pointer]: Brands
+            - listitem [ref=e59]:
+              - link " Units" [ref=e60] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/units
+                - generic [ref=e61] [cursor=pointer]: 
+                - generic [ref=e62] [cursor=pointer]: Units
+        - listitem [ref=e63]:
+          - heading "Stock" [level=6] [ref=e64]
+          - list [ref=e65]:
+            - listitem [ref=e66]:
+              - link " Stock Adjustment" [ref=e67] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/stock-adjustments
+                - generic [ref=e68] [cursor=pointer]: 
+                - generic [ref=e69] [cursor=pointer]: Stock Adjustment
+        - listitem [ref=e70]:
+          - heading "Sales" [level=6] [ref=e71]
+          - list [ref=e72]:
+            - listitem [ref=e73]:
+              - link " Sales" [ref=e74] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/sales
+                - generic [ref=e75] [cursor=pointer]: 
+                - generic [ref=e76] [cursor=pointer]: Sales
+            - listitem [ref=e77]:
+              - link " Create Sale" [ref=e78] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/sales/create
+                - generic [ref=e79] [cursor=pointer]: 
+                - generic [ref=e80] [cursor=pointer]: Create Sale
+        - listitem [ref=e81]:
+          - heading "Purchases" [level=6] [ref=e82]
+          - list [ref=e83]:
+            - listitem [ref=e84]:
+              - link " Purchases" [ref=e85] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/purchases
+                - generic [ref=e86] [cursor=pointer]: 
+                - generic [ref=e87] [cursor=pointer]: Purchases
+            - listitem [ref=e88]:
+              - link "ﭥ Create Purchase" [ref=e89] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/purchases/create
+                - generic [ref=e90] [cursor=pointer]: ﭥ
+                - generic [ref=e91] [cursor=pointer]: Create Purchase
+        - listitem [ref=e92]:
+          - heading "Finance & Accounts" [level=6] [ref=e93]
+          - list [ref=e94]:
+            - listitem [ref=e95]:
+              - link " Accounts" [ref=e96] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/accounts
+                - generic [ref=e97] [cursor=pointer]: 
+                - generic [ref=e98] [cursor=pointer]: Accounts
+            - listitem [ref=e99]:
+              - link " Fund Transfer" [ref=e100] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/fund-transfers
+                - generic [ref=e101] [cursor=pointer]: 
+                - generic [ref=e102] [cursor=pointer]: Fund Transfer
+            - listitem [ref=e103]:
+              - link " Payments" [ref=e104] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/payments
+                - generic [ref=e105] [cursor=pointer]: 
+                - generic [ref=e106] [cursor=pointer]: Payments
+            - listitem [ref=e107]:
+              - link " Income Revenue" [ref=e108] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/income-revenues
+                - generic [ref=e109] [cursor=pointer]: 
+                - generic [ref=e110] [cursor=pointer]: Income Revenue
+            - listitem [ref=e111]:
+              - link " Loan/Investment" [ref=e112] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/loan-investments
+                - generic [ref=e113] [cursor=pointer]: 
+                - generic [ref=e114] [cursor=pointer]: Loan/Investment
+            - listitem [ref=e115]:
+              - link " Loan/Investment Return" [ref=e116] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/loan-invreturns
+                - generic [ref=e117] [cursor=pointer]: 
+                - generic [ref=e118] [cursor=pointer]: Loan/Investment Return
+            - listitem [ref=e119]:
+              - link " Security Deposit" [ref=e120] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/security-deposits
+                - generic [ref=e121] [cursor=pointer]: 
+                - generic [ref=e122] [cursor=pointer]: Security Deposit
+            - listitem [ref=e123]:
+              - link " Expenses" [ref=e124] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/expenses
+                - generic [ref=e125] [cursor=pointer]: 
+                - generic [ref=e126] [cursor=pointer]: Expenses
+            - listitem [ref=e127]:
+              - link " Journal" [ref=e128] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/journals
+                - generic [ref=e129] [cursor=pointer]: 
+                - generic [ref=e130] [cursor=pointer]: Journal
+            - listitem [ref=e131]:
+              - link " Ledger" [ref=e132] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/de-accounting/ledgers
+                - generic [ref=e133] [cursor=pointer]: 
+                - generic [ref=e134] [cursor=pointer]: Ledger
+            - listitem [ref=e135]:
+              - link " Tax" [ref=e136] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/taxes
+                - generic [ref=e137] [cursor=pointer]: 
+                - generic [ref=e138] [cursor=pointer]: Tax
+        - listitem [ref=e139]:
+          - heading "Peoples" [level=6] [ref=e140]
+          - list [ref=e141]:
+            - listitem [ref=e142]:
+              - link "﨡 Customers" [ref=e143] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/customers
+                - generic [ref=e144] [cursor=pointer]: 﨡
+                - generic [ref=e145] [cursor=pointer]: Customers
+            - listitem [ref=e146]:
+              - link "崙 Suppliers" [ref=e147] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/suppliers
+                - generic [ref=e148] [cursor=pointer]: 崙
+                - generic [ref=e149] [cursor=pointer]: Suppliers
+            - listitem [ref=e150]:
+              - link " Stores" [ref=e151] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/stores
+                - generic [ref=e152] [cursor=pointer]: 
+                - generic [ref=e153] [cursor=pointer]: Stores
+        - listitem [ref=e154]:
+          - heading "Reports" [level=6] [ref=e155]
+          - list [ref=e156]:
+            - listitem [ref=e157]:
+              - link " Sales Report" [ref=e158] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/report/sales
+                - generic [ref=e159] [cursor=pointer]: 
+                - generic [ref=e160] [cursor=pointer]: Sales Report
+            - listitem [ref=e161]:
+              - link " Purchase Report" [ref=e162] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/report/purchase
+                - generic [ref=e163] [cursor=pointer]: 
+                - generic [ref=e164] [cursor=pointer]: Purchase Report
+            - listitem [ref=e165]:
+              - link " Inventory Report" [ref=e166] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/report/stock
+                - generic [ref=e167] [cursor=pointer]: 
+                - generic [ref=e168] [cursor=pointer]: Inventory Report
+            - listitem [ref=e169]:
+              - link " Income Statement Report" [ref=e170] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/report/income-statement
+                - generic [ref=e171] [cursor=pointer]: 
+                - generic [ref=e172] [cursor=pointer]: Income Statement Report
+            - listitem [ref=e173]:
+              - link " Balance Sheet Report" [ref=e174] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/report/balance-sheet
+                - generic [ref=e175] [cursor=pointer]: 
+                - generic [ref=e176] [cursor=pointer]: Balance Sheet Report
+            - listitem [ref=e177]:
+              - link " Trial Balance Report" [ref=e178] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/report/trial-balance
+                - generic [ref=e179] [cursor=pointer]: 
+                - generic [ref=e180] [cursor=pointer]: Trial Balance Report
+        - listitem [ref=e181]:
+          - heading "User Management" [level=6] [ref=e182]
+          - list [ref=e183]:
+            - listitem [ref=e184]:
+              - link "類 Users" [ref=e185] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/admin/users
+                - generic [ref=e186] [cursor=pointer]: 類
+                - generic [ref=e187] [cursor=pointer]: Users
+            - listitem [ref=e188]:
+              - link " Activity Log" [ref=e189] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/activity-log
+                - generic [ref=e190] [cursor=pointer]: 
+                - generic [ref=e191] [cursor=pointer]: Activity Log
+            - listitem [ref=e192]:
+              - link " Roles & Permissions" [ref=e193] [cursor=pointer]:
+                - /url: javascript:void(0);
+                - generic [ref=e194] [cursor=pointer]: 
+                - generic [ref=e195] [cursor=pointer]: Roles & Permissions
+        - listitem [ref=e197]:
+          - heading "Settings" [level=6] [ref=e198]
+          - list [ref=e199]:
+            - listitem [ref=e200]:
+              - link "類 Additional Field" [ref=e201] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/additional-fields
+                - generic [ref=e202] [cursor=pointer]: 類
+                - generic [ref=e203] [cursor=pointer]: Additional Field
+            - listitem [ref=e204]:
+              - link " Company Profile" [ref=e205] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/company/profile
+                - generic [ref=e206] [cursor=pointer]: 
+                - generic [ref=e207] [cursor=pointer]: Company Profile
+            - listitem [ref=e208]:
+              - link " Settings" [ref=e209] [cursor=pointer]:
+                - /url: http://127.0.0.1:8081/settings
+                - generic [ref=e210] [cursor=pointer]: 
+                - generic [ref=e211] [cursor=pointer]: Settings
+    - generic [ref=e213]:
+      - generic [ref=e214]:
+        - generic [ref=e217]:
+          - heading "Purchase Report" [level=4] [ref=e218]
+          - heading "Manage your Purchase report" [level=6] [ref=e219]
+        - generic [ref=e223]:
+          - generic [ref=e225]:
+            - generic [ref=e227]:
+              - generic [ref=e228]: Start Date
+              - textbox [ref=e230]: 2025-09-07
+            - generic [ref=e232]:
+              - generic [ref=e233]: End Date
+              - textbox [ref=e235]: 2025-09-07
+            - generic [ref=e237]:
+              - generic [ref=e238]: Store
+              - combobox [ref=e239]:
+                - option "All" [selected]
+                - option "Main Store"
+          - generic [ref=e241]:
+            - button "View" [ref=e242] [cursor=pointer]
+            - link "PDF" [active] [ref=e243] [cursor=pointer]:
+              - /url: http://127.0.0.1:8081/report/purchase/export?format=pdf
+        - table [ref=e247]:
+          - rowgroup [ref=e248]:
+            - row "Store SKU Product Name Unit Purchased Qty Purchased Amount" [ref=e249]:
+              - cell "Store" [ref=e250]
+              - cell "SKU" [ref=e251]
+              - cell "Product Name" [ref=e252]
+              - cell "Unit" [ref=e253]
+              - cell "Purchased Qty" [ref=e254]
+              - cell "Purchased Amount" [ref=e255]
+          - rowgroup
+          - rowgroup [ref=e256]:
+            - row "Grand Total 0 0.00" [ref=e257]:
+              - cell "Grand Total" [ref=e258]
+              - cell "0" [ref=e259]
+              - cell "0.00" [ref=e260]
+      - generic [ref=e261]:
+        - paragraph [ref=e262]: 2025 © RyoFin. All Rights Reserved
+        - paragraph [ref=e263]:
+          - text: Designed & Developed By
+          - link "HiLinkz Ltd." [ref=e264] [cursor=pointer]:
+            - /url: https://www.hilinkz.com
+  - generic [ref=e265]:
+    - generic [ref=e267]:
+      - generic [ref=e269]:
+        - text: 
+        - generic [ref=e270] [cursor=pointer]:
+          - text: 
+          - generic: Request
+        - generic [ref=e271] [cursor=pointer]:
+          - text: 
+          - generic: Timeline
+        - text: 
+        - generic [ref=e272] [cursor=pointer]:
+          - text: 
+          - generic: Views
+          - generic [ref=e273] [cursor=pointer]: "8"
+        - generic [ref=e274] [cursor=pointer]:
+          - text: 
+          - generic: Queries
+          - generic [ref=e275] [cursor=pointer]: "5"
+        - generic [ref=e276] [cursor=pointer]:
+          - text: 
+          - generic: Models
+          - generic [ref=e277] [cursor=pointer]: "3"
+        - text:  
+        - generic [ref=e278] [cursor=pointer]:
+          - text: 
+          - generic: Gate
+          - generic [ref=e279] [cursor=pointer]: "62"
+      - generic [ref=e280]:
+        - generic [ref=e282] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e285] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e286] [cursor=pointer]:
+          - generic: 
+          - generic: 79.74ms
+        - generic [ref=e287]:
+          - generic: 
+          - generic: 3MB
+        - generic [ref=e288]:
+          - generic: 
+          - generic: 12.x
+        - generic [ref=e289] [cursor=pointer]:
+          - generic: 
+          - generic: GET report/purchase
+    - text:                                                                                                                                    
+  - text: 
+```
