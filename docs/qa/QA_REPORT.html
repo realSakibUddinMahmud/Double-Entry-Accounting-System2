@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QA Report - Laravel Multi-tenant Accounting (Phase 4)</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; margin: 24px; color: #0f172a; }
+      h1, h2, h3 { margin: 0.6em 0 0.2em; color: #0b1220; }
+      code, pre { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+      pre { padding: 12px; overflow: auto; }
+      ul { margin: 0.4em 0 1.0em 1.2em; }
+      li { margin: 0.2em 0; }
+      a { color: #0b68d1; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .small { color: #475569; font-size: 0.95em; }
+      .ok { color: #15803d; font-weight: 600; }
+      .warn { color: #a16207; font-weight: 600; }
+      .fail { color: #b91c1c; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <h1>QA Report — Automated Tests and Setup Summary</h1>
+    <p class="small">Scope: PHPUnit Feature/API + DA suite; Multitenancy; Artifacts; Environment and prerequisites.</p>
+
+    <h2>Overview</h2>
+    <ul>
+      <li><span class="ok">Status</span>: Test suite green.</li>
+      <li><b>Framework</b>: Laravel; <b>DB</b>: MySQL (tenant/landlord); <b>Multitenancy</b>: Spatie.</li>
+      <li><b>Reporting</b>: JUnit XML + HTML coverage generated.</li>
+      <li><b>Approach</b>: Option B (no app-code edits). Tests seed via DB and use MySQL over TCP.</li>
+    </ul>
+
+    <h2>Environment & Prerequisites</h2>
+    <ul>
+      <li>Use MySQL via TCP: <code>DB_HOST=127.0.0.1</code>.</li>
+      <li>Testing env: <code>.env.testing</code> configured for landlord and tenant test DBs.</li>
+      <li>Required extension for PDF exports: <b>PHP GD</b> (<code>php8.4-gd</code>).</li>
+      <li>Tenant identification: domain-based per Spatie; tests set current tenant in <code>tests/TestCase.php</code>.</li>
+    </ul>
+
+    <h2>Commands</h2>
+    <h3>Install/verify prerequisites</h3>
+    <pre>sudo apt-get update -y && sudo apt-get install -y php-gd || sudo apt-get install -y php8.4-gd</pre>
+
+    <h3>Run tests (JUnit + Coverage)</h3>
+    <pre>php artisan test --log-junit=storage/test-artifacts/junit.xml
+XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-artifacts/junit.xml</pre>
+
+    <h3>Create second tenant (optional) — Schema clone over TCP</h3>
+    <pre>mysql -h127.0.0.1 -uroot -psecret -e "DROP DATABASE IF EXISTS tenant_other_test; CREATE DATABASE tenant_other_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysqldump -h127.0.0.1 -uroot -psecret --no-data tenant_demo_test | mysql -h127.0.0.1 -uroot -psecret tenant_other_test</pre>
+
+    <h3>Register second tenant via Tinker</h3>
+    <pre>php artisan tinker --env=testing --execute="\DB::table('tenants')->updateOrInsert(['domain'=&gt;'other.local'], ['company_id'=&gt;null,'name'=&gt;'Other Tenant','domain'=&gt;'other.local','database'=&gt;'tenant_other_test','created_at'=&gt;now(),'updated_at'=&gt;now()]); echo \DB::table('tenants')->where('domain','other.local')->value('id');"</pre>
+
+    <h3>Seed report preconditions (examples)</h3>
+    <ul>
+      <li>Sales rows: <code>INSERT INTO sales (...)</code></li>
+      <li>Sale items: <code>INSERT INTO sale_items (...)</code></li>
+      <li>Product store map: <code>INSERT INTO product_store (...)</code></li>
+      <li>Company logo image (polymorphic): <code>INSERT INTO images (...)</code></li>
+    </ul>
+
+    <h2>Artifacts</h2>
+    <ul>
+      <li>JUnit XML: <code>storage/test-artifacts/junit.xml</code></li>
+      <li>Coverage HTML: <code>storage/coverage/index.html</code></li>
+    </ul>
+
+    <h2>Implemented Tests</h2>
+    <h3>Auth & Reports</h3>
+    <ul>
+      <li>Auth: valid/invalid login, redirects.</li>
+      <li>Reports: Sales PDF export (requires GD); seeded minimal sales/items/product_store/company logo.</li>
+    </ul>
+
+    <h3>Catalog</h3>
+    <ul>
+      <li>Product create with store mapping (valid).</li>
+      <li>Product create invalid unit FK (boundary/invalid).</li>
+    </ul>
+
+    <h3>Multitenancy</h3>
+    <ul>
+      <li>Tenant isolation with two tenant DBs; cross-DB query shows no leakage.</li>
+    </ul>
+
+    <h3>Double-Entry Accounting (DA)</h3>
+    <ul>
+      <li>Invariant per journal: sum(debits) == sum(credits).</li>
+      <li>Postings: Cash Sales, Purchases, Sales with COGS, Returns, Transfers, Drawings, PPE, Other Income.</li>
+      <li>Reversal: negates original (balances return to zero).</li>
+      <li>Statements: Trial Balance totals match.</li>
+      <li>Coverage aided by data providers (valid/boundary amounts).</li>
+    </ul>
+
+    <h2>Known Requirements / Notes</h2>
+    <ul>
+      <li>PDF export requires <b>GD</b> (DomPDF image rendering).</li>
+      <li>Tests avoid app code edits; DB seeding used where factories were absent.</li>
+      <li>MySQL over TCP (127.0.0.1) avoids socket issues in CI/containers.</li>
+    </ul>
+
+    <h2>How to Reproduce</h2>
+    <ol>
+      <li>Ensure MySQL is running, and <code>.env.testing</code> configured (landlord/tenant test DBs).</li>
+      <li>Install GD: <code>sudo apt-get install -y php-gd</code>.</li>
+      <li>(Optional) Create second tenant DB and register via Tinker (commands above).</li>
+      <li>Run tests with coverage + JUnit (commands above).</li>
+      <li>Open coverage at <code>storage/coverage/index.html</code>.</li>
+    </ol>
+
+    <h2>Results Summary</h2>
+    <ul>
+      <li>Feature/API tests: <span class="ok">PASS</span></li>
+      <li>DA invariants and event postings: <span class="ok">PASS</span></li>
+      <li>Tenant isolation (two DBs): <span class="ok">PASS</span></li>
+    </ul>
+  </body>
+  </html>
+
