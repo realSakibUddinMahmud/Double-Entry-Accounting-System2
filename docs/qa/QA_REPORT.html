@@ -116,6 +116,15 @@
             <li class="ok">Statements: Trial Balance totals match; no drift across accounts.</li>
           </ul>
           <p class="muted">Why it matters: protects financial correctness and prevents silent ledger corruption.</p>
+          <details>
+            <summary>Show DA test files & results</summary>
+            <ul>
+              <li><a href="/workspace/tests/Feature/DA/JournalTest.php">tests/Feature/DA/JournalTest.php</a> — Validates double‑entry invariant per journal — <span class="ok">PASS</span></li>
+              <li><a href="/workspace/tests/Feature/DA/PostingTest.php">tests/Feature/DA/PostingTest.php</a> — Posts scenarios (Cash/Credit Sales & Purchases, COGS, Returns, Transfers, Drawings, PPE, Other Income) — <span class="ok">PASS</span></li>
+              <li><a href="/workspace/tests/Feature/DA/ReversalTest.php">tests/Feature/DA/ReversalTest.php</a> — Ensures reversal entries negate the original — <span class="ok">PASS</span></li>
+              <li><a href="/workspace/tests/Feature/DA/StatementsTest.php">tests/Feature/DA/StatementsTest.php</a> — Trial Balance: totals balance across accounts — <span class="ok">PASS</span></li>
+            </ul>
+          </details>
         </div>
       </div>
     </div>
