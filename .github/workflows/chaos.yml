@@ -1,0 +1,46 @@
+name: Chaos Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  db-outage:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_DATABASE: tenant_demo
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -psecret"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start app
+        run: |
+          php -S 127.0.0.1:8081 -t public >/dev/null 2>&1 & echo $! > .php_pid
+          sleep 3
+      - name: Baseline health
+        run: |
+          curl -sf http://127.0.0.1:8081/health
+      - name: Simulate outage (stop MySQL)
+        run: docker kill $(docker ps -q --filter ancestor=mysql:8.0) || true
+      - name: Health should degrade
+        run: |
+          set +e
+          code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8081/health)
+          echo "code=$code"; test "$code" != "200"
+      - name: Recover MySQL
+        run: |
+          docker run -d --name mysql2 -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=tenant_demo -p 3307:3306 mysql:8.0
+          sleep 10
+      - name: Stop app
+        if: always()
+        run: |
+          if [ -f .php_pid ]; then kill $(cat .php_pid) || true; fi
+
