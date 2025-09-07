@@ -20,17 +20,9 @@ class TenantIsolationTest extends TestCase
         ]);
         $this->assertNotNull($pid);
 
-        // Switch to another tenant database if available, else simulate by direct TCP to a different DB name
-        $otherTenant = Tenant::where('database', 'tenant_other_test')->first();
-        if ($otherTenant) {
-            $otherTenant->makeCurrent();
-            $count = DB::connection('tenant')->table('products')->where('name', 'Isolated Product')->count();
-            $this->assertSame(0, $count);
-        } else {
-            // Fallback: ensure at least one such product exists (no cross-tenant proof available)
-            $count = DB::connection('tenant')->table('products')->where('id', $pid)->count();
-            $this->assertSame(1, $count);
-        }
+        // Verify isolation by querying the other database directly via fully qualified name
+        $otherCount = DB::connection('tenant')->selectOne('SELECT COUNT(*) AS c FROM tenant_other_test.products WHERE id = ?', [$pid])->c ?? 0;
+        $this->assertSame(0, (int) $otherCount);
     }
 }
 
