@@ -1,7 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/OWNER/REPO/actions"><img src="https://img.shields.io/github/actions/workflow/status/OWNER/REPO/test.yml?branch=main" alt="CI"></a>
+<a href="https://github.com/realSakibUddinMahmud/Double-Entry-Accounting-System2/actions"><img src="https://img.shields.io/github/actions/workflow/status/realSakibUddinMahmud/Double-Entry-Accounting-System2/test.yml?branch=main" alt="CI"></a>
 <a href="./storage/coverage/index.html"><img src="https://img.shields.io/badge/coverage-HTML%20report-blue" alt="Coverage"></a>
 </p>
 
