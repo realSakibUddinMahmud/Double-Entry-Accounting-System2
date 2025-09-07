@@ -7,7 +7,10 @@ use Tests\TestCase;
 
 class PostingTest extends TestCase
 {
-    public function test_sales_posting_cash(): void
+    /**
+     * @dataProvider \Tests\Support\DataProviders\AccountingDataProviders::salesPostings
+     */
+    public function test_sales_posting_cash(float $amount): void
     {
         // Accounts
         $cash = DB::connection('tenant')->table('accounts')->insertGetId([
@@ -21,7 +24,6 @@ class PostingTest extends TestCase
             'created_at' => now(), 'updated_at' => now(),
         ]);
 
-        $amount = 250.00;
         $debitTxn = DB::connection('tenant')->table('account_transactions')->insertGetId([
             'account_id' => $cash, 'date' => now()->toDateString(), 'amount' => $amount, 'debit' => $amount, 'credit' => 0, 'type' => 'DEBIT',
             'created_at' => now(), 'updated_at' => now(),
@@ -43,8 +45,8 @@ class PostingTest extends TestCase
         $salesBal = (float) DB::connection('tenant')->table('account_transactions')->where('account_id', $sales)->sum('credit')
                   - (float) DB::connection('tenant')->table('account_transactions')->where('account_id', $sales)->sum('debit');
 
-        $this->assertSame(250.00, round($cashBal, 2));
-        $this->assertSame(250.00, round($salesBal, 2));
+        $this->assertSame(round($amount, 2), round($cashBal, 2));
+        $this->assertSame(round($amount, 2), round($salesBal, 2));
     }
 }
 

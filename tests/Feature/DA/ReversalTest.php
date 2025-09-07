@@ -7,7 +7,10 @@ use Tests\TestCase;
 
 class ReversalTest extends TestCase
 {
-    public function test_reversal_negates_original(): void
+    /**
+     * @dataProvider \Tests\Support\DataProviders\AccountingDataProviders::expenseReversals
+     */
+    public function test_reversal_negates_original(float $amount): void
     {
         $cash = DB::connection('tenant')->table('accounts')->insertGetId([
             'title' => 'Cash', 'root_type' => 1, 'account_type_id' => 1,
@@ -19,8 +22,7 @@ class ReversalTest extends TestCase
             'accountable_type' => 1, 'accountable_id' => 0,
             'created_at' => now(), 'updated_at' => now(),
         ]);
-
-        $amount = 100.00;
+        
         // Original: DR Expense, CR Cash
         $dr = DB::connection('tenant')->table('account_transactions')->insertGetId([
             'account_id' => $expense, 'date' => now()->toDateString(), 'amount' => $amount, 'debit' => $amount, 'credit' => 0, 'type' => 'DEBIT',

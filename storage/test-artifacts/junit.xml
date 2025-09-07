@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/workspace/phpunit.xml" tests="11" assertions="29" errors="0" failures="0" skipped="0" time="1.545820">
-    <testsuite name="Feature" tests="11" assertions="29" errors="0" failures="0" skipped="0" time="1.545820">
-      <testsuite name="Tests\Feature\Auth\LoginTest" file="/workspace/tests/Feature/Auth/LoginTest.php" tests="2" assertions="10" errors="0" failures="0" skipped="0" time="0.424691">
-        <testcase name="test_valid_login_redirects_to_home" file="/workspace/tests/Feature/Auth/LoginTest.php" line="11" class="Tests\Feature\Auth\LoginTest" classname="Tests.Feature.Auth.LoginTest" assertions="6" time="0.187645"/>
-        <testcase name="test_invalid_password_redirects_back_to_login" file="/workspace/tests/Feature/Auth/LoginTest.php" line="26" class="Tests\Feature\Auth\LoginTest" classname="Tests.Feature.Auth.LoginTest" assertions="4" time="0.237046"/>
+  <testsuite name="/workspace/phpunit.xml" tests="14" assertions="35" errors="0" failures="0" skipped="0" time="1.647965">
+    <testsuite name="Feature" tests="14" assertions="35" errors="0" failures="0" skipped="0" time="1.647965">
+      <testsuite name="Tests\Feature\Auth\LoginTest" file="/workspace/tests/Feature/Auth/LoginTest.php" tests="2" assertions="10" errors="0" failures="0" skipped="0" time="0.429552">
+        <testcase name="test_valid_login_redirects_to_home" file="/workspace/tests/Feature/Auth/LoginTest.php" line="11" class="Tests\Feature\Auth\LoginTest" classname="Tests.Feature.Auth.LoginTest" assertions="6" time="0.193381"/>
+        <testcase name="test_invalid_password_redirects_back_to_login" file="/workspace/tests/Feature/Auth/LoginTest.php" line="26" class="Tests\Feature\Auth\LoginTest" classname="Tests.Feature.Auth.LoginTest" assertions="4" time="0.236171"/>
       </testsuite>
-      <testsuite name="Tests\Feature\Catalog\ProductTest" file="/workspace/tests/Feature/Catalog/ProductTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="0.146019">
-        <testcase name="test_create_product_with_mapping_valid" file="/workspace/tests/Feature/Catalog/ProductTest.php" line="26" class="Tests\Feature\Catalog\ProductTest" classname="Tests.Feature.Catalog.ProductTest" assertions="3" time="0.100317"/>
-        <testcase name="test_create_product_invalid_unit_fk" file="/workspace/tests/Feature/Catalog/ProductTest.php" line="114" class="Tests\Feature\Catalog\ProductTest" classname="Tests.Feature.Catalog.ProductTest" assertions="2" time="0.045701"/>
+      <testsuite name="Tests\Feature\Catalog\ProductTest" file="/workspace/tests/Feature/Catalog/ProductTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="0.138709">
+        <testcase name="test_create_product_with_mapping_valid" file="/workspace/tests/Feature/Catalog/ProductTest.php" line="26" class="Tests\Feature\Catalog\ProductTest" classname="Tests.Feature.Catalog.ProductTest" assertions="3" time="0.096627"/>
+        <testcase name="test_create_product_invalid_unit_fk" file="/workspace/tests/Feature/Catalog/ProductTest.php" line="114" class="Tests\Feature\Catalog\ProductTest" classname="Tests.Feature.Catalog.ProductTest" assertions="2" time="0.042081"/>
       </testsuite>
-      <testsuite name="Tests\Feature\DA\JournalTest" file="/workspace/tests/Feature/DA/JournalTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.038906">
-        <testcase name="test_double_entry_invariant_per_journal" file="/workspace/tests/Feature/DA/JournalTest.php" line="10" class="Tests\Feature\DA\JournalTest" classname="Tests.Feature.DA.JournalTest" assertions="2" time="0.038906"/>
+      <testsuite name="Tests\Feature\DA\JournalTest" file="/workspace/tests/Feature/DA/JournalTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.034939">
+        <testcase name="test_double_entry_invariant_per_journal" file="/workspace/tests/Feature/DA/JournalTest.php" line="10" class="Tests\Feature\DA\JournalTest" classname="Tests.Feature.DA.JournalTest" assertions="2" time="0.034939"/>
       </testsuite>
-      <testsuite name="Tests\Feature\DA\PostingTest" file="/workspace/tests/Feature/DA/PostingTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.034279">
-        <testcase name="test_sales_posting_cash" file="/workspace/tests/Feature/DA/PostingTest.php" line="10" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.034279"/>
+      <testsuite name="Tests\Feature\DA\PostingTest" file="/workspace/tests/Feature/DA/PostingTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.107595">
+        <testsuite name="Tests\Feature\DA\PostingTest::test_sales_posting_cash" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.107595">
+          <testcase name="test_sales_posting_cash with data set &quot;cash sale 250&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="13" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.035394"/>
+          <testcase name="test_sales_posting_cash with data set &quot;cash sale 0.01&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="13" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.035098"/>
+          <testcase name="test_sales_posting_cash with data set &quot;cash sale 999999.99&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="13" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.037103"/>
+        </testsuite>
       </testsuite>
-      <testsuite name="Tests\Feature\DA\ReversalTest" file="/workspace/tests/Feature/DA/ReversalTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.040607">
-        <testcase name="test_reversal_negates_original" file="/workspace/tests/Feature/DA/ReversalTest.php" line="10" class="Tests\Feature\DA\ReversalTest" classname="Tests.Feature.DA.ReversalTest" assertions="2" time="0.040607"/>
+      <testsuite name="Tests\Feature\DA\ReversalTest" file="/workspace/tests/Feature/DA/ReversalTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.083645">
+        <testsuite name="Tests\Feature\DA\ReversalTest::test_reversal_negates_original" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.083645">
+          <testcase name="test_reversal_negates_original with data set &quot;expense 100&quot;" file="/workspace/tests/Feature/DA/ReversalTest.php" line="13" class="Tests\Feature\DA\ReversalTest" classname="Tests.Feature.DA.ReversalTest" assertions="2" time="0.044185"/>
+          <testcase name="test_reversal_negates_original with data set &quot;expense 1.23&quot;" file="/workspace/tests/Feature/DA/ReversalTest.php" line="13" class="Tests\Feature\DA\ReversalTest" classname="Tests.Feature.DA.ReversalTest" assertions="2" time="0.039460"/>
+        </testsuite>
       </testsuite>
-      <testsuite name="Tests\Feature\DA\StatementsTest" file="/workspace/tests/Feature/DA/StatementsTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.037749">
-        <testcase name="test_trial_balance_balances" file="/workspace/tests/Feature/DA/StatementsTest.php" line="10" class="Tests\Feature\DA\StatementsTest" classname="Tests.Feature.DA.StatementsTest" assertions="1" time="0.037749"/>
+      <testsuite name="Tests\Feature\DA\StatementsTest" file="/workspace/tests/Feature/DA/StatementsTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.033812">
+        <testcase name="test_trial_balance_balances" file="/workspace/tests/Feature/DA/StatementsTest.php" line="10" class="Tests\Feature\DA\StatementsTest" classname="Tests.Feature.DA.StatementsTest" assertions="1" time="0.033812"/>
       </testsuite>
-      <testsuite name="Tests\Feature\ExampleTest" file="/workspace/tests/Feature/ExampleTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.042842">
-        <testcase name="test_the_application_returns_a_successful_response" file="/workspace/tests/Feature/ExampleTest.php" line="13" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="3" time="0.042842"/>
+      <testsuite name="Tests\Feature\ExampleTest" file="/workspace/tests/Feature/ExampleTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.038695">
+        <testcase name="test_the_application_returns_a_successful_response" file="/workspace/tests/Feature/ExampleTest.php" line="13" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="3" time="0.038695"/>
       </testsuite>
-      <testsuite name="Tests\Feature\Reports\ExportTest" file="/workspace/tests/Feature/Reports/ExportTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.747051">
-        <testcase name="test_sales_pdf_export_returns_pdf" file="/workspace/tests/Feature/Reports/ExportTest.php" line="21" class="Tests\Feature\Reports\ExportTest" classname="Tests.Feature.Reports.ExportTest" assertions="2" time="0.747051"/>
+      <testsuite name="Tests\Feature\Reports\ExportTest" file="/workspace/tests/Feature/Reports/ExportTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.748280">
+        <testcase name="test_sales_pdf_export_returns_pdf" file="/workspace/tests/Feature/Reports/ExportTest.php" line="21" class="Tests\Feature\Reports\ExportTest" classname="Tests.Feature.Reports.ExportTest" assertions="2" time="0.748280"/>
       </testsuite>
-      <testsuite name="Tests\Feature\Tenancy\TenantIsolationTest" file="/workspace/tests/Feature/Tenancy/TenantIsolationTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.033677">
-        <testcase name="test_data_isolated_between_tenants" file="/workspace/tests/Feature/Tenancy/TenantIsolationTest.php" line="11" class="Tests\Feature\Tenancy\TenantIsolationTest" classname="Tests.Feature.Tenancy.TenantIsolationTest" assertions="2" time="0.033677"/>
+      <testsuite name="Tests\Feature\Tenancy\TenantIsolationTest" file="/workspace/tests/Feature/Tenancy/TenantIsolationTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.032739">
+        <testcase name="test_data_isolated_between_tenants" file="/workspace/tests/Feature/Tenancy/TenantIsolationTest.php" line="11" class="Tests\Feature\Tenancy\TenantIsolationTest" classname="Tests.Feature.Tenancy.TenantIsolationTest" assertions="2" time="0.032739"/>
       </testsuite>
     </testsuite>
   </testsuite>
