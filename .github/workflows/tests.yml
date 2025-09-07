@@ -1,0 +1,153 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -psecret"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, dom, curl, json, pdo_mysql, zip, xml, gd, xdebug
+          coverage: xdebug
+
+      - name: Cache Composer
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache/files
+          key: composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Prepare environment files
+        run: |
+          cp -n .env.example .env || true
+          cp -n .env.testing .env.testing || true
+          echo "DB_HOST=127.0.0.1" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env.testing
+          echo "DB_USERNAME=root" >> .env
+          echo "DB_USERNAME=root" >> .env.testing
+          echo "DB_PASSWORD=secret" >> .env
+          echo "DB_PASSWORD=secret" >> .env.testing
+          echo "APP_KEY=$(php -r "echo 'base64:'.base64_encode(random_bytes(32));")" >> .env
+          echo "APP_KEY=$(php -r "echo 'base64:'.base64_encode(random_bytes(32));")" >> .env.testing
+
+      - name: Create databases
+        run: |
+          for i in {1..30}; do mysql -h127.0.0.1 -uroot -psecret -e "SELECT 1" && break || sleep 2; done
+          mysql -h127.0.0.1 -uroot -psecret -e "CREATE DATABASE IF NOT EXISTS landlord_master CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE DATABASE IF NOT EXISTS tenant_demo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE DATABASE IF NOT EXISTS landlord_master_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE DATABASE IF NOT EXISTS tenant_demo_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+          echo "DATABASE_URL_TENANT=mysql://root:secret@127.0.0.1:3306/tenant_demo?charset=utf8mb4" >> .env
+          echo "DATABASE_URL_TENANT=mysql://root:secret@127.0.0.1:3306/tenant_demo_test?charset=utf8mb4" >> .env.testing
+
+      - name: Run landlord migrations (default connection)
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: secret
+          DB_DATABASE: landlord_master
+        run: php artisan migrate --force --path=database/migrations/landlord
+
+      - name: Run tenant migrations
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: secret
+          DB_DATABASE: landlord_master
+          DATABASE_URL_TENANT: mysql://root:secret@127.0.0.1:3306/tenant_demo?charset=utf8mb4
+        run: php artisan migrate --force --database=tenant --path=database/migrations/tenant
+
+      - name: Seed baseline roles/permissions and test user
+        run: |
+          php -r "require 'vendor/autoload.php'; \
+          	$app = require 'bootstrap/app.php'; \
+          	$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap(); \
+          	use Illuminate\Support\Facades\Hash; \
+          	$user = App\Models\User::firstOrCreate(['phone'=>'01900000000'], ['name'=>'Test User','password'=>Hash::make('secret123')]); echo 'User: '.$user->id;"
+
+      - name: PHPUnit (coverage + junit)
+        run: |
+          mkdir -p storage/test-artifacts storage/test-results
+          XDEBUG_MODE=coverage php -d xdebug.mode=coverage vendor/bin/phpunit --log-junit=storage/test-results/junit.xml
+
+      - name: Upload PHP test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-artifacts
+          path: |
+            storage/test-results
+            storage/coverage
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Start Laravel server & run Playwright
+        env:
+          BASE_URL: http://127.0.0.1:8081
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8081 >/dev/null 2>&1 & echo $! > .server_pid
+          # health smoke
+          for i in {1..15}; do curl -sf http://127.0.0.1:8081/health && ok=1 && break || sleep 2; done; [ "$ok" = "1" ]
+          npx playwright test --reporter=list
+
+      - name: Upload Playwright artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report
+            test-results
+
+      - name: Install pandoc (for QA report PDF)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Build QA report PDF
+        run: |
+          if [ -f docs/qa/QA_REPORT.md ]; then pandoc docs/qa/QA_REPORT.md -o docs/qa/QA_REPORT.pdf || true; fi
+
+      - name: Upload QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-report
+          path: |
+            docs/qa/QA_REPORT.md
+            docs/qa/QA_REPORT.pdf
+
+      - name: Stop server
+        if: always()
+        run: |
+          if [ -f .server_pid ]; then kill $(cat .server_pid) || true; fi
+
