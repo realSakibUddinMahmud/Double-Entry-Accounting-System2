@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', env('APP_ENV') === 'local' ? 'stack' : 'json'),
 
     /*
     |--------------------------------------------------------------------------
@@ -62,6 +62,13 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+        'json' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel.json'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'formatter' => Monolog\Formatter\JsonFormatter::class,
             'replace_placeholders' => true,
         ],
 

@@ -30,3 +30,6 @@ require base_path('/routes/admin/company.php');
 require base_path('/routes/admin/settings.php');
 require base_path('/routes/admin/activity-log.php');
 require base_path('/routes/admin/extra.php');
+
+// Health endpoint
+Route::get('/health', [\App\Http\Controllers\HealthController::class, 'index']);

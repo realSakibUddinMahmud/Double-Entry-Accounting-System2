@@ -87,6 +87,8 @@ jobs:
           BASE_URL: http://127.0.0.1:8081
         run: |
           php artisan serve --host=127.0.0.1 --port=8081 >/dev/null 2>&1 & echo $! > .server_pid
+          # health smoke
+          curl -sf http://127.0.0.1:8081/health || (sleep 2 && curl -sf http://127.0.0.1:8081/health)
           npx playwright test --reporter=list
 
       - name: Upload Playwright artifacts

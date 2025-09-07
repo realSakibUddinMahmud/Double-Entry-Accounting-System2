@@ -80,3 +80,9 @@ jobs:
             -e DATABASE_URL_TENANT=mysql://root:secret@127.0.0.1:3306/tenant_demo?charset=utf8mb4 \
             ${{ env.IMAGE_NAME }}:${{ github.sha }} php artisan migrate --force --database=tenant --path=database/migrations/tenant
 
+      - name: Health smoke
+        run: |
+          cid=$(docker run -d --network host -e APP_ENV=production ${{ env.IMAGE_NAME }}:${{ github.sha }})
+          for i in {1..15}; do curl -sf http://127.0.0.1:80/health && ok=1 && break || sleep 2; done; [ "$ok" = "1" ]
+          docker rm -f "$cid" || true
+
