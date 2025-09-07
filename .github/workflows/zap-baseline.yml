@@ -1,0 +1,33 @@
+name: ZAP Baseline
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  zap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start target (Laravel)
+        run: |
+          php -v || sudo apt-get update && sudo apt-get install -y php-cli php-mbstring php-xml php-curl
+          php -S 127.0.0.1:8081 -t public >/dev/null 2>&1 & echo $! > .php_pid
+          sleep 3
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: 'http://127.0.0.1:8081/login'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a -m 5'
+      - name: Upload ZAP report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-report
+          path: report.html
+      - name: Stop target
+        if: always()
+        run: |
+          if [ -f .php_pid ]; then kill $(cat .php_pid) || true; fi
+
