@@ -28,20 +28,20 @@ class ProductTest extends TestCase
         $this->authenticate();
 
         // Seed minimal required records via DB (no factories)
-        $categoryId = DB::table('categories')->insertGetId([
+        $categoryId = DB::connection('tenant')->table('categories')->insertGetId([
             'name' => 'Test Category',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        $brandId = DB::table('brands')->insertGetId([
+        $brandId = DB::connection('tenant')->table('brands')->insertGetId([
             'name' => 'Test Brand',
             'slug' => 'test-brand-'.uniqid(),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        $storeId = DB::table('stores')->insertGetId([
+        $storeId = DB::connection('tenant')->table('stores')->insertGetId([
             'name' => 'Test Store',
             'address' => 'Dhaka',
             'status' => 1,
@@ -51,9 +51,9 @@ class ProductTest extends TestCase
         ]);
 
         // Use existing units if present; otherwise create a simple unit row
-        $firstUnitId = (int) (DB::table('units')->min('id') ?? 0);
+        $firstUnitId = (int) (DB::connection('tenant')->table('units')->min('id') ?? 0);
         if ($firstUnitId <= 0) {
-            $firstUnitId = DB::table('units')->insertGetId([
+            $firstUnitId = DB::connection('tenant')->table('units')->insertGetId([
                 'name' => 'Unit',
                 'symbol' => 'U',
                 'conversion_factor' => 1,
@@ -65,7 +65,7 @@ class ProductTest extends TestCase
         $purchaseUnitId = $firstUnitId;
         $salesUnitId = $firstUnitId;
 
-        $taxId = DB::table('taxes')->insertGetId([
+        $taxId = DB::connection('tenant')->table('taxes')->insertGetId([
             'name' => 'VAT',
             'rate' => 5.00,
             'status' => 'active',
@@ -100,7 +100,7 @@ class ProductTest extends TestCase
             'category_id' => $categoryId,
             'brand_id' => $brandId,
             'sku' => 'SKU-TEST-001',
-        ]);
+        ], 'tenant');
 
         $this->assertDatabaseHas('product_store', [
             'store_id' => $storeId,
@@ -108,7 +108,7 @@ class ProductTest extends TestCase
             'sales_price' => 15.25,
             'tax_id' => $taxId,
             'tax_method' => 'exclusive',
-        ]);
+        ], 'tenant');
     }
 
     public function test_create_product_invalid_unit_fk(): void
@@ -116,12 +116,12 @@ class ProductTest extends TestCase
         $this->authenticate();
 
         // Seed minimal required category and store
-        $categoryId = DB::table('categories')->insertGetId([
+        $categoryId = DB::connection('tenant')->table('categories')->insertGetId([
             'name' => 'Invalid Test Category',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        $storeId = DB::table('stores')->insertGetId([
+        $storeId = DB::connection('tenant')->table('stores')->insertGetId([
             'name' => 'Invalid Test Store',
             'address' => 'Dhaka',
             'status' => 1,
@@ -146,7 +146,7 @@ class ProductTest extends TestCase
         $response = $this->post('/products', $payload);
 
         $response->assertStatus(302); // validation redirects back
-        $this->assertDatabaseMissing('products', ['name' => 'Invalid Units Product']);
+        $this->assertDatabaseMissing('products', ['name' => 'Invalid Units Product'], 'tenant');
     }
 }
 

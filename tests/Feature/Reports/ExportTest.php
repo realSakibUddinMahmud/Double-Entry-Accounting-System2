@@ -12,6 +12,7 @@ class ExportTest extends TestCase
     {
         $user = User::factory()->create([
             'password' => Hash::make('password'),
+            'tenant_id' => 1,
         ]);
         $this->be($user);
         return $user;
