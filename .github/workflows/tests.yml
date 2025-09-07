@@ -137,6 +137,10 @@ jobs:
         run: |
           if [ -f docs/qa/QA_REPORT.md ]; then pandoc docs/qa/QA_REPORT.md -o docs/qa/QA_REPORT.pdf || true; fi
 
+      - name: Build QA report DocX
+        run: |
+          if [ -f docs/qa/QA_REPORT.md ]; then pandoc docs/qa/QA_REPORT.md -o docs/qa/QA_REPORT.docx || true; fi
+
       - name: Upload QA report
         if: always()
         uses: actions/upload-artifact@v4
@@ -145,6 +149,7 @@ jobs:
           path: |
             docs/qa/QA_REPORT.md
             docs/qa/QA_REPORT.pdf
+            docs/qa/QA_REPORT.docx
 
       - name: Stop server
         if: always()
