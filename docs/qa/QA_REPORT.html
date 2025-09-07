@@ -1,5 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>QA Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5; margin: 24px; }
+    h1, h2 { margin-top: 1.2em; }
+    code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+    ul { margin: 0 0 1em 1.5em; }
+    .proof a { word-break: break-all; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 12px; background: #eef; margin-right: 6px; font-size: 12px; }
+  </style>
+  </head>
+<body>
+  <h1>QA Report</h1>
+
+  <h2>Environment & Repro Steps</h2>
+  <ul>
+    <li>OS: Ubuntu (CI ubuntu-latest) / Local Linux</li>
+    <li>PHP: 8.3/8.4; Node: 20; MySQL: 8.0</li>
+    <li>Steps: composer install → configure .env → create DBs → migrate landlord/tenant → run PHPUnit → serve → run Playwright</li>
+  </ul>
+
+  <h2>Methodology & Coverage Matrix</h2>
+  <p>See <a href="../TEST_MATRIX.md">docs/qa/TEST_MATRIX.md</a>.</p>
+  <p>Suites covered: <span class="pill">Unit</span><span class="pill">Feature/API</span><span class="pill">E2E (Playwright)</span><span class="pill">DA invariants</span><span class="pill">Multitenancy</span></p>
+
+  <h2>Pass/Fail Summary</h2>
+  <ul>
+    <li>Overall status: See CI runs for current state.</li>
+    <li>Defects: Track in issue list with severity and repro steps.</li>
+  </ul>
+
+  <h2>Performance Results</h2>
+  <ul>
+    <li>Targets: Auth p95 &lt; 400ms; Stock report p95 &lt; 2000ms; Sales export p95 &lt; 2000ms.</li>
+    <li>Nightly k6 results available in CI artifacts; Performance test timings in <code>tests/Performance</code>.</li>
+  </ul>
+
+  <h2>Recommendations & Next Steps</h2>
+  <ul>
+    <li>Increase static analysis strictness; expand E2E for reversal/returns.</li>
+    <li>Index tuning and caching of aggregates per <a href="../PERF_DB_AUDIT.md">PERF_DB_AUDIT.md</a>.</li>
+  </ul>
+
+  <h2>Proof: Generated PDFs</h2>
+  <div class="proof">
+    <ul>
+      <li><a href="/workspace/test-results/exports-Export-downloads-sales-report-PDF-download-works-chromium/sales_report_20250907_194731.pdf">sales_report_20250907_194731.pdf</a></li>
+      <li><a href="/workspace/test-results/exports-Export-downloads-purchase-report-PDF-download-works-chromium/purchase_report_20250907_194739.pdf">purchase_report_20250907_194739.pdf</a></li>
+      <li><a href="/workspace/test-results/exports-Export-downloads-stock-report-PDF-download-works-chromium/stock_report_20250907_194745.pdf">stock_report_20250907_194745.pdf</a></li>
+    </ul>
+  </div>
+
+  <h2>Proof: Test Suites Present</h2>
+  <ul>
+    <li>PHP tests: 23 files under <code>/workspace/tests</code></li>
+    <li>Playwright tests: 7 files under <code>/workspace/tests/e2e</code></li>
+  </ul>
+
+  <h2>Appendix</h2>
+  <ul>
+    <li>JUnit XML: <code>storage/test-results/</code></li>
+    <li>Coverage HTML: <code>storage/coverage/</code></li>
+    <li>E2E artifacts: <code>playwright-report/</code> and <code>test-results/</code></li>
+  </ul>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
