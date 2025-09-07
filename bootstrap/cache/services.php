@@ -37,9 +37,11 @@
     33 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     34 => 'Termwind\\Laravel\\TermwindServiceProvider',
     35 => 'OwenIt\\Auditing\\AuditingServiceProvider',
-    36 => 'Spatie\\Multitenancy\\MultitenancyServiceProvider',
-    37 => 'Spatie\\Permission\\PermissionServiceProvider',
-    38 => 'App\\Providers\\AppServiceProvider',
+    36 => 'Sentry\\Laravel\\ServiceProvider',
+    37 => 'Sentry\\Laravel\\Tracing\\ServiceProvider',
+    38 => 'Spatie\\Multitenancy\\MultitenancyServiceProvider',
+    39 => 'Spatie\\Permission\\PermissionServiceProvider',
+    40 => 'App\\Providers\\AppServiceProvider',
   ),
   'eager' => 
   array (
@@ -64,9 +66,11 @@
     18 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     19 => 'Termwind\\Laravel\\TermwindServiceProvider',
     20 => 'OwenIt\\Auditing\\AuditingServiceProvider',
-    21 => 'Spatie\\Multitenancy\\MultitenancyServiceProvider',
-    22 => 'Spatie\\Permission\\PermissionServiceProvider',
-    23 => 'App\\Providers\\AppServiceProvider',
+    21 => 'Sentry\\Laravel\\ServiceProvider',
+    22 => 'Sentry\\Laravel\\Tracing\\ServiceProvider',
+    23 => 'Spatie\\Multitenancy\\MultitenancyServiceProvider',
+    24 => 'Spatie\\Permission\\PermissionServiceProvider',
+    25 => 'App\\Providers\\AppServiceProvider',
   ),
   'deferred' => 
   array (
