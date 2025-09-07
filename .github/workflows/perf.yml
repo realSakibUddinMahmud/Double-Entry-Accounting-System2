@@ -1,0 +1,34 @@
+name: Nightly Performance
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  perf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install k6
+        run: |
+          curl -sSL https://github.com/grafana/k6/releases/download/v0.49.0/k6-v0.49.0-linux-amd64.tar.gz | tar -xz
+          sudo mv k6-v0.49.0-linux-amd64/k6 /usr/local/bin/k6
+      - name: Start Laravel server
+        run: |
+          php -S 127.0.0.1:8081 -t public >/dev/null 2>&1 & echo $! > .php_pid
+          sleep 3
+      - name: Run k6 scripts
+        env:
+          BASE_URL: http://127.0.0.1:8081
+        run: |
+          k6 run tests/perf/k6_auth_login.js || true
+          k6 run tests/perf/k6_sales_export.js || true
+      - name: Stop server
+        if: always()
+        run: |
+          if [ -f .php_pid ]; then kill $(cat .php_pid) || true; fi

@@ -82,19 +82,19 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Start Laravel server & run Playwright
+      - name: Start Laravel server & run Playwright (shard 1/2)
         env:
           BASE_URL: http://127.0.0.1:8081
         run: |
           php artisan serve --host=127.0.0.1 --port=8081 >/dev/null 2>&1 & echo $! > .server_pid
           # health smoke
           curl -sf http://127.0.0.1:8081/health || (sleep 2 && curl -sf http://127.0.0.1:8081/health)
-          npx playwright test --reporter=list
+          npx playwright test --reporter=list --shard=1/2
 
-      - name: Upload Playwright artifacts
+      - name: Upload Playwright artifacts (shard 1/2)
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-artifacts
+          name: playwright-artifacts-shard1
           path: |
             playwright-report
             test-results
@@ -110,7 +110,28 @@ jobs:
       - name: Composer audit (best-effort)
         run: composer audit || true
 
-      - name: Stop server
+      - name: Stop server (shard 1/2)
+        if: always()
+        run: |
+          if [ -f .server_pid ]; then kill $(cat .server_pid) || true; fi
+
+      - name: Start Laravel server & run Playwright (shard 2/2)
+        env:
+          BASE_URL: http://127.0.0.1:8081
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8081 >/dev/null 2>&1 & echo $! > .server_pid
+          curl -sf http://127.0.0.1:8081/health || (sleep 2 && curl -sf http://127.0.0.1:8081/health)
+          npx playwright test --reporter=list --shard=2/2
+
+      - name: Upload Playwright artifacts (shard 2/2)
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts-shard2
+          path: |
+            playwright-report
+            test-results
+
+      - name: Stop server (shard 2/2)
         if: always()
         run: |
           if [ -f .server_pid ]; then kill $(cat .server_pid) || true; fi
