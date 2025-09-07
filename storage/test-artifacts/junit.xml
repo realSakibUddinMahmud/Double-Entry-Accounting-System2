@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/workspace/phpunit.xml" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.149342">
-    <testsuite name="Feature" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.149342">
-      <testsuite name="Tests\Feature\Tenancy\TenantIsolationTest" file="/workspace/tests/Feature/Tenancy/TenantIsolationTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.149342">
-        <testcase name="test_data_isolated_between_tenants" file="/workspace/tests/Feature/Tenancy/TenantIsolationTest.php" line="11" class="Tests\Feature\Tenancy\TenantIsolationTest" classname="Tests.Feature.Tenancy.TenantIsolationTest" assertions="2" time="0.149342"/>
+  <testsuite name="/workspace/phpunit.xml" tests="7" assertions="18" errors="0" failures="0" skipped="0" time="0.390119">
+    <testsuite name="Feature" tests="7" assertions="18" errors="0" failures="0" skipped="0" time="0.390119">
+      <testsuite name="Tests\Feature\DA\PostingTest" file="/workspace/tests/Feature/DA/PostingTest.php" tests="7" assertions="18" errors="0" failures="0" skipped="0" time="0.390119">
+        <testsuite name="Tests\Feature\DA\PostingTest::test_sales_posting_cash" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.229251">
+          <testcase name="test_sales_posting_cash with data set &quot;cash sale 250&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="13" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.157411"/>
+          <testcase name="test_sales_posting_cash with data set &quot;cash sale 0.01&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="13" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.035637"/>
+          <testcase name="test_sales_posting_cash with data set &quot;cash sale 999999.99&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="13" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.036203"/>
+        </testsuite>
+        <testsuite name="Tests\Feature\DA\PostingTest::test_purchase_posting_cash" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.071843">
+          <testcase name="test_purchase_posting_cash with data set &quot;purchase 50&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="55" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.035331"/>
+          <testcase name="test_purchase_posting_cash with data set &quot;purchase 123.45&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="55" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="2" time="0.036512"/>
+        </testsuite>
+        <testsuite name="Tests\Feature\DA\PostingTest::test_sales_with_cogs" tests="2" assertions="8" errors="0" failures="0" skipped="0" time="0.089025">
+          <testcase name="test_sales_with_cogs with data set &quot;sale 200 cogs 120&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="94" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="4" time="0.047743"/>
+          <testcase name="test_sales_with_cogs with data set &quot;sale 15.55 cogs 9.99&quot;" file="/workspace/tests/Feature/DA/PostingTest.php" line="94" class="Tests\Feature\DA\PostingTest" classname="Tests.Feature.DA.PostingTest" assertions="4" time="0.041282"/>
+        </testsuite>
       </testsuite>
     </testsuite>
   </testsuite>
