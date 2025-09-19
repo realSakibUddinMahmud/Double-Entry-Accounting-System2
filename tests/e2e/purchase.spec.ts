@@ -19,6 +19,14 @@ test.describe('Purchase E2E', () => {
     await page.goto('/purchases/create');
     await expect(page.locator('body')).toContainText(/add purchase|purchase/i);
 
+    // Invalid path: attempt submit empty and expect validation
+    const invalidSubmit = page.getByRole('button', { name: /save|submit|create|add purchase/i }).first();
+    if (await invalidSubmit.count()) {
+      await invalidSubmit.click().catch(() => {});
+      const v = page.locator('.invalid-feedback, .alert');
+      if (await v.count()) await expect(v.first()).toBeVisible();
+    }
+
     // Try to choose a supplier and store if dropdowns exist
     const supplierSelect = page.locator('select[name*="supplier"], select#supplier_id');
     if (await supplierSelect.count()) {

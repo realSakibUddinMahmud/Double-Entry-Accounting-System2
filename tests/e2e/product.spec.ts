@@ -69,6 +69,21 @@ test.describe('Products create/edit', () => {
     await selectFirst('select#tax_id');
     await selectFirst('select#tax_method');
 
+    // First, attempt an invalid submit by clearing requireds (if present)
+    const submitBtn = page.getByRole('button', { name: /add product/i });
+    if (await submitBtn.count()) {
+      // Clear some required fields
+      await setIfExists('input#product_name', '');
+      await setIfExists('input[name="purchase_cost"]', '');
+      await setIfExists('input[name="cogs"]', '');
+      await setIfExists('input[name="sales_price"]', '');
+      await submitBtn.first().click().catch(() => {});
+      const invalidAny = page.locator('.invalid-feedback, .alert');
+      if (await invalidAny.count()) {
+        await expect(invalidAny.first()).toBeVisible();
+      }
+    }
+
     // Additional Fields if present
     const additionalInputs = page.locator('[name^="additional_fields["]');
     const count = await additionalInputs.count();

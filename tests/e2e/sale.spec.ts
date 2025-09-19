@@ -19,6 +19,14 @@ test.describe('Sale E2E', () => {
     await page.goto('/sales/create');
     await expect(page.locator('body')).toContainText(/add sale|sale/i);
 
+    // Invalid path: submit empty
+    const trySubmit = page.getByRole('button', { name: /save|submit|create|add sale/i }).first();
+    if (await trySubmit.count()) {
+      await trySubmit.click().catch(() => {});
+      const v = page.locator('.invalid-feedback, .alert');
+      if (await v.count()) await expect(v.first()).toBeVisible();
+    }
+
     // Try to choose a customer and store if dropdowns exist
     const customerSelect = page.locator('select[name*="customer"], select#customer_id');
     if (await customerSelect.count()) {
