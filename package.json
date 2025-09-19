@@ -7,7 +7,8 @@
         "test:e2e": "playwright test",
         "test:e2e:headed": "playwright test --headed",
         "test:e2e:report": "playwright show-report",
-        "test:e2e:ci": "playwright install --with-deps && playwright test --reporter=list,junit,html"
+        "test:e2e:ci": "playwright install --with-deps && playwright test --reporter=list,junit,html",
+        "report:pdf": "node scripts/render-pdf.js docs/QA/QA-Summary.md docs/QA/QA-Summary.pdf"
     },
     "devDependencies": {
         "@playwright/test": "^1.55.0",
