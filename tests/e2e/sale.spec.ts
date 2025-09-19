@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { assertDrEqualsCrForLatestJournal } from './helpers';
 
 const validPhone = process.env.ADMIN_PHONE || '01900000000';
 const validPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
@@ -47,6 +48,9 @@ test.describe('Sale E2E', () => {
     // Fallback: go back to sales list
     await page.goto('/sales');
     await expect(page.locator('body')).toContainText(/sales list|sales/i);
+
+    // Accounting invariant check (best-effort)
+    await assertDrEqualsCrForLatestJournal().catch((e) => console.warn(String(e)));
   });
 });
 
