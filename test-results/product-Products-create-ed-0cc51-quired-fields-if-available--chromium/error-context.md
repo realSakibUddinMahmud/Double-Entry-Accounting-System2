@@ -1,0 +1,410 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - img [ref=e8]
+          - generic [ref=e10]: Internal Server Error
+        - button [ref=e13] [cursor=pointer]:
+          - img [ref=e14] [cursor=pointer]
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - generic [ref=e22]: Illuminate\Database\QueryException
+            - generic [ref=e23]: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tenant_local.custom_fields' doesn't exist (Connection: tenant, SQL: select * from `custom_fields` where `model_type` = App\\Models\\Product)"
+          - generic [ref=e24]:
+            - generic [ref=e26]: GET 127.0.0.1:8000
+            - generic [ref=e28]: PHP 8.4.5 — Laravel 12.19.3
+        - generic [ref=e31]:
+          - generic [ref=e33]:
+            - button "Expand vendor frames" [ref=e35] [cursor=pointer]:
+              - generic [ref=e36] [cursor=pointer]: Expand
+              - generic [ref=e37] [cursor=pointer]: vendor frames
+              - generic [ref=e38] [cursor=pointer]:
+                - img [ref=e39] [cursor=pointer]
+                - img [ref=e41] [cursor=pointer]
+            - generic [ref=e43]:
+              - generic [ref=e45]: 9 vendor frames collapsed
+              - button "App\\Http\\Controllers\\Admin\\ProductController :82 create" [ref=e46] [cursor=pointer]:
+                - generic [ref=e48] [cursor=pointer]:
+                  - generic [ref=e50] [cursor=pointer]:
+                    - generic [ref=e51] [cursor=pointer]: App\Http\Controllers\Admin\ProductController
+                    - generic [ref=e52] [cursor=pointer]: :82
+                  - generic [ref=e53] [cursor=pointer]: create
+              - generic [ref=e55]: 60 vendor frames collapsed
+              - button "public/index.php :20" [ref=e56] [cursor=pointer]:
+                - generic [ref=e60] [cursor=pointer]:
+                  - generic [ref=e61] [cursor=pointer]: public/index.php
+                  - generic [ref=e62] [cursor=pointer]: :20
+          - text: 817 818 819 820 821 822 823 824 825 826 827 828 829 830 831 832 833 771 772 773 774 775 776 777 778 779 780 781 782 783 784 785 786 787 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 3126 3127 3128 3129 3130 3131 3132 3133 3134 3135 3136 3137 3138 3139 3140 3141 3142 3143 3111 3112 3113 3114 3115 3116 3117 3118 3119 3120 3121 3122 3123 3124 3125 3126 3127 3128 3701 3702 3703 3704 3705 3706 3707 3708 3709 3710 3711 3712 3713 3714 3715 3716 3717 3110 3111 3112 3113 3114 3115 3116 3117 3118 3119 3120 3121 3122 3123 3124 3125 3126 3127 867 868 869 870 871 872 873 874 875 876 877 878 879 880 881 882 883 849 850 851 852 853 854 855 856 857 858 859 860 861 862 863 864 865 866
+          - generic [ref=e63]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: app/Http/Controllers/Admin/ProductController.php
+              - generic [ref=e68]: :82
+            - code [ref=e71]:
+              - table [ref=e72]:
+                - rowgroup [ref=e73]:
+                  - row "77 $brands = Brand::orderBy('name')->get();" [ref=e74]:
+                    - cell "77" [ref=e75]:
+                      - generic [ref=e76]: "77"
+                    - cell "$brands = Brand::orderBy('name')->get();" [ref=e77]:
+                      - generic [ref=e78]: $brands
+                      - text: =
+                      - generic [ref=e79]: Brand
+                      - text: "::"
+                      - generic [ref=e80]: orderBy
+                      - text: (
+                      - generic [ref=e81]: "'name'"
+                      - text: )->
+                      - generic [ref=e82]: get
+                      - text: ();
+                  - row "78 $productNameSuggestions = DB::connection('landlord')->table('products')->pluck('name')->unique();" [ref=e83]:
+                    - cell "78" [ref=e84]:
+                      - generic [ref=e85]: "78"
+                    - cell "$productNameSuggestions = DB::connection('landlord')->table('products')->pluck('name')->unique();" [ref=e86]:
+                      - generic [ref=e87]: $productNameSuggestions
+                      - text: "= DB::"
+                      - generic [ref=e88]: connection
+                      - text: (
+                      - generic [ref=e89]: "'landlord'"
+                      - text: )->
+                      - generic [ref=e90]: table
+                      - text: (
+                      - generic [ref=e91]: "'products'"
+                      - text: )->
+                      - generic [ref=e92]: pluck
+                      - text: (
+                      - generic [ref=e93]: "'name'"
+                      - text: )->
+                      - generic [ref=e94]: unique
+                      - text: ();
+                  - row "79 $stores = Store::where('status',1)->orderBy('name')->get();" [ref=e95]:
+                    - cell "79" [ref=e96]:
+                      - generic [ref=e97]: "79"
+                    - cell "$stores = Store::where('status',1)->orderBy('name')->get();" [ref=e98]:
+                      - generic [ref=e99]: $stores
+                      - text: =
+                      - generic [ref=e100]: Store
+                      - text: "::"
+                      - generic [ref=e101]: where
+                      - text: (
+                      - generic [ref=e102]: "'status'"
+                      - text: ","
+                      - generic [ref=e103]: "1"
+                      - text: )->
+                      - generic [ref=e104]: orderBy
+                      - text: (
+                      - generic [ref=e105]: "'name'"
+                      - text: )->
+                      - generic [ref=e106]: get
+                      - text: ();
+                  - row "80 $units = Unit::orderBy('name')->get();" [ref=e107]:
+                    - cell "80" [ref=e108]:
+                      - generic [ref=e109]: "80"
+                    - cell "$units = Unit::orderBy('name')->get();" [ref=e110]:
+                      - generic [ref=e111]: $units
+                      - text: =
+                      - generic [ref=e112]: Unit
+                      - text: "::"
+                      - generic [ref=e113]: orderBy
+                      - text: (
+                      - generic [ref=e114]: "'name'"
+                      - text: )->
+                      - generic [ref=e115]: get
+                      - text: ();
+                  - row "81 $taxes = Tax::orderBy('name')->get();" [ref=e116]:
+                    - cell "81" [ref=e117]:
+                      - generic [ref=e118]: "81"
+                    - cell "$taxes = Tax::orderBy('name')->get();" [ref=e119]:
+                      - generic [ref=e120]: $taxes
+                      - text: =
+                      - generic [ref=e121]: Tax
+                      - text: "::"
+                      - generic [ref=e122]: orderBy
+                      - text: (
+                      - generic [ref=e123]: "'name'"
+                      - text: )->
+                      - generic [ref=e124]: get
+                      - text: ();
+                  - row "82 $productFields = CustomField::where('model_type', 'App\\Models\\Product')->get();" [ref=e125]:
+                    - cell "82" [ref=e126]:
+                      - generic [ref=e127]: "82"
+                    - cell "$productFields = CustomField::where('model_type', 'App\\Models\\Product')->get();" [ref=e128]:
+                      - generic [ref=e129]: $productFields
+                      - text: =
+                      - generic [ref=e130]: CustomField
+                      - text: "::"
+                      - generic [ref=e131]: where
+                      - text: (
+                      - generic [ref=e132]: "'model_type'"
+                      - text: ","
+                      - generic [ref=e133]: "'App\\Models\\Product'"
+                      - text: )->
+                      - generic [ref=e134]: get
+                      - text: ();
+                  - row "83" [ref=e135]:
+                    - cell "83" [ref=e136]:
+                      - generic [ref=e137]: "83"
+                    - cell [ref=e138]
+                  - row "84 return view('admin.product.create', compact('brands', 'categories', 'productNameSuggestions', 'stores', 'units', 'taxes', 'productFields'));" [ref=e139]:
+                    - cell "84" [ref=e140]:
+                      - generic [ref=e141]: "84"
+                    - cell "return view('admin.product.create', compact('brands', 'categories', 'productNameSuggestions', 'stores', 'units', 'taxes', 'productFields'));" [ref=e142]:
+                      - generic [ref=e143]: return
+                      - generic [ref=e144]: view
+                      - text: (
+                      - generic [ref=e145]: "'admin.product.create'"
+                      - text: ","
+                      - generic [ref=e146]: compact
+                      - text: (
+                      - generic [ref=e147]: "'brands'"
+                      - text: ","
+                      - generic [ref=e148]: "'categories'"
+                      - text: ","
+                      - generic [ref=e149]: "'productNameSuggestions'"
+                      - text: ","
+                      - generic [ref=e150]: "'stores'"
+                      - text: ","
+                      - generic [ref=e151]: "'units'"
+                      - text: ","
+                      - generic [ref=e152]: "'taxes'"
+                      - text: ","
+                      - generic [ref=e153]: "'productFields'"
+                      - text: ));
+                  - 'row "85 }" [ref=e154]':
+                    - cell "85" [ref=e155]:
+                      - generic [ref=e156]: "85"
+                    - 'cell "}" [ref=e157]'
+                  - row "86" [ref=e158]:
+                    - cell "86" [ref=e159]:
+                      - generic [ref=e160]: "86"
+                    - cell [ref=e161]
+                  - row "87 public function store(Request $request)" [ref=e162]:
+                    - cell "87" [ref=e163]:
+                      - generic [ref=e164]: "87"
+                    - cell "public function store(Request $request)" [ref=e165]:
+                      - generic [ref=e166]: public
+                      - generic [ref=e167]:
+                        - generic [ref=e168]: function
+                        - generic [ref=e169]: store
+                        - text: (
+                        - generic [ref=e170]:
+                          - text: Request
+                          - generic [ref=e171]: $request
+                        - text: )
+                  - 'row "88 {" [ref=e172]':
+                    - cell "88" [ref=e173]:
+                      - generic [ref=e174]: "88"
+                    - 'cell "{" [ref=e175]'
+                  - row "89 $connection = $this->getConnectionName();" [ref=e176]:
+                    - cell "89" [ref=e177]:
+                      - generic [ref=e178]: "89"
+                    - cell "$connection = $this->getConnectionName();" [ref=e179]:
+                      - generic [ref=e180]: $connection
+                      - text: =
+                      - generic [ref=e181]: $this
+                      - text: "->"
+                      - generic [ref=e182]: getConnectionName
+                      - text: ();
+                  - row "90" [ref=e183]:
+                    - cell "90" [ref=e184]:
+                      - generic [ref=e185]: "90"
+                    - cell [ref=e186]
+                  - row "91 $validator = Validator::make($request->all(), [" [ref=e187]:
+                    - cell "91" [ref=e188]:
+                      - generic [ref=e189]: "91"
+                    - cell "$validator = Validator::make($request->all(), [" [ref=e190]:
+                      - generic [ref=e191]: $validator
+                      - text: =
+                      - generic [ref=e192]: Validator
+                      - text: "::"
+                      - generic [ref=e193]: make
+                      - text: (
+                      - generic [ref=e194]: $request
+                      - text: "->"
+                      - generic [ref=e195]: all
+                      - text: (), [
+                  - row "92 'store_id' => ['required', Rule::exists($connection . '.stores', 'id')]," [ref=e196]:
+                    - cell "92" [ref=e197]:
+                      - generic [ref=e198]: "92"
+                    - cell "'store_id' => ['required', Rule::exists($connection . '.stores', 'id')]," [ref=e199]:
+                      - generic [ref=e200]: "'store_id'"
+                      - text: => [
+                      - generic [ref=e201]: "'required'"
+                      - text: ","
+                      - generic [ref=e202]: Rule
+                      - text: "::"
+                      - generic [ref=e203]: exists
+                      - text: (
+                      - generic [ref=e204]: $connection
+                      - text: .
+                      - generic [ref=e205]: "'.stores'"
+                      - text: ","
+                      - generic [ref=e206]: "'id'"
+                      - text: )],
+                  - row "93 'name' => 'required|string|max:255'," [ref=e207]:
+                    - cell "93" [ref=e208]:
+                      - generic [ref=e209]: "93"
+                    - cell "'name' => 'required|string|max:255'," [ref=e210]:
+                      - generic [ref=e211]: "'name'"
+                      - text: =>
+                      - generic [ref=e212]: "'required|string|max:255'"
+                      - text: ","
+          - text: 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 819 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 22 23 24 25 26 27 28 29 30 31 32 33 34 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 12 13 14 15 16 17 18 19 20 21 22 23 24 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 45 46 47 48 49 50 51 52 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 43 44 45 46 47 48 49 50 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 31 32 33 34 35 36 37 38 39 40 41 42 43 44 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 802 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 819 781 782 783 784 785 786 787 788 789 790 791 792 793 794 795 796 797 798 745 746 747 748 749 750 751 752 753 754 755 756 757 758 759 760 761 734 735 736 737 738 739 740 741 742 743 744 745 746 747 748 749 750 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 21 22 23 24 25 26 27 28 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 1214 1215 1216 1217 1218 1219 1220 1221 1222 1223 1224 1225 1226 1227 1228 1229 1230 1231 15 16 17 18 19 20
+        - generic [ref=e213]:
+          - generic [ref=e215]: Request
+          - generic [ref=e216]:
+            - generic [ref=e217]: GET
+            - generic [ref=e218]: /products/create
+          - generic [ref=e220]: Headers
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - generic [ref=e223] [cursor=pointer]: host
+              - code [ref=e226]: 127.0.0.1:8000
+            - generic [ref=e227]:
+              - generic [ref=e228] [cursor=pointer]: connection
+              - code [ref=e231]: keep-alive
+            - generic [ref=e232]:
+              - generic [ref=e233] [cursor=pointer]: sec-ch-ua
+              - code [ref=e236]: "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"HeadlessChrome\";v=\"140\""
+            - generic [ref=e237]:
+              - generic [ref=e238] [cursor=pointer]: sec-ch-ua-mobile
+              - code [ref=e241]: "?0"
+            - generic [ref=e242]:
+              - generic [ref=e243] [cursor=pointer]: sec-ch-ua-platform
+              - code [ref=e246]: "\"Windows\""
+            - generic [ref=e247]:
+              - generic [ref=e248] [cursor=pointer]: upgrade-insecure-requests
+              - code [ref=e251]: "1"
+            - generic [ref=e252]:
+              - generic [ref=e253] [cursor=pointer]: user-agent
+              - code [ref=e256]: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.16 Safari/537.36
+            - generic [ref=e257]:
+              - generic [ref=e258] [cursor=pointer]: accept-language
+              - code [ref=e261]: en-US
+            - generic [ref=e262]:
+              - generic [ref=e263] [cursor=pointer]: accept
+              - code [ref=e266]: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+            - generic [ref=e267]:
+              - generic [ref=e268] [cursor=pointer]: sec-fetch-site
+              - code [ref=e271]: none
+            - generic [ref=e272]:
+              - generic [ref=e273] [cursor=pointer]: sec-fetch-mode
+              - code [ref=e276]: navigate
+            - generic [ref=e277]:
+              - generic [ref=e278] [cursor=pointer]: sec-fetch-user
+              - code [ref=e281]: "?1"
+            - generic [ref=e282]:
+              - generic [ref=e283] [cursor=pointer]: sec-fetch-dest
+              - code [ref=e286]: document
+            - generic [ref=e287]:
+              - generic [ref=e288] [cursor=pointer]: accept-encoding
+              - code [ref=e291]: gzip, deflate, br, zstd
+            - generic [ref=e292]:
+              - generic [ref=e293] [cursor=pointer]: cookie
+              - code [ref=e296]: XSRF-TOKEN=eyJpdiI6ImduZWVUQ3lGbUNmY0dUMmtkWGxSRlE9PSIsInZhbHVlIjoiaEZCRUNmNlBxWTlaK0k1MHMwd3RmSjZwRGdzbSs2VWJwVWpDbnFQcFpjR0EvSEk1MDEreGxzemNLZXlqMXladVZpd0dzeUJvWGFZMUlLVkVzemhoeHgzTFBIOFo1c0ZhNTlYc2xURWtsVEthbEVDc283REV3YnNUTnkweXRBUnMiLCJtYWMiOiIwMDI5MTNiZmVlZTlhZDg0YjRiMDNhMGI2Y2U1NGJhNjhlODI2MTc5NTBjNjNlMjJjMDllNzRhZDJiNjhlZjczIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IklOWmdWeVZxeTJSRk5OdHYxZmNtWHc9PSIsInZhbHVlIjoiUlM1bHh3endXbjY0QjNuWjhENVptNEhJY1l3VXdnL2pVSHhFa0syNjhDdkNER3duUW0rVVh4TlZJVnVaQ0pqTitoN1BPd3d4TjRYVDNNU0pLU054bTM2UkpmZ1pzbzF2Q2s3bnVDY0NKYjZDdXNjTWhRL28zbVpVZmhOZmpscXAiLCJtYWMiOiIyMmY4ZjhkNjRhNWFjMGJkMzI4YjVjYWMyYzc3NjlhZWQ1Mzk0MWFlMzBiMDA5YTE3YzZjNmIyM2E1YTUyMDdlIiwidGFnIjoiIn0%3D
+          - generic [ref=e298]: Body
+          - code [ref=e303]: No body data
+        - generic [ref=e304]:
+          - generic [ref=e306]: Application
+          - generic [ref=e308]: Routing
+          - generic [ref=e309]:
+            - generic [ref=e310]:
+              - generic [ref=e311] [cursor=pointer]: controller
+              - code [ref=e314]: App\Http\Controllers\Admin\ProductController@create
+            - generic [ref=e315]:
+              - generic [ref=e316] [cursor=pointer]: route name
+              - code [ref=e319]: products.create
+            - generic [ref=e320]:
+              - generic [ref=e321] [cursor=pointer]: middleware
+              - code [ref=e324]: web, auth
+          - generic [ref=e326]: Database Queries
+          - generic [ref=e327]:
+            - generic [ref=e328]:
+              - generic [ref=e329]:
+                - generic [ref=e330]: landlord
+                - generic [ref=e331]: (1.62 ms)
+              - code [ref=e334]: "select * from `tenants` where `domain` = '127.0.0.1' limit 1"
+            - generic [ref=e335]:
+              - generic [ref=e336]:
+                - generic [ref=e337]: tenant
+                - generic [ref=e338]: (1.83 ms)
+              - code [ref=e341]: "select * from `users` where `id` = 1 limit 1"
+            - generic [ref=e342]:
+              - generic [ref=e343]:
+                - generic [ref=e344]: tenant
+                - generic [ref=e345]: (1.62 ms)
+              - code [ref=e348]: "select * from `categories` order by `name` asc"
+            - generic [ref=e349]:
+              - generic [ref=e350]:
+                - generic [ref=e351]: tenant
+                - generic [ref=e352]: (1.5 ms)
+              - code [ref=e355]: "select * from `brands` order by `name` asc"
+            - generic [ref=e356]:
+              - generic [ref=e357]:
+                - generic [ref=e358]: landlord
+                - generic [ref=e359]: (1.6 ms)
+              - code [ref=e362]: "select `name` from `products`"
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - generic [ref=e365]: tenant
+                - generic [ref=e366]: (0.24 ms)
+              - code [ref=e369]: "select * from `stores` where `status` = 1 order by `name` asc"
+            - generic [ref=e370]:
+              - generic [ref=e371]:
+                - generic [ref=e372]: tenant
+                - generic [ref=e373]: (0.3 ms)
+              - code [ref=e376]: "select * from `units` order by `name` asc"
+            - generic [ref=e377]:
+              - generic [ref=e378]:
+                - generic [ref=e379]: tenant
+                - generic [ref=e380]: (0.62 ms)
+              - code [ref=e383]: "select * from `taxes` order by `name` asc"
+  - generic [ref=e384]:
+    - generic [ref=e386]:
+      - generic [ref=e388]:
+        - generic [ref=e389] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e390] [cursor=pointer]: "1"
+        - generic [ref=e391] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e392] [cursor=pointer]: 500 Internal Server Error
+        - generic [ref=e393] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e394] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e395] [cursor=pointer]: "2"
+        - generic [ref=e396] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e397] [cursor=pointer]: "22"
+        - generic [ref=e398] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e399] [cursor=pointer]: "7"
+        - generic [ref=e400] [cursor=pointer]:
+          - generic: 
+          - generic [ref=e401] [cursor=pointer]: "10"
+        - text:   
+      - generic [ref=e402]:
+        - generic [ref=e404] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e407] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e408] [cursor=pointer]:
+          - generic: 
+          - generic: 152ms
+        - generic [ref=e409]:
+          - generic: 
+          - generic: 6MB
+        - generic [ref=e410]:
+          - generic: 
+          - generic: 12.x
+        - generic [ref=e411] [cursor=pointer]:
+          - generic: 
+          - generic: GET products/create
+    - text:                                                                                                                           
+  - text: 
+```
