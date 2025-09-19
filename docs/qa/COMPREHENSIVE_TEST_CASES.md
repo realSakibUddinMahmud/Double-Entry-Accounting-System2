@@ -1149,4 +1149,336 @@ Each test case follows this format:
 
 ---
 
+## 12. DOUBLE-ENTRY ACCOUNTING PACKAGE - DETAILED TESTING
+
+### 12.1 Livewire Component Testing
+
+#### Test Case ID: LIVE-001
+**Feature**: Income Revenue Component Form Validation
+**Preconditions**: User has accounting permissions, income accounts exist
+**Steps to Execute**:
+1. Navigate to `/de-accounting/income-revenues/create`
+2. Test form validation using Livewire component
+3. Verify real-time validation feedback
+
+**Test Data & Expected Results**:
+
+##### Source Account Selection:
+| Account Type | Selection | Expected Result |
+|--------------|-----------|-----------------|
+| Valid Income Account | Service Revenue | Account selected, destination accounts loaded |
+| Empty Selection | "" | Error: "Source account is required" |
+| Invalid Account Type | Expense Account | Error: "Invalid account type for income" |
+
+##### Amount Field Validation:
+| Amount Input | Expected Result |
+|-------------|-----------------|
+| 25000.50 | Accepted, formatted to 2 decimals |
+| 25000 | Accepted, formatted to 25000.00 |
+| 25000.999 | Accepted, rounded to 25000.99 |
+| abc | Error: "Amount must be numeric" |
+| -1000 | Error: "Amount must be positive" |
+| 0 | Error: "Amount must be greater than 0" |
+| 99999999999999.99 | Error: "Amount exceeds maximum limit" |
+
+##### Destination Account Validation:
+| Account Selection | Expected Result |
+|------------------|-----------------|
+| Cash Account | Valid destination, amount mirrored |
+| Bank Account | Valid destination, amount mirrored |
+| Income Account | Error: "Cannot transfer to same account type" |
+| Empty | Error: "Destination account required" |
+
+#### Test Case ID: LIVE-002
+**Feature**: Expense Component Form Validation
+**Preconditions**: User has accounting permissions, expense accounts exist
+**Steps to Execute**:
+1. Navigate to `/de-accounting/expenses/create`
+2. Fill expense form
+3. Verify validations and amount limits
+
+**Test Data & Expected Results**:
+
+##### JavaScript Validation Testing:
+| Input | JavaScript Function | Expected Result |
+|-------|-------------------|-----------------|
+| 12345.678 | validateInput() | Trimmed to 12345.67 |
+| abc123.45 | validateInput() | Cleaned to 123.45 |
+| 12345678901234.99 | validateInput() | Trimmed to 14 characters max |
+| 123.999 | validateInput() | Limited to 2 decimal places |
+
+#### Test Case ID: LIVE-003
+**Feature**: Fund Transfer Component
+**Preconditions**: Multiple bank/cash accounts exist
+**Steps to Execute**:
+1. Navigate to fund transfer page
+2. Test account selection and validation
+3. Verify double-entry logic
+
+**Test Data & Expected Results**:
+
+##### Source-Destination Account Logic:
+| Source Account | Destination Account | Expected Result |
+|---------------|-------------------|-----------------|
+| Cash in Hand | Bank Account ABC | Valid transfer setup |
+| Bank Account ABC | Cash in Hand | Valid transfer setup |
+| Cash in Hand | Cash in Hand | Error: "Source and destination cannot be same" |
+| Expense Account | Bank Account | Error: "Invalid account combination" |
+
+### 12.2 File Upload Testing
+
+#### Test Case ID: FILE-001
+**Feature**: Transaction File Attachments
+**Preconditions**: Transaction form open, upload enabled
+**Steps to Execute**:
+1. Select files for upload
+2. Submit transaction
+3. Verify file storage and retrieval
+
+**Test Data & Expected Results**:
+
+##### File Type Validation:
+| File Type | File Name | Size | Expected Result |
+|-----------|-----------|------|-----------------|
+| PDF | invoice.pdf | 2MB | Upload successful |
+| JPG | receipt.jpg | 1MB | Upload successful |
+| JPEG | document.jpeg | 1.5MB | Upload successful |
+| PNG | screenshot.png | 800KB | Upload successful |
+| TXT | notes.txt | 10KB | Error: "File type not allowed" |
+| EXE | virus.exe | 1MB | Error: "File type not allowed" |
+| DOCX | contract.docx | 2MB | Error: "File type not allowed" |
+
+##### File Size Validation:
+| File Size | Expected Result |
+|-----------|-----------------|
+| 100KB | Upload successful |
+| 5MB | Upload successful (at limit) |
+| 6MB | Error: "File size exceeds 5MB limit" |
+| 10MB | Error: "File size exceeds limit" |
+
+### 12.3 Bangladesh-Specific Advanced Phone Number Testing
+
+#### Test Case ID: BD-ADV-001
+**Feature**: Advanced Bangladesh Phone Number Edge Cases
+**Preconditions**: Any form with phone field
+**Steps to Execute**:
+1. Test edge cases for Bangladesh phone validation
+2. Test international format variations
+3. Verify operator-specific rules
+
+**Test Data & Expected Results**:
+
+##### International Format Variations:
+| Phone Input | Expected Result |
+|-------------|-----------------|
+| +8801712345678 | ✅ Valid (Grameenphone international) |
+| +8801812345678 | ✅ Valid (Robi international) |
+| +8801312345678 | ✅ Valid (Teletalk international) |
+| +8801412345678 | ✅ Valid (Banglalink international) |
+| +8801512345678 | ✅ Valid (Citycell international) |
+| +8801612345678 | ✅ Valid (Airtel international) |
+| +8801912345678 | ✅ Valid (Banglalink international) |
+| 8801712345678 | ❌ Error: "Missing + for international format" |
+| ++8801712345678 | ❌ Error: "Invalid format" |
+| +880 1712345678 | ❌ Error: "Space not allowed" |
+| +8801712345678x123 | ❌ Error: "Extension not supported" |
+
+##### Boundary Testing:
+| Phone Input | Description | Expected Result |
+|-------------|-------------|-----------------|
+| 01313456789 | Minimum Teletalk | ✅ Valid |
+| 01999999999 | Maximum Banglalink | ✅ Valid |
+| 01300000000 | Edge case Teletalk | ✅ Valid |
+| 01200000000 | Invalid prefix 012 | ❌ Error: "Invalid operator prefix" |
+| 02012345678 | Non-mobile number | ❌ Error: "Not a mobile number format" |
+| 01999999998 | One less than max | ✅ Valid |
+
+### 12.4 Currency and Amount Precision Testing
+
+#### Test Case ID: CURR-001
+**Feature**: Bangladesh Taka (BDT) Amount Precision
+**Preconditions**: Any monetary input field
+**Steps to Execute**:
+1. Test decimal precision limits
+2. Test rounding behavior
+3. Test currency formatting
+
+**Test Data & Expected Results**:
+
+##### Decimal Precision Testing:
+| Amount Input | Expected Output | Expected Result |
+|-------------|----------------|-----------------|
+| 1000.50 | 1000.50 | ✅ Accepted |
+| 1000.555 | 1000.56 | ✅ Rounded up |
+| 1000.554 | 1000.55 | ✅ Rounded down |
+| 1000.505 | 1000.51 | ✅ Rounded up |
+| 1000.500 | 1000.50 | ✅ Kept as is |
+| 0.01 | 0.01 | ✅ Minimum amount |
+| 0.001 | 0.00 | ❌ Error: "Amount too small" |
+
+##### Large Amount Testing:
+| Amount Input | Expected Result |
+|-------------|-----------------|
+| 999999.99 | ✅ Accepted |
+| 1000000.00 | ✅ Accepted |
+| 9999999.99 | ✅ Accepted |
+| 99999999.99 | ✅ Accepted |
+| 999999999.99 | ✅ Accepted |
+| 9999999999.99 | ✅ Accepted |
+| 99999999999.99 | ✅ Accepted |
+| 999999999999.99 | ✅ Accepted (max 14 chars) |
+| 9999999999999.99 | ❌ Error: "Amount exceeds limit" |
+
+### 12.5 End-to-End Bangladesh Business Scenario Testing
+
+#### Test Case ID: E2E-BD-001
+**Feature**: Complete Bangladesh SME Accounting Workflow
+**Preconditions**: Clean system setup
+**Steps to Execute**:
+1. Register business owner with BD phone
+2. Set up chart of accounts
+3. Record typical Bangladesh business transactions
+4. Generate standard reports
+5. Verify compliance with local practices
+
+**Business Scenario**: Small Trading Business in Dhaka
+
+**Test Steps**:
+1. **Business Registration**:
+   - Owner: "Abdul Rahman"
+   - Phone: +8801712345678
+   - Business: "Rahman Trading Co."
+
+2. **Chart of Accounts Setup**:
+   - Cash in Hand (BDT)
+   - Dutch Bangla Bank Account
+   - Accounts Receivable
+   - Inventory
+   - Accounts Payable
+   - Sales Revenue
+   - Cost of Goods Sold
+   - Office Rent
+   - Utilities
+
+3. **Typical Transactions**:
+   - Initial Capital: BDT 500,000
+   - Inventory Purchase: BDT 200,000
+   - Sales (Cash): BDT 150,000
+   - Sales (Credit): BDT 100,000
+   - Rent Payment: BDT 25,000
+   - Utility Bills: BDT 8,000
+   - Bank Deposit: BDT 100,000
+
+4. **Report Generation**:
+   - Trial Balance
+   - Profit & Loss Statement
+   - Balance Sheet
+   - Cash Flow Statement
+
+**Expected Results**:
+- All transactions recorded with proper double-entry
+- Phone numbers validated according to BD rules
+- Reports generated in BDT currency
+- Trial balance balances (Debits = Credits)
+- Realistic business scenario reflected in reports
+
+#### Test Case ID: E2E-BD-002
+**Feature**: Multi-User Bangladesh Business Scenario
+**Preconditions**: Business system set up
+**Steps to Execute**:
+1. Create multiple users with different BD phone numbers
+2. Assign roles (Owner, Accountant, Cashier)
+3. Process transactions by different users
+4. Verify audit trail and permissions
+
+**Users**:
+- Owner: +8801712345678 (Full access)
+- Accountant: +8801812345679 (Accounting access)
+- Cashier: +8801912345680 (Limited access)
+
+**Expected Results**:
+- All phone numbers validated properly
+- Role-based access working
+- Audit trail shows user actions
+- No unauthorized access
+
+### 12.6 Compliance and Regulatory Testing
+
+#### Test Case ID: COMP-001
+**Feature**: Bangladesh VAT/Tax Integration Readiness
+**Preconditions**: Tax-enabled accounts exist
+**Steps to Execute**:
+1. Create transactions with tax implications
+2. Verify tax calculations
+3. Check tax reporting readiness
+
+**Test Scenarios**:
+- 15% VAT on sales
+- Advance Tax deductions
+- Withholding tax calculations
+
+**Expected Results**:
+- Tax amounts calculated correctly
+- Tax accounts updated properly
+- Reports show tax details
+- Ready for VAT return preparation
+
+---
+
+## Test Case Summary
+
+**Total Test Cases Generated**: 200+
+
+### Coverage Breakdown:
+- **Authentication & User Management**: 15 test cases
+- **RBAC & Permissions**: 10 test cases  
+- **Profile Management**: 8 test cases
+- **Catalog Management**: 12 test cases
+- **Supplier & Customer Management**: 10 test cases
+- **Double-Entry Accounting Core**: 25 test cases
+- **Livewire Components**: 15 test cases
+- **File Upload & Attachments**: 8 test cases
+- **Reports & Exports**: 20 test cases
+- **Security Testing**: 25 test cases
+- **Performance Testing**: 10 test cases
+- **Bangladesh-Specific Validations**: 30 test cases
+- **End-to-End Workflows**: 15 test cases
+- **Integration Testing**: 12 test cases
+
+### Bangladesh-Specific Features Covered:
+✅ Phone number validation (all 7 operators)  
+✅ International format (+880) handling  
+✅ Currency precision (BDT) testing  
+✅ Business workflow scenarios  
+✅ Regulatory compliance readiness  
+✅ Multi-user role-based testing  
+
+### Double-Entry Accounting Features Covered:
+✅ Journal entry creation and validation  
+✅ Trial balance integrity  
+✅ Account classification testing  
+✅ Transaction reversal capabilities  
+✅ Multi-currency support preparation  
+✅ Audit trail verification  
+✅ Batch processing capabilities  
+
+### Security Features Covered:
+✅ XSS prevention testing  
+✅ SQL injection prevention  
+✅ CSRF protection verification  
+✅ Input sanitization validation  
+✅ Role-based access control  
+✅ Session management testing  
+
+**All test cases are structured with:**
+- Clear preconditions
+- Step-by-step execution instructions
+- Comprehensive test data (valid/invalid)
+- Expected results for each scenario
+- Priority classification for execution
+
+*This comprehensive test suite ensures full coverage of the Laravel fintech application with special attention to Bangladesh business rules and double-entry accounting principles.*
+
+---
+
 *This comprehensive test plan covers all major features, forms, workflows, and validation scenarios in the Double-Entry Accounting System, with special attention to Bangladeshi phone number validation and double-entry accounting integrity rules.*
