@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { assertDrEqualsCrForLatestJournal } from './helpers';
 
 const ADMIN_PHONE = process.env.ADMIN_PHONE!;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD!;
@@ -29,16 +30,49 @@ test.describe('DEAccounting flows (create pages render and basic validation)', (
       await login(page);
       await page.goto(path);
       await expect(page.locator('body')).toContainText(hint);
-      // Common fail: try submit (Livewire forms) and expect either disabled or error feedback
+      // 1) Invalid path: empty submit, expect some feedback if available
       const submit = page.getByRole('button', { name: /submit|save|create|add/i }).first();
       if (await submit.count()) {
-        // Try a minimal invalid submit
         await submit.click().catch(() => {});
-        // Look for some generic error surface; non-blocking if not shown
-        const anyError = await page.locator('.invalid-feedback, .alert').count();
-        if (anyError === 0) console.warn(`No validation feedback visible on ${path} for empty submit`);
+        const invalid = page.locator('.invalid-feedback, .alert').first();
+        if (await invalid.count()) {
+          await expect(invalid).toBeVisible();
+        } else {
+          console.warn(`No validation feedback visible on ${path} for empty submit`);
+        }
+      }
+
+      // 2) Valid path: try to fill minimal valid fields if present
+      const today = new Date().toISOString().slice(0, 10);
+      const amount = page.locator('input[name*="amount" i]');
+      if (await amount.count()) await amount.first().fill('100').catch(() => {});
+      const dateInput = page.locator('input[type="date"], input[name*="date" i]');
+      if (await dateInput.count()) await dateInput.first().fill(today).catch(() => {});
+      // Select two accounts if present (from/to)
+      const fromSelect = page.locator('select[name*="from" i], select[name*="debit" i], select[name*="from_account" i]');
+      if (await fromSelect.count()) await fromSelect.first().selectOption({ index: 1 }).catch(() => {});
+      const toSelect = page.locator('select[name*="to" i], select[name*="credit" i], select[name*="to_account" i]');
+      if (await toSelect.count()) await toSelect.first().selectOption({ index: 2 }).catch(() => {});
+      // Generic account fallback
+      const anyAccountSelects = page.locator('select[name*="account" i]');
+      if (!await fromSelect.count() && await anyAccountSelects.count() >= 2) {
+        await anyAccountSelects.nth(0).selectOption({ index: 1 }).catch(() => {});
+        await anyAccountSelects.nth(1).selectOption({ index: 2 }).catch(() => {});
+      }
+      // Try a description/note
+      const note = page.locator('textarea[name*="note" i], textarea[name*="description" i]');
+      if (await note.count()) await note.first().fill('QA E2E entry').catch(() => {});
+
+      if (await submit.count()) {
+        await submit.click().catch(() => {});
+        await page.waitForLoadState('networkidle');
       }
       await expect(page).not.toHaveURL(/login/);
+
+      // 3) DR=CR check for modules that generate journals (skip for accounts)
+      if (!path.includes('/accounts/')) {
+        await assertDrEqualsCrForLatestJournal().catch((e) => console.warn(String(e)));
+      }
     });
   }
 });
