@@ -60,7 +60,7 @@
           - generic: 
         - generic [ref=e61] [cursor=pointer]:
           - generic: 
-          - generic: 12.84ms
+          - generic: 19.23ms
         - generic [ref=e62]:
           - generic: 
           - generic: 2MB
