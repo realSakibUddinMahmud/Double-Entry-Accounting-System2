@@ -33,7 +33,7 @@ class SupplierController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'contact_person' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => ['required', 'string', 'max:20', new \App\Rules\BangladeshPhone()],
             'email' => 'nullable|email|max:255',
             'address' => 'nullable|string',
         ]);
@@ -73,7 +73,7 @@ class SupplierController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'contact_person' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => ['required', 'string', 'max:20', new \App\Rules\BangladeshPhone()],
             'email' => 'nullable|email|max:255',
             'address' => 'nullable|string',
             'status' => 'boolean', // Ensure status is boolean
