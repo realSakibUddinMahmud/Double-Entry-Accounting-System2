@@ -11,65 +11,71 @@
           - text: Phone Number
           - generic [ref=e17]: "*"
         - generic [ref=e18]:
-          - textbox "Enter your phone number" [active] [ref=e19]
+          - textbox "Enter your phone number" [active] [ref=e19]: "01012345678"
           - generic [ref=e21]: 
-      - generic [ref=e22]:
-        - generic [ref=e23]:
-          - text: Password
-          - generic [ref=e24]: "*"
+        - alert [ref=e22]:
+          - strong [ref=e23]: These credentials do not match our records.
+      - generic [ref=e24]:
         - generic [ref=e25]:
-          - textbox "Enter your password" [ref=e26]
-          - generic [ref=e27] [cursor=pointer]: 
-      - generic [ref=e30]:
-        - generic [ref=e32] [cursor=pointer]:
-          - checkbox "Remember me" [ref=e33]
+          - text: Password
+          - generic [ref=e26]: "*"
+        - generic [ref=e27]:
+          - textbox "Enter your password" [ref=e28]
+          - generic [ref=e29] [cursor=pointer]: 
+      - generic [ref=e32]:
+        - generic [ref=e34] [cursor=pointer]:
+          - checkbox "Remember me" [ref=e35]
           - text: Remember me
-        - link "Forgot Password?" [ref=e36] [cursor=pointer]:
+        - link "Forgot Password?" [ref=e38] [cursor=pointer]:
           - /url: http://127.0.0.1:8000/password/reset-request
-      - button "Sign In" [ref=e38] [cursor=pointer]
-      - heading "Don't have account? Create an account" [level=4] [ref=e40]:
+      - button "Sign In" [ref=e40] [cursor=pointer]
+      - heading "Don't have account? Create an account" [level=4] [ref=e42]:
         - text: Don't have account?
-        - link "Create an account" [ref=e41] [cursor=pointer]:
+        - link "Create an account" [ref=e43] [cursor=pointer]:
           - /url: http://127.0.0.1:8000/register
-  - generic [ref=e42]:
-    - paragraph [ref=e43]: 2025 © RyoFin. All Rights Reserved
-    - paragraph [ref=e44]:
+  - generic [ref=e44]:
+    - paragraph [ref=e45]: 2025 © RyoFin. All Rights Reserved
+    - paragraph [ref=e46]:
       - text: Designed & Developed By
-      - link "HiLinkz Ltd." [ref=e45] [cursor=pointer]:
+      - link "HiLinkz Ltd." [ref=e47] [cursor=pointer]:
         - /url: https://www.hilinkz.com
-  - generic [ref=e46]:
-    - generic [ref=e48]:
-      - generic [ref=e50]:
+  - generic [ref=e48]:
+    - generic [ref=e50]:
+      - generic [ref=e52]:
         - text: 
-        - generic [ref=e51] [cursor=pointer]:
+        - generic [ref=e53] [cursor=pointer]:
           - text: 
           - generic: Request
-        - generic [ref=e52] [cursor=pointer]:
+        - generic [ref=e54] [cursor=pointer]:
           - text: 
           - generic: Timeline
         - text: 
-        - generic [ref=e53] [cursor=pointer]:
+        - generic [ref=e55] [cursor=pointer]:
           - text: 
           - generic: Views
-          - generic [ref=e54] [cursor=pointer]: "3"
+          - generic [ref=e56] [cursor=pointer]: "3"
         - text:     
-      - generic [ref=e55]:
-        - generic [ref=e57] [cursor=pointer]:
+      - generic [ref=e57]:
+        - generic [ref=e59] [cursor=pointer]:
           - generic: 
-        - generic [ref=e60] [cursor=pointer]:
+        - generic [ref=e62] [cursor=pointer]:
           - generic: 
-        - generic [ref=e61] [cursor=pointer]:
+          - generic [ref=e63] [cursor=pointer]: "2"
+        - combobox [ref=e64] [cursor=pointer]:
+          - option "#1 login (stacked) (18:36:39)"
+          - option "#2 login (18:36:39)" [selected]
+        - generic [ref=e65] [cursor=pointer]:
           - generic: 
-          - generic: 19.23ms
-        - generic [ref=e62]:
+          - generic: 13.14ms
+        - generic [ref=e66]:
           - generic: 
           - generic: 2MB
-        - generic [ref=e63]:
+        - generic [ref=e67]:
           - generic: 
           - generic: 12.x
-        - generic [ref=e64] [cursor=pointer]:
+        - generic [ref=e68] [cursor=pointer]:
           - generic: 
           - generic: GET login
-    - text:                 
+    - text:                   
   - text: 
 ```

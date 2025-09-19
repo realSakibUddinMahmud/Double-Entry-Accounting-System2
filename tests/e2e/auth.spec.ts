@@ -14,29 +14,29 @@ test.describe('Authentication', () => {
 
     // Empty submit
     await page.getByRole('button', { name: /sign in/i }).click();
-    await expect(page.getByText(/phone/i)).toBeVisible();
+    await expect(page.locator('input[name="phone"]').first()).toBeVisible();
     await expect(page.locator('input[name="password"]').first()).toBeVisible();
 
     // Invalid prefix
-    await page.getByLabel(/phone/i).fill(INVALID_PREFIX);
+    await page.locator('input[name="phone"]').fill(INVALID_PREFIX);
     await page.locator('input[name="password"]').fill('x');
     await page.getByRole('button', { name: /sign in/i }).click();
     // Expect a validation message surfaced by backend; allow any invalid feedback block
     await expect(page.locator('.invalid-feedback')).toHaveCountGreaterThan(0);
 
     // Too short
-    await page.getByLabel(/phone/i).fill(SHORT_PHONE);
+    await page.locator('input[name="phone"]').fill(SHORT_PHONE);
     await page.getByRole('button', { name: /sign in/i }).click();
     await expect(page.locator('.invalid-feedback')).toHaveCountGreaterThan(0);
 
     // Accept valid local format (credentials may still fail)
-    await page.getByLabel(/phone/i).fill(VALID_LOCAL_PHONE);
+    await page.locator('input[name="phone"]').fill(VALID_LOCAL_PHONE);
     await page.locator('input[name="password"]').fill('incorrect');
     await page.getByRole('button', { name: /sign in/i }).click();
     await expect(page.locator('.alert, .invalid-feedback')).toHaveCountGreaterThan(0);
 
     // Accept valid international format entry in field
-    await page.getByLabel(/phone/i).fill(VALID_INTL_PHONE);
+    await page.locator('input[name="phone"]').fill(VALID_INTL_PHONE);
     await page.locator('input[name="password"]').fill('incorrect');
     await page.getByRole('button', { name: /sign in/i }).click();
     await expect(page.locator('.alert, .invalid-feedback')).toHaveCountGreaterThan(0);
