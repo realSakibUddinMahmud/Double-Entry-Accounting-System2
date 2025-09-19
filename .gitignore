@@ -69,6 +69,13 @@ Thumbs.db
 *.tar
 *.gz
 
+# Allow QA artifact tarball
+!docs/QA/artifacts/playwright-artifacts.tar.gz
+
+# Allow Playwright test-results directory and its contents
+!test-results/
+!test-results/**
+
 # Database files
 # *.sql  # Uncomment to include .sql files
 *.sqlite

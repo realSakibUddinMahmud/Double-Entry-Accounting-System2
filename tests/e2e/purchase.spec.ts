@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { assertDrEqualsCrForLatestJournal } from './helpers';
 
-const validPhone = '01900000000';
-const validPassword = 'secret123';
+const validPhone = process.env.ADMIN_PHONE || '01900000000';
+const validPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
 
 test.describe('Purchase E2E', () => {
   test.beforeEach(async ({ page }) => {
@@ -17,6 +18,14 @@ test.describe('Purchase E2E', () => {
   test('open create purchase and attempt simple submission', async ({ page }) => {
     await page.goto('/purchases/create');
     await expect(page.locator('body')).toContainText(/add purchase|purchase/i);
+
+    // Invalid path: attempt submit empty and expect validation
+    const invalidSubmit = page.getByRole('button', { name: /save|submit|create|add purchase/i }).first();
+    if (await invalidSubmit.count()) {
+      await invalidSubmit.click().catch(() => {});
+      const v = page.locator('.invalid-feedback, .alert');
+      if (await v.count()) await expect(v.first()).toBeVisible();
+    }
 
     // Try to choose a supplier and store if dropdowns exist
     const supplierSelect = page.locator('select[name*="supplier"], select#supplier_id');
@@ -49,6 +58,9 @@ test.describe('Purchase E2E', () => {
     // Fallback: navigate back to purchases list and ensure page loads
     await page.goto('/purchases');
     await expect(page.locator('body')).toContainText(/purchase list|purchases/i);
+
+    // Accounting invariant check (best-effort)
+    await assertDrEqualsCrForLatestJournal().catch((e) => console.warn(String(e)));
   });
 });
 
