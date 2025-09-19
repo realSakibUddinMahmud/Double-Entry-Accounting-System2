@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-const validPhone = '01900000000';
-const validPassword = 'secret123';
+const validPhone = process.env.ADMIN_PHONE || '01900000000';
+const validPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
 
 test.describe('Purchase E2E', () => {
   test.beforeEach(async ({ page }) => {
