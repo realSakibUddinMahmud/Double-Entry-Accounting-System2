@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/workspace/phpunit.xml" tests="7" assertions="27" errors="0" failures="0" skipped="0" time="1.917642">
-    <testsuite name="Feature" tests="7" assertions="27" errors="0" failures="0" skipped="0" time="1.917642">
-      <testsuite name="Tests\Feature\Export\BalanceSheetExportTest" file="/workspace/tests/Feature/Export/BalanceSheetExportTest.php" tests="1" assertions="4" errors="0" failures="0" skipped="0" time="0.382800">
-        <testcase name="test_balance_sheet_pdf_export_returns_pdf" file="/workspace/tests/Feature/Export/BalanceSheetExportTest.php" line="21" class="Tests\Feature\Export\BalanceSheetExportTest" classname="Tests.Feature.Export.BalanceSheetExportTest" assertions="4" time="0.382800"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Export\IncomeStatementExportTest" file="/workspace/tests/Feature/Export/IncomeStatementExportTest.php" tests="1" assertions="4" errors="0" failures="0" skipped="0" time="0.267313">
-        <testcase name="test_income_statement_pdf_export_returns_pdf" file="/workspace/tests/Feature/Export/IncomeStatementExportTest.php" line="21" class="Tests\Feature\Export\IncomeStatementExportTest" classname="Tests.Feature.Export.IncomeStatementExportTest" assertions="4" time="0.267313"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Export\PurchaseExportTest" file="/workspace/tests/Feature/Export/PurchaseExportTest.php" tests="1" assertions="4" errors="0" failures="0" skipped="0" time="0.264994">
-        <testcase name="test_purchase_pdf_export_returns_pdf" file="/workspace/tests/Feature/Export/PurchaseExportTest.php" line="21" class="Tests\Feature\Export\PurchaseExportTest" classname="Tests.Feature.Export.PurchaseExportTest" assertions="4" time="0.264994"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Export\SalesExportTest" file="/workspace/tests/Feature/Export/SalesExportTest.php" tests="1" assertions="5" errors="0" failures="0" skipped="0" time="0.281595">
-        <testcase name="test_sales_pdf_export_returns_pdf_with_content_disposition" file="/workspace/tests/Feature/Export/SalesExportTest.php" line="21" class="Tests\Feature\Export\SalesExportTest" classname="Tests.Feature.Export.SalesExportTest" assertions="5" time="0.281595"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Export\StockExportTest" file="/workspace/tests/Feature/Export/StockExportTest.php" tests="1" assertions="4" errors="0" failures="0" skipped="0" time="0.168136">
-        <testcase name="test_stock_pdf_export_returns_pdf" file="/workspace/tests/Feature/Export/StockExportTest.php" line="21" class="Tests\Feature\Export\StockExportTest" classname="Tests.Feature.Export.StockExportTest" assertions="4" time="0.168136"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Export\TrialBalanceExportTest" file="/workspace/tests/Feature/Export/TrialBalanceExportTest.php" tests="1" assertions="4" errors="0" failures="0" skipped="0" time="0.267912">
-        <testcase name="test_trial_balance_pdf_export_returns_pdf" file="/workspace/tests/Feature/Export/TrialBalanceExportTest.php" line="21" class="Tests\Feature\Export\TrialBalanceExportTest" classname="Tests.Feature.Export.TrialBalanceExportTest" assertions="4" time="0.267912"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Reports\ExportTest" file="/workspace/tests/Feature/Reports/ExportTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.284892">
-        <testcase name="test_sales_pdf_export_returns_pdf" file="/workspace/tests/Feature/Reports/ExportTest.php" line="21" class="Tests\Feature\Reports\ExportTest" classname="Tests.Feature.Reports.ExportTest" assertions="2" time="0.284892"/>
-      </testsuite>
+  <testsuite name="CLI Arguments" tests="8" assertions="40" errors="0" failures="0" skipped="0" time="0.310944">
+    <testsuite name="Tests\Unit\BangladeshPhoneValidationTest" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" tests="7" assertions="39" errors="0" failures="0" skipped="0" time="0.301607">
+      <testcase name="test_valid_local_phone_numbers" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="21" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="7" time="0.126250"/>
+      <testcase name="test_valid_international_phone_numbers" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="44" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="7" time="0.029245"/>
+      <testcase name="test_invalid_operator_prefixes" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="67" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="6" time="0.028409"/>
+      <testcase name="test_invalid_phone_lengths" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="89" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="4" time="0.029561"/>
+      <testcase name="test_invalid_formats" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="109" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="7" time="0.029978"/>
+      <testcase name="test_phone_numbers_with_formatting" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="132" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="4" time="0.029073"/>
+      <testcase name="test_validation_error_message" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/BangladeshPhoneValidationTest.php" line="152" class="Tests\Unit\BangladeshPhoneValidationTest" classname="Tests.Unit.BangladeshPhoneValidationTest" assertions="4" time="0.029092"/>
+    </testsuite>
+    <testsuite name="Tests\Unit\ExampleTest" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.009337">
+      <testcase name="test_that_true_is_true" file="/home/runner/work/Double-Entry-Accounting-System2/Double-Entry-Accounting-System2/tests/Unit/ExampleTest.php" line="12" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.009337"/>
     </testsuite>
   </testsuite>
 </testsuites>

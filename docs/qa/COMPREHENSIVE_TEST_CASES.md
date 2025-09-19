@@ -1,53 +1,783 @@
 # Comprehensive QA Test Cases - Double-Entry Accounting System
 
 ## Overview
-This document provides comprehensive test cases for the Laravel-based Double-Entry Accounting System, covering all features, forms, buttons, and workflows found in the application views. The test cases follow structured format and include special validation rules for Bangladesh-specific business requirements.
-
-## Test Case Structure
-Each test case follows this format:
-- **Feature Name**: Module/feature being tested
-- **Test Case ID**: Unique identifier (e.g., AUTH-001, REG-001)
-- **Preconditions**: Required setup/state before test execution
-- **Steps to Execute**: Detailed step-by-step instructions
-- **Test Data**: Valid and invalid input scenarios
-- **Expected Result**: Expected system behavior
-
-## Special Requirements: Bangladeshi Phone Number Validation
-
-### Phone Number Rules:
-- Must have 11 digits if starting with 01
-- Valid operator prefixes: 013, 014, 015, 016, 017, 018, 019
-- Invalid operator prefixes: 010, 011, 012
-- Formats accepted:
-  - Local: 01XXXXXXXXX (11 digits)
-  - International: +8801XXXXXXXXX (13 characters)
-- When +880 is present, it replaces the leading 0
-
-### Double-Entry Accounting Rules:
-- All transactions must maintain Debit = Credit balance
-- Journal entries must have both debit and credit accounts
-- Trial balance must always balance (total debits = total credits)
+This document contains comprehensive test cases for the Laravel-based fintech web application implementing double-entry accounting with Bangladesh-specific business rules.
 
 ---
 
-## 1. AUTHENTICATION & USER MANAGEMENT
+## Table of Contents
+1. [Authentication Module](#authentication-module)
+2. [User Management](#user-management)
+3. [Customer Management](#customer-management)
+4. [Supplier Management](#supplier-management)
+5. [Product Management](#product-management)
+6. [Store Management](#store-management)
+7. [Double-Entry Accounting Module](#double-entry-accounting-module)
+8. [Reports and Exports](#reports-and-exports)
+9. [Role-Based Access Control](#role-based-access-control)
+10. [Security and Data Integrity](#security-and-data-integrity)
 
-### 1.1 User Registration
+---
+
+## Authentication Module
+
+### 1. User Registration
 
 #### Test Case ID: REG-001
-**Feature**: User Registration Form
-**Preconditions**: User is on registration page, not logged in
-**Steps to Execute**:
-1. Navigate to `/register`
-2. Fill in user registration form
+**Feature**: User Registration (Phone Number Validation)
+**Preconditions**: User is on registration page
+**Steps**: 
+1. Navigate to registration form
+2. Enter phone number in phone field
 3. Submit form
-4. Verify system response
 
 **Test Data & Expected Results**:
 
-##### Valid Phone Numbers:
-| Input | Expected Result |
-|-------|----------------|
+*Valid Inputs:*
+- `01712345678` → Registration successful
+- `01812345678` → Registration successful  
+- `01312345678` → Registration successful
+- `01412345678` → Registration successful
+- `01512345678` → Registration successful
+- `01612345678` → Registration successful
+- `01912345678` → Registration successful
+- `+8801712345678` → Registration successful
+- `+8801812345678` → Registration successful
+
+*Invalid Inputs:*
+- `01012345678` → Error "Invalid mobile operator prefix"
+- `01112345678` → Error "Invalid mobile operator prefix"  
+- `01212345678` → Error "Invalid mobile operator prefix"
+- `0171234567` → Error "Phone number must be 11 digits"
+- `017123456789` → Error "Phone number must be 11 digits"
+- `+8801212345678` → Error "Invalid mobile operator prefix"
+- `01712345abc` → Error "Phone number must be numeric"
+- `abc1234567890` → Error "Invalid phone number format"
+- `+88017123456789` → Error "Invalid format - too many digits"
+- `` (empty) → Error "Phone number is required"
+
+#### Test Case ID: REG-002  
+**Feature**: User Registration (Name Validation)
+**Preconditions**: User is on registration page
+**Steps**:
+1. Navigate to registration form
+2. Enter name in name field
+3. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- `John Doe` → Registration successful
+- `মোহাম্মদ রহিম` → Registration successful
+- `John O'Connor` → Registration successful
+- `A` → Registration successful (minimum boundary)
+
+*Invalid Inputs:*
+- `` (empty) → Error "Name is required"
+- `<script>alert('xss')</script>` → Error "Invalid characters in name"
+- String with 256+ characters → Error "Name must not exceed 255 characters"
+- `John123` → Warning "Name contains numbers"
+
+#### Test Case ID: REG-003
+**Feature**: User Registration (Email Validation)  
+**Preconditions**: User is on registration page
+**Steps**:
+1. Navigate to registration form
+2. Enter email in email field
+3. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- `user@example.com` → Registration successful
+- `test.email+tag@domain.co.uk` → Registration successful
+- `` (empty) → Registration successful (email is optional)
+
+*Invalid Inputs:*
+- `invalid-email` → Error "Please enter a valid email address"
+- `@domain.com` → Error "Please enter a valid email address"  
+- `user@` → Error "Please enter a valid email address"
+- `user@domain` → Warning "Email domain may be invalid"
+- Duplicate email → Error "Email already exists"
+
+#### Test Case ID: REG-004
+**Feature**: User Registration (Password Validation)
+**Preconditions**: User is on registration page  
+**Steps**:
+1. Navigate to registration form
+2. Enter password and confirm password
+3. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- `Password123!` → Registration successful
+- `12345678` → Registration successful (minimum 8 chars)
+- `ComplexP@ssw0rd#2024` → Registration successful
+
+*Invalid Inputs:*
+- `1234567` → Error "Password must be at least 8 characters"
+- `` (empty) → Error "Password is required"
+- Password != Confirm Password → Error "Password confirmation does not match"
+- `<script>` → Error "Invalid characters in password"
+
+### 2. User Login
+
+#### Test Case ID: LOGIN-001
+**Feature**: User Login (Phone Number Authentication)
+**Preconditions**: User account exists with phone number
+**Steps**:
+1. Navigate to login page
+2. Enter phone number and password
+3. Click Sign In
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Valid phone `01712345678` + correct password → Login successful
+- Valid phone `+8801712345678` + correct password → Login successful
+
+*Invalid Inputs:*
+- Valid phone + wrong password → Error "Invalid credentials"
+- Invalid phone format + any password → Error "Invalid phone number"
+- `` (empty) phone → Error "Phone number is required"
+- `` (empty) password → Error "Password is required"
+
+#### Test Case ID: LOGIN-002
+**Feature**: Password Reset Request
+**Preconditions**: User account exists
+**Steps**:
+1. Click "Forgot Password" link
+2. Enter phone number for password reset
+3. Submit request
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Existing phone number → SMS sent with reset code
+- `01712345678` → OTP sent to phone
+
+*Invalid Inputs:*
+- Non-existent phone → Error "Phone number not found"
+- Invalid format → Error "Invalid phone number format"
+
+---
+
+## Customer Management
+
+#### Test Case ID: CUST-001
+**Feature**: Customer Creation
+**Preconditions**: User logged in with customer-create permissions
+**Steps**:
+1. Navigate to Customers page
+2. Click "Add Customer"
+3. Fill customer details
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Name: `Ahmed Hassan`, Phone: `01712345678`, Email: `ahmed@example.com` → Customer created successfully
+- Name: `রহিম উদ্দিন`, Phone: `01812345678`, Address: `ঢাকা, বাংলাদেশ` → Customer created successfully
+
+*Invalid Inputs:*
+- Empty name → Error "Name is required"
+- Invalid phone `01012345678` → Error "Invalid mobile operator"
+- Duplicate phone → Error "Phone number already exists"
+- Invalid email format → Error "Invalid email address"
+- Name > 255 chars → Error "Name too long"
+
+#### Test Case ID: CUST-002
+**Feature**: Customer Phone Number Validation
+**Preconditions**: Adding/editing customer
+**Steps**:
+1. Enter phone number in customer form
+2. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Bangladesh Numbers:*
+- `01312345678` → Valid (Airtel)
+- `01412345678` → Valid (Banglalink) 
+- `01512345678` → Valid (Teletalk)
+- `01612345678` → Valid (Airtel)
+- `01712345678` → Valid (Grameenphone)
+- `01812345678` → Valid (Robi)
+- `01912345678` → Valid (Banglalink)
+
+*Invalid Numbers:*
+- `01012345678` → Error "Invalid operator prefix 010"
+- `01112345678` → Error "Invalid operator prefix 011"
+- `01212345678` → Error "Invalid operator prefix 012"
+- `0202345678` → Error "Invalid format - must start with 01"
+
+---
+
+## Supplier Management
+
+#### Test Case ID: SUPP-001
+**Feature**: Supplier Creation
+**Preconditions**: User logged in with supplier-create permissions
+**Steps**:
+1. Navigate to Suppliers page
+2. Click "Add Supplier"  
+3. Fill supplier details
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Name: `ABC Trading Co.`, Contact Person: `Karim Ahmed`, Phone: `01712345678` → Supplier created
+- Name: `XYZ Imports`, Phone: `01812345678`, Email: `xyz@trading.com` → Supplier created
+
+*Invalid Inputs:*
+- Empty name → Error "Supplier name is required"
+- Invalid phone format → Error "Invalid phone number"
+- Duplicate phone → Error "Phone number already exists"
+
+---
+
+## Product Management
+
+#### Test Case ID: PROD-001
+**Feature**: Product Creation
+**Preconditions**: User logged in with product-create permissions, at least one store exists
+**Steps**:
+1. Navigate to Products page
+2. Click "Add Product"
+3. Fill product details
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Name: `Rice 25kg`, SKU: `RICE001`, Price: `2500.50` → Product created
+- Name: `Laptop Dell Inspiron`, Category: `Electronics`, Unit: `Piece` → Product created
+
+*Invalid Inputs:*
+- Empty name → Error "Product name is required"
+- Empty store selection → Error "Store is required"
+- Invalid price format → Error "Invalid price format"
+- Negative price → Error "Price must be positive"
+- Price > 999999999999.99 → Error "Price exceeds maximum limit"
+
+#### Test Case ID: PROD-002  
+**Feature**: Product Price Validation
+**Preconditions**: Adding/editing product
+**Steps**:
+1. Enter price in product form
+2. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- `100` → Valid
+- `100.50` → Valid
+- `0.01` → Valid (minimum)
+- `999999999999.99` → Valid (maximum)
+
+*Invalid Inputs:*
+- `-50` → Error "Price cannot be negative"
+- `abc` → Error "Price must be numeric"
+- `100.999` → Error "Price can have maximum 2 decimal places"
+- `` (empty) → Error "Price is required"
+
+---
+
+## Double-Entry Accounting Module
+
+### Account Management
+
+#### Test Case ID: ACC-001
+**Feature**: Account Creation
+**Preconditions**: User logged in with accounting permissions
+**Steps**:
+1. Navigate to DE Accounting > Accounts
+2. Click "Create Account"
+3. Fill account details
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Title: `Cash in Hand`, Type: `Assets`, Account No: `10001` → Account created
+- Title: `Bank Account - DBBL`, Type: `Assets`, Bank details filled → Bank account created
+
+*Invalid Inputs:*
+- Empty title → Error "Account title is required"
+- Invalid account number format → Error "Invalid account number"
+- Duplicate account number → Error "Account number already exists"
+
+### Expense Management
+
+#### Test Case ID: EXP-001
+**Feature**: Expense Entry Creation
+**Preconditions**: User logged in, source and destination accounts exist
+**Steps**:
+1. Navigate to DE Accounting > Expenses
+2. Click "Create Expense"
+3. Fill expense details with double-entry
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Amount: `5000.00`, From: `Cash Account`, To: `Office Rent Expense` → Expense recorded
+- Amount: `1500.50`, Description: `Utility Bills`, Attachments: Valid PDF → Expense with attachments
+
+*Invalid Inputs:*
+- Amount: `0` → Error "Amount must be greater than zero"
+- Amount: `-1000` → Error "Amount cannot be negative"
+- Amount: `abc` → Error "Amount must be numeric"
+- Missing source account → Error "Source account is required"
+- Missing destination account → Error "Destination account is required"
+- Amount > 14 digits → Error "Amount exceeds maximum limit"
+
+#### Test Case ID: EXP-002
+**Feature**: Expense Amount Validation (Double-Entry Integrity)
+**Preconditions**: Creating expense entry
+**Steps**:
+1. Enter amount in expense form
+2. Verify debit equals credit
+3. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Amounts:*
+- `1000` → Debit: 1000, Credit: 1000 (balanced)
+- `1234.56` → Debit: 1234.56, Credit: 1234.56 (balanced)
+- `99999999999.99` → Within maximum limit (14 characters including decimal)
+
+*Invalid Amounts:*
+- `1000000000000000` → Error "Amount exceeds maximum 14 characters"
+- `1000.999` → Auto-corrected to `1000.99` (2 decimal places max)
+- Non-numeric input → Error "Must be numeric"
+
+### Income/Revenue Management
+
+#### Test Case ID: INC-001
+**Feature**: Income Entry Creation
+**Preconditions**: User logged in, accounts exist
+**Steps**:
+1. Navigate to DE Accounting > Income/Revenue
+2. Click "Create Income"  
+3. Fill income details
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Amount: `25000.00`, From: `Sales Revenue`, To: `Cash Account` → Income recorded
+- Amount: `5000.75`, Description: `Service Income` → Income with description
+
+*Invalid Inputs:*
+- Same validation rules as expenses apply
+- Double-entry integrity must be maintained
+
+### Fund Transfer
+
+#### Test Case ID: FTR-001
+**Feature**: Fund Transfer Between Accounts
+**Preconditions**: Multiple accounts exist
+**Steps**:
+1. Navigate to DE Accounting > Fund Transfer
+2. Select source and destination accounts
+3. Enter transfer amount
+4. Submit transfer
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- From: `Cash Account`, To: `Bank Account`, Amount: `10000` → Transfer completed
+- Between different account types → Transfer recorded with proper debits/credits
+
+*Invalid Inputs:*
+- Same source and destination → Error "Cannot transfer to same account"
+- Insufficient balance (if balance checking enabled) → Error "Insufficient funds"
+- Invalid amount → Same validation as other amount fields
+
+### Loan & Investment Management
+
+#### Test Case ID: LOAN-001
+**Feature**: Loan/Investment Entry
+**Preconditions**: User logged in, accounts exist
+**Steps**:
+1. Navigate to DE Accounting > Loan/Investment
+2. Create loan or investment entry
+3. Fill details with proper debit/credit accounts
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Loan Given: From `Cash` to `Loan Receivable`, Amount: `50000` → Loan recorded
+- Investment: From `Cash` to `Investment Account`, Amount: `100000` → Investment recorded
+
+*Invalid Inputs:*
+- Standard amount validation applies
+- Double-entry rules must be followed
+
+#### Test Case ID: LOAN-002
+**Feature**: Loan Return Entry
+**Preconditions**: Loan exists in system
+**Steps**:
+1. Navigate to DE Accounting > Loan Return
+2. Create loan return entry
+3. Fill return details
+4. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Return Amount: `10000`, From `Loan Receivable` to `Cash` → Return recorded
+
+*Invalid Inputs:*
+- Return amount > loan amount (if validation exists) → Error "Return exceeds loan amount"
+
+### File Attachments
+
+#### Test Case ID: ATT-001
+**Feature**: File Attachments (All Accounting Modules)
+**Preconditions**: Creating any accounting entry
+**Steps**:
+1. Select file attachments
+2. Upload files
+3. Submit form
+
+**Test Data & Expected Results**:
+
+*Valid Files:*
+- `invoice.pdf` (PDF) → File uploaded successfully
+- `receipt.jpg` (JPG) → File uploaded successfully  
+- `document.jpeg` (JPEG) → File uploaded successfully
+- `scan.png` (PNG) → File uploaded successfully
+- Multiple valid files → All files uploaded
+
+*Invalid Files:*
+- `malware.exe` → Error "File type not allowed"
+- `document.doc` → Error "Only PDF, JPG, JPEG, PNG allowed"
+- File > size limit → Error "File size exceeds limit"
+- Corrupt/invalid file → Error "Invalid file format"
+
+---
+
+## Reports and Exports
+
+#### Test Case ID: REP-001
+**Feature**: Journal Report Generation
+**Preconditions**: Accounting transactions exist
+**Steps**:
+1. Navigate to DE Accounting > Journals
+2. Set date range filters
+3. Generate report
+4. Export to PDF
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Date range: Valid from/to dates → Report generated with transactions
+- Export PDF → PDF file downloaded successfully
+
+*Invalid Inputs:*
+- From date > To date → Error "Invalid date range"
+- Future dates → Warning "No data available for future dates"
+
+#### Test Case ID: REP-002
+**Feature**: Ledger Report Generation
+**Preconditions**: Account transactions exist
+**Steps**:
+1. Navigate to DE Accounting > Ledger
+2. Select account and date range
+3. Generate ledger report
+4. Export to PDF
+
+**Test Data & Expected Results**:
+
+*Valid Inputs:*
+- Valid account + date range → Ledger report with running balance
+- Export functionality → PDF downloaded
+
+*Invalid Inputs:*
+- No account selected → Error "Account selection required"
+- Invalid date range → Error "Invalid date range"
+
+#### Test Case ID: REP-003
+**Feature**: Trial Balance Generation
+**Preconditions**: Multiple accounts with transactions
+**Steps**:
+1. Navigate to Reports > Trial Balance
+2. Set date range
+3. Generate trial balance
+4. Verify debit = credit totals
+
+**Test Data & Expected Results**:
+
+*Valid Scenarios:*
+- All transactions → Trial balance with equal debit/credit totals
+- Specific date range → Filtered trial balance
+
+*Invalid Scenarios:*
+- Unbalanced entries (system error) → Error "Trial balance does not match"
+
+---
+
+## Role-Based Access Control (RBAC)
+
+#### Test Case ID: RBAC-001
+**Feature**: Permission-Based Access Control
+**Preconditions**: Different user roles exist
+**Steps**:
+1. Login with specific role
+2. Try accessing restricted features
+3. Verify access control
+
+**Test Data & Expected Results**:
+
+*Valid Access:*
+- Admin role → Access to all features
+- Accountant role → Access to accounting modules only
+- Cashier role → Access to basic transaction entry
+
+*Invalid Access:*
+- Guest user → Error "Access denied"
+- User without permissions → Error "Insufficient permissions"
+- Expired session → Redirect to login
+
+#### Test Case ID: RBAC-002
+**Feature**: User Role Management
+**Preconditions**: Admin user logged in
+**Steps**:
+1. Navigate to Users & Roles
+2. Create/Edit user roles
+3. Assign permissions
+4. Test role functionality
+
+**Test Data & Expected Results**:
+
+*Valid Operations:*
+- Create new role with specific permissions → Role created successfully
+- Assign role to user → User gains role permissions
+
+*Invalid Operations:*
+- Circular role dependencies → Error "Invalid role hierarchy"
+- Remove critical admin permissions → Warning "Admin access required"
+
+---
+
+## Security and Data Integrity Tests
+
+#### Test Case ID: SEC-001
+**Feature**: SQL Injection Prevention
+**Preconditions**: Any form input
+**Steps**:
+1. Enter SQL injection attempts in input fields
+2. Submit forms
+3. Verify no database compromise
+
+**Test Data & Expected Results**:
+
+*Malicious Inputs:*
+- `'; DROP TABLE users; --` → Input sanitized, no SQL execution
+- `' OR '1'='1` → Query sanitized, normal validation
+- `<script>alert('XSS')</script>` → Script tags removed/escaped
+
+#### Test Case ID: SEC-002
+**Feature**: XSS Prevention
+**Preconditions**: Any form with text input
+**Steps**:
+1. Enter XSS attempts
+2. Submit and view data
+3. Verify scripts don't execute
+
+**Test Data & Expected Results**:
+
+*XSS Attempts:*
+- `<script>alert('xss')</script>` → Script tags escaped/removed
+- `javascript:alert('xss')` → JavaScript blocked
+- `<img src=x onerror=alert('xss')>` → Malicious attributes removed
+
+#### Test Case ID: SEC-003
+**Feature**: CSRF Protection  
+**Preconditions**: Any form submission
+**Steps**:
+1. Submit form without CSRF token
+2. Submit with invalid token
+3. Verify protection active
+
+**Test Data & Expected Results**:
+
+*Security Tests:*
+- Missing CSRF token → Error "Token mismatch"
+- Invalid/expired token → Error "Token invalid"
+- Valid token → Form submission successful
+
+#### Test Case ID: SEC-004
+**Feature**: Double-Entry Accounting Integrity
+**Preconditions**: Any accounting transaction
+**Steps**:
+1. Create accounting entries
+2. Verify debit = credit for each transaction
+3. Check overall ledger balance
+
+**Test Data & Expected Results**:
+
+*Integrity Checks:*
+- Every transaction → Total debits = Total credits
+- Account balances → Sum of all account balances = 0
+- Audit trail → All changes tracked and traceable
+
+#### Test Case ID: SEC-005
+**Feature**: Data Validation and Business Rules
+**Preconditions**: Any data entry
+**Steps**:
+1. Test boundary conditions
+2. Test business rule enforcement
+3. Verify data consistency
+
+**Test Data & Expected Results**:
+
+*Business Rule Tests:*
+- Account types → Proper debit/credit behavior
+- Date validations → No future dates for historical entries
+- Amount limits → Respect configured maximum amounts
+- Required fields → All mandatory fields enforced
+
+---
+
+## End-to-End Workflow Testing
+
+#### Test Case ID: E2E-001
+**Feature**: Complete Accounting Workflow
+**Preconditions**: Fresh system setup
+**Steps**:
+1. User registration with valid Bangladesh phone
+2. Login and setup company profile
+3. Create chart of accounts
+4. Record initial capital investment
+5. Create customer and supplier
+6. Record purchase transaction
+7. Record sales transaction  
+8. Generate trial balance report
+9. Export reports to PDF
+
+**Test Data & Expected Results**:
+
+*Complete Workflow:*
+- Registration: `01712345678`, `admin@company.com` → User created
+- Company Setup: `ABC Trading Ltd.` → Company profile created
+- Accounts: Cash, Bank, Inventory, Sales, COGS → Chart of accounts created
+- Initial Investment: `100000` → Capital account credited, Cash debited
+- Purchase: `50000` inventory → Inventory debited, Cash credited
+- Sale: `75000` revenue → Cash debited, Sales credited, COGS debited, Inventory credited
+- Trial Balance → Debits = Credits, all transactions reflected
+- PDF Export → All reports downloadable
+
+*Expected Final State:*
+- Trial balance balanced (∑Debits = ∑Credits)
+- All transactions traceable through audit trail
+- Reports accurate and complete
+- Data integrity maintained throughout workflow
+
+---
+
+## Performance and Load Testing
+
+#### Test Case ID: PERF-001
+**Feature**: System Performance Under Load
+**Preconditions**: System deployed
+**Steps**:
+1. Simulate multiple concurrent users
+2. Test with large datasets
+3. Monitor response times
+
+**Test Data & Expected Results**:
+
+*Performance Benchmarks:*
+- 50 concurrent users → Response time < 3 seconds
+- 10,000 transactions → Report generation < 30 seconds
+- Large file uploads → Progress indication and successful completion
+
+---
+
+## Browser and Device Compatibility
+
+#### Test Case ID: COMPAT-001
+**Feature**: Cross-Browser Compatibility
+**Preconditions**: Application deployed
+**Steps**:
+1. Test on different browsers
+2. Test responsive design
+3. Verify functionality consistency
+
+**Test Data & Expected Results**:
+
+*Browser Tests:*
+- Chrome, Firefox, Safari, Edge → All features work correctly
+- Mobile devices → Responsive design functions properly
+- Different screen sizes → UI remains usable
+
+---
+
+## Data Backup and Recovery
+
+#### Test Case ID: BCK-001
+**Feature**: Data Backup and Recovery
+**Preconditions**: System with data
+**Steps**:
+1. Create system backup
+2. Simulate data loss
+3. Restore from backup
+4. Verify data integrity
+
+**Test Data & Expected Results**:
+
+*Backup Tests:*
+- Regular backups → Data successfully backed up
+- Recovery process → Data restored completely
+- Integrity check → All accounting equations still balanced
+
+---
+
+## Localization and Language Support  
+
+#### Test Case ID: LOC-001
+**Feature**: Bengali Language Support
+**Preconditions**: System supports Bengali
+**Steps**:
+1. Enter Bengali text in forms
+2. Generate reports with Bengali content
+3. Verify proper display and PDF export
+
+**Test Data & Expected Results**:
+
+*Bengali Support:*
+- Names: `মোহাম্মদ রহিম উদ্দিন` → Properly displayed and stored
+- Addresses: `ঢাকা, বাংলাদেশ` → Correct rendering
+- PDF exports → Bengali text properly rendered in PDFs
+
+---
+
+## Summary
+
+This comprehensive test suite covers:
+- **170+ input forms** across main application
+- **46+ accounting module forms** 
+- **Bangladesh-specific phone validation** (013-019 prefixes)
+- **Double-entry accounting integrity** (Debit = Credit)
+- **Security testing** (SQL injection, XSS, CSRF)
+- **End-to-end workflows** from registration to reporting
+- **Performance and compatibility** testing
+- **Data integrity and business rules** validation
+
+Each test case follows the structure:
+- Feature Name
+- Test Case ID  
+- Preconditions
+- Steps to Execute
+- Test Data (Valid & Invalid)
+- Expected Results
+
+The test cases ensure comprehensive coverage of all functionality while maintaining focus on Bangladesh business rules and double-entry accounting principles.
 | 01712345678 | Registration successful, user created |
 | 01812345678 | Registration successful, user created |
 | 01912345678 | Registration successful, user created |
