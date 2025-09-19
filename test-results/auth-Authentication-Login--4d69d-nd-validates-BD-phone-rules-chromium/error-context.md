@@ -1,0 +1,75 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e7]:
+    - img "img" [ref=e9]
+    - generic [ref=e12]:
+      - heading "Sign In" [level=3] [ref=e14]
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - text: Phone Number
+          - generic [ref=e17]: "*"
+        - generic [ref=e18]:
+          - textbox "Enter your phone number" [active] [ref=e19]
+          - generic [ref=e21]: 
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - text: Password
+          - generic [ref=e24]: "*"
+        - generic [ref=e25]:
+          - textbox "Enter your password" [ref=e26]
+          - generic [ref=e27] [cursor=pointer]: 
+      - generic [ref=e30]:
+        - generic [ref=e32] [cursor=pointer]:
+          - checkbox "Remember me" [ref=e33]
+          - text: Remember me
+        - link "Forgot Password?" [ref=e36] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/password/reset-request
+      - button "Sign In" [ref=e38] [cursor=pointer]
+      - heading "Don't have account? Create an account" [level=4] [ref=e40]:
+        - text: Don't have account?
+        - link "Create an account" [ref=e41] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/register
+  - generic [ref=e42]:
+    - paragraph [ref=e43]: 2025 © RyoFin. All Rights Reserved
+    - paragraph [ref=e44]:
+      - text: Designed & Developed By
+      - link "HiLinkz Ltd." [ref=e45] [cursor=pointer]:
+        - /url: https://www.hilinkz.com
+  - generic [ref=e46]:
+    - generic [ref=e48]:
+      - generic [ref=e50]:
+        - text: 
+        - generic [ref=e51] [cursor=pointer]:
+          - text: 
+          - generic: Request
+        - generic [ref=e52] [cursor=pointer]:
+          - text: 
+          - generic: Timeline
+        - text: 
+        - generic [ref=e53] [cursor=pointer]:
+          - text: 
+          - generic: Views
+          - generic [ref=e54] [cursor=pointer]: "3"
+        - text:     
+      - generic [ref=e55]:
+        - generic [ref=e57] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e60] [cursor=pointer]:
+          - generic: 
+        - generic [ref=e61] [cursor=pointer]:
+          - generic: 
+          - generic: 12.84ms
+        - generic [ref=e62]:
+          - generic: 
+          - generic: 2MB
+        - generic [ref=e63]:
+          - generic: 
+          - generic: 12.x
+        - generic [ref=e64] [cursor=pointer]:
+          - generic: 
+          - generic: GET login
+    - text:                 
+  - text: 
+```
