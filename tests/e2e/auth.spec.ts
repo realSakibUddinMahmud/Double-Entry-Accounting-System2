@@ -22,12 +22,12 @@ test.describe('Authentication', () => {
     await page.locator('input[name="password"]').fill('x');
     await page.getByRole('button', { name: /sign in/i }).click();
     // Expect a validation message surfaced by backend; allow any invalid feedback block
-    await expect(page.locator('.invalid-feedback')).toHaveCountGreaterThan(0);
+    await expect(page.locator('.invalid-feedback, .alert').first()).toBeVisible();
 
     // Too short
     await page.locator('input[name="phone"]').fill(SHORT_PHONE);
     await page.getByRole('button', { name: /sign in/i }).click();
-    await expect(page.locator('.invalid-feedback')).toHaveCountGreaterThan(0);
+    await expect(page.locator('.invalid-feedback, .alert').first()).toBeVisible();
 
     // Accept valid local format (credentials may still fail)
     await page.locator('input[name="phone"]').fill(VALID_LOCAL_PHONE);

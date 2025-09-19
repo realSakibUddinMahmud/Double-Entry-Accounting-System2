@@ -11,7 +11,7 @@
           - text: Phone Number
           - generic [ref=e17]: "*"
         - generic [ref=e18]:
-          - textbox "Enter your phone number" [active] [ref=e19]: "01012345678"
+          - textbox "Enter your phone number" [active] [ref=e19]: "01900000000"
           - generic [ref=e21]: 
         - alert [ref=e22]:
           - strong [ref=e23]: These credentials do not match our records.
@@ -62,11 +62,11 @@
           - generic: 
           - generic [ref=e63] [cursor=pointer]: "2"
         - combobox [ref=e64] [cursor=pointer]:
-          - option "#1 login (stacked) (18:36:39)"
-          - option "#2 login (18:36:39)" [selected]
+          - option "#1 login (stacked) (19:21:23)"
+          - option "#2 login (19:21:23)" [selected]
         - generic [ref=e65] [cursor=pointer]:
           - generic: 
-          - generic: 13.14ms
+          - generic: 12.92ms
         - generic [ref=e66]:
           - generic: 
           - generic: 2MB
@@ -76,6 +76,6 @@
         - generic [ref=e68] [cursor=pointer]:
           - generic: 
           - generic: GET login
-    - text:                   
+    - text:                    
   - text: 
 ```
