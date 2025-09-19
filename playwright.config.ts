@@ -6,7 +6,7 @@ export default defineConfig({
   expect: { timeout: 10_000 },
   fullyParallel: true,
   retries: 1,
-  reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
+  reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }], ['junit', { outputFile: 'playwright-report/results.xml' }]],
   use: {
     baseURL: process.env.BASE_URL || 'http://127.0.0.1:8000',
     trace: 'on-first-retry',
