@@ -39,7 +39,7 @@ test.describe('Authentication', () => {
     await page.locator('input[name="phone"]').fill(VALID_INTL_PHONE);
     await page.locator('input[name="password"]').fill('incorrect');
     await page.getByRole('button', { name: /sign in/i }).click();
-    await expect(page.locator('.alert, .invalid-feedback')).toHaveCountGreaterThan(0);
+    await expect(page.locator('.alert, .invalid-feedback').first()).toBeVisible();
   });
 
   test('login and see dashboard widgets (skips if creds missing)', async ({ page }) => {
